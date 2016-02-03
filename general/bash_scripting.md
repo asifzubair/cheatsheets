@@ -1,6 +1,6 @@
 # Bash Scripting #
 
-**Debugging**
+**debugging**
 
 ```
 # quick debugging 
@@ -28,7 +28,8 @@ mv ${file} $prefix$file
 done
 ```
 
-**Exit Codes**
+**exit codes**
+
 ``` 
 #!/bin/bash  
  
@@ -51,7 +52,8 @@ $touch {apple, banana, cherry, durian}
 $touch file_{01..1000} # zero padding.  
 ```
 
-**Redirecting output**
+**redirecting output**
+
 ```
 $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt 
 1> stdout ; 2> stderr 
@@ -59,6 +61,8 @@ $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt
 # will redirect stdout and stderr to output.log
 bash my.file.sh > output.log 2>&1
 ```
+
+---
 
 `/dev/null` ! Great blue nowhere 
   
