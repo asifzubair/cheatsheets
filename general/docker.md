@@ -11,37 +11,39 @@
 
 ## Commands ##
  
-on Linux ALWAYS use "sudo", on Mac give it a miss.  
+on Linux ALWAYS use `sudo`, on Mac give it a miss.  
  
-docker pull ubuntu 
-docker run -i -t ubuntu /bin/bash - log in to the ubuntu docker image/container as root and run an interactive session. 
-sudo docker run -i -t -v /home/script:/script [docker_username]/[new_docker_image_name] /bin/bash - runs an interactive docker container and mounts the /home/script folder from the host machine as the /script folder on the Docker container. This is a USEFUL for mounting local folders which might contain data scripts etc into docker.   
-The docker build -t docker-whale . command takes the Dockerfile in the current directory, and builds an image called docker-whale on your local machine.  
-docker logs <container_name>  
-docker run -d -P training/webapp python app.py  :: -d background -P map any required network ports inside container to host 
-docker ps -a  
-docker tag 7d9495d03763 maryatdocker/docker-whale:latest - tag existing image with different name.  
-docker rmi -f 7d9495d03763 - will only untag the image 
-docker rmi -f docker-whale - will actually delete the image (for the example in http://docs.docker.com/mac/started) 
-network port shortcut - docker port 
-inspecting web application container - docker inspect <container_name> 
-$ docker run -t -i training/sinatra /bin/bash  
-root@0b2616b0e5a8:/#   <--- Here 0b2616b0e5a8 is the container ID  
-Images that use the v2 or later format have a content-addressable identifier called a DIGEST 
-you can use identifier for push/pull/create run/rmi/FROM 
-Container names have to be unique. 
+* `docker pull ubuntu` 
+* `docker run -i -t ubuntu /bin/bash` - log in to the ubuntu docker image/container as root and run an interactive session. 
+* `sudo docker run -i -t -v /home/script:/script [docker_username]/[new_docker_image_name] /bin/bash` - runs an interactive docker container and mounts the `/home/script` folder from the host machine as the `/script` folder on the Docker container. This is a USEFUL for mounting local folders which might contain data scripts etc into docker.   
+* The `docker build -t docker-whale .` command takes the Dockerfile in the current directory, and builds an image called `docker-whale` on your local machine.  
+* `docker logs <container_name>`  
+* `docker run -d -P training/webapp python app.py  :: -d background -P map` any required network ports inside container to host 
+* `docker ps -a`  
+* `docker tag 7d9495d03763 maryatdocker/docker-whale:latest` - tag existing image with different name.  
+* `docker rmi -f 7d9495d03763` - will only untag the image 
+* `docker rmi -f docker-whale` - will actually delete the image (for the example in http://docs.docker.com/mac/started) 
+* network port shortcut - `docker port` 
+* inspecting web application container - `docker inspect <container_name>` 
+* `$ docker run -t -i training/sinatra /bin/bash`  
+* `root@0b2616b0e5a8:/#`   <--- Here `0b2616b0e5a8` is the container ID  
+* Images that use the v2 or later format have a content-addressable identifier called a `DIGEST` 
+* you can use identifier for `push/pull/create run/rmi/FROM` 
+* Container names have to be unique. 
  
-The docker run documentation describes how to automatically clean up the container and remove the file system when the container exits: 
---rm=false: Automatically remove the container when it exits (incompatible with -d)  
-The above shows that by default containers are not removed, but adding --rm=true or just the short-hand -rm will work like so: 
-sudo docker run -i -t --rm ubuntu /bin/bash  
+* The `docker run` documentation describes how to automatically clean up the container and remove the file system when the container exits: 
+`--rm=false`: Automatically remove the container when it exits (incompatible with -d)  
+The above shows that by default containers are not removed, but adding `--rm=true` or just the short-hand `-rm` will work like so: 
+`sudo docker run -i -t --rm ubuntu /bin/bash`  
 When you exit from the container it will be automatically removed. 
  
 Here is an example on how to clean up old containers that are weeks old. 
-$ docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
- 
-Similar command to remove all untagged images:  
-docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi 
+
+`$ docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm` 
+
+Similar command to remove all untagged images:
+
+`docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi`
 
 **docker-machine**
 
