@@ -1,4 +1,4 @@
-# Docker help #
+# Docker #
 
 ## Definitions ##
 
@@ -51,12 +51,14 @@ Similar command to remove all untagged images:
 
  
 ## Data sharing ##
-Data volumes - docker run -d -P --name web -v /webapp training/webapp python app.py 
-use docker inspect web to locate the volume on the host 
-docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py will mount the host directory /src/webapp into the container /opt/webapp 
-This is very useful for testing, for example we can mount our source code inside the container and see our application at work as we change the source code. The directory on the host must be specified as an absolute path and if the directory doesn’t exist Docker will automatically create it for you. 
-This is not available from a Dockerfile due to the portability and sharing purpose of built images. The host directory is, by its nature, host-dependent, so a host directory specified in a Dockerfile probably wouldn’t work on all hosts. 
-we can also mount a directory read-only - using :ro 
+
+* Data volumes - `docker run -d -P --name web -v /webapp training/webapp python app.py` 
+* use docker inspect web to locate the volume on the host 
+* `docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py` will mount the host directory `/src/webapp` into the container `/opt/webapp` 
+* This is very useful for testing, for example we can mount our source code inside the container and see our application at work as we change the source code. 
+* The directory on the host must be specified as an absolute path and if the directory doesn’t exist Docker will automatically create it for you. 
+* This is not available from a Dockerfile due to the portability and sharing purpose of built images. The host directory is, by its nature, host-dependent, so a host directory specified in a Dockerfile probably wouldn’t work on all hosts. 
+* we can also mount a directory read-only - using `:ro` 
  
 ## Docker File ##
 
