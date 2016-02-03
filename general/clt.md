@@ -20,6 +20,14 @@ awk '$2==4 {print $0}' winters-raleigh-lines.tab > winters-raleigh-lines.4.tab
 awk '$1==4 && $2>2279734 && $2<2333528{print $0}' RAL-100_INDELS.vcf.tab
 ```
 
+**brew**
+
+`brew doctor` error - `sudo chown -R $USER:admin /usr/local/share` - should set the correct ownership and group for all files and directories below and including `/usr/local/share`
+
+`brew -v install --with-docs --with-python --without-python3 pyqt5`
+
+Install pyqt5 without python3
+
 **wget**
 
 ```
