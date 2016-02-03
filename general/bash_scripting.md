@@ -130,6 +130,20 @@ echo -e $flashred"ERROR: "$none$red"Something went wrong."$none
 
 `cat < filename`
 
+---
+
+**How do I upgrade Bash in Mac OSX Mountain Lion and set it the correct path?**
+ 
+Install bash with `brew install bash` .
+
+Add `/usr/local/bin/bash` to `/etc/shells` .
+
+Change the default shell with `chsh -s /usr/local/bin/bash` .
+
+You don't normally have to change any settings in Terminal or iTerm 2. Both of them default to opening new shells with the default login shell. 
+
+---
+
 ### Resources ###
 
 http://guide.bash.academy/index.html 
