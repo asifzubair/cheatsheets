@@ -57,31 +57,38 @@ This is not available from a Dockerfile due to the portability and sharing purpo
 we can also mount a directory read-only - using :ro 
  
 ## Docker File ##
-Avoid using your root directory, /, as the root of the source repository. The docker build command will use whatever directory contains the Dockerfile as the build context (including all of its subdirectories). This means if / is used, the entire contents of your hard drive will get sent to the daemon. 
+
+* Avoid using your root directory, `/`, as the root of the source repository. The docker build command will use whatever directory contains the Dockerfile as the build context (including all of its subdirectories). This means if `/` is used, the entire contents of your hard drive will get sent to the daemon. 
+
+```
 .dockerignore  
 */temp*  
 */*/temp*  
 temp?  
 *.md  
 !LICENCSE.md 
-Note that each instruction is run independently, and causes a new image to be created - so RUN cd /tmp will not have any effect on the next instructions. 
-In almost all cases, you should only run a single process in a single container.  
-FROM : which base image to use this - ? - http://phusion.github.io/baseimage-docker  
-a RUN instruction executes a command inside the image, for example installing a package. 
-Don’t do RUN apt-get update on a single line. This will cause caching issues if the referenced archive gets updated, which will make your subsequent apt-get install fail without comment. 
-Avoid RUN apt-get upgrade or dist-upgrade 
-If you know there’s a particular package, foo, that needs to be updated, use apt-get install -y foo and it will update automatically. 
- In most other cases, CMD should be given an interactive shell (bash, python, perl, etc), for example, CMD ["perl", "-de0"], CMD ["python"], or CMD [“php”, “-a”].  
-If your Dockerfile uses only CMD, the provided command will be run if no arguments are passed to docker run. 
-The EXPOSE instruction indicates the ports on which a container will listen for connections. 
-For example, an image containing the Apache web server would use EXPOSE 80, while an image containing MongoDB would use EXPOSE 27017 and so on. 
-You can use ENV to update the PATH environment variable for the software your container installs. 
-For example, ENV PATH /usr/local/nginx/bin:$PATH will ensure that CMD [“nginx”] just works. 
-The ENV instruction is also useful for providing required environment variables specific to services you wish to containerize, such as Postgres’s PGDATA. 
-COPY - If you build using STDIN (docker build - < somefile), there is no build context, so COPY can’t be used. 
-http://stackoverflow.com/questions/30604846/docker-error-no-space-left-on-device - COPY fails due to file size 
+```
+
+* Note that each instruction is run independently, and causes a new image to be created - so `RUN cd /tmp` will not have any effect on the next instructions. 
+
+* In almost all cases, you should only run a single process in a single container.  
+
+* `FROM` : which base image to use this - ? - http://phusion.github.io/baseimage-docker  
+* a `RUN` instruction executes a command inside the image, for example installing a package. 
+* Don’t do `RUN apt-get update` on a single line. This will cause caching issues if the referenced archive gets updated, which will make your subsequent apt-get install fail without comment. 
+* Avoid `RUN apt-get upgrade` or `dist-upgrade` 
+* If you know there’s a particular package, `foo`, that needs to be updated, use `apt-get install -y foo` and it will update automatically. 
+* In most other cases, `CMD` should be given an interactive shell (bash, python, perl, etc), for example, `CMD ["perl", "-de0"]`, `CMD ["python"]`, or `CMD [“php”, “-a”]`.  
+* If your Dockerfile uses only `CMD`, the provided command will be run if no arguments are passed to docker run. 
+* The `EXPOSE` instruction indicates the ports on which a container will listen for connections. 
+ * For example, an image containing the Apache web server would use `EXPOSE 80`, while an image containing MongoDB would use `EXPOSE 27017` and so on. 
+* You can use `ENV` to update the `PATH` environment variable for the software your container installs. 
+ * For example, `ENV PATH /usr/local/nginx/bin:$PATH `will ensure that `CMD [“nginx”]` just works. 
+* The `ENV` instruction is also useful for providing required environment variables specific to services you wish to containerize, such as Postgres’s `PGDATA`. 
+* `COPY` - If you build using `STDIN` (`docker build - < somefile`), there is no build context, so `COPY` can’t be used. 
+* [SO](http://stackoverflow.com/questions/30604846/docker-error-no-space-left-on-device) - `COPY` fails due to file size 
  
-Guess: The Dockerfile helps to programmatically create an image/container that one can upload to Docker hub. The image will reside on Docker hub (or be created on the fly ?) 
+**Guess:** The Dockerfile helps to programmatically create an image/container that one can upload to Docker hub. The image will reside on Docker hub (or be created on the fly ?) 
  
 Once the docker image has been modified and then the container state been committed to a new image, mounts can be used to access scripts/software/datasets. 
  
