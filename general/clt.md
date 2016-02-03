@@ -42,6 +42,9 @@ wget -r -np -nH –cut-dirs=3 -R 'index.html*' -A '*_xwalk.csv' http://lehd.ce
  * `syntax on`
 
 **sed**
+* `head $filename.csv | sed 's/\$//g' | csvlook | less -S` 
+* have white spaces at the end and want to remove trailing `,` 
+ * `cat filename | sed 's/,[[:blank:]]*$//g' > tmp.tmp; mv tmp.tmp desired_filename`
 
 **ssh**
 
