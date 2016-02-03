@@ -1,16 +1,15 @@
-**docker-machine**
+# Docker help #
 
-`docker-machine create -d virtualbox --virtualbox-memory 8192 --virtual-disksize 600000 default` - [SO](http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
+## Definitions ##
+
+* An [image](http://docs.docker.com/reference/glossary/#image) is an ordered collection of root filesystem changes and the corresponding execution parameters for use within a container runtime. Images are read-only.
  
- 
-An image is an ordered collection of root filesystem changes and the corresponding execution parameters for use within a container runtime. Images are read-only - http://docs.docker.com/reference/glossary/#image 
- 
-A container is an active (or inactive if exited) stateful instantiation of an image - http://docs.docker.com/reference/glossary/#container 
-Pull a docker image >> Run it interactively and make changes >> Use the corresponding container to make a new image >> push this new image to the docker hub 
-This does a great job at explaining difference between images/containers -> http://stackoverflow.com/questions/21498832/in-docker-whats-the-difference-between-a-container-and-an-image  
- 
- 
-Commands: 
+* A [container](http://docs.docker.com/reference/glossary/#container) is an active (or inactive if exited) stateful instantiation of an image.
+* Pull a docker image >> Run it interactively and make changes >> Use the corresponding container to make a new image >> push this new image to the docker hub.
+
+* This does a great job at explaining difference between images/containers -> [SO](http://stackoverflow.com/questions/21498832/in-docker-whats-the-difference-between-a-container-and-an-image)   
+
+## Commands ##
  
 on Linux ALWAYS use "sudo", on Mac give it a miss.  
  
@@ -43,9 +42,13 @@ $ docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty d
  
 Similar command to remove all untagged images:  
 docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi 
+
+**docker-machine**
+
+`docker-machine create -d virtualbox --virtualbox-memory 8192 --virtual-disksize 600000 default` - [SO](http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
+
  
- 
-Data sharing 
+## Data sharing ##
 Data volumes - docker run -d -P --name web -v /webapp training/webapp python app.py 
 use docker inspect web to locate the volume on the host 
 docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py will mount the host directory /src/webapp into the container /opt/webapp 
@@ -53,7 +56,7 @@ This is very useful for testing, for example we can mount our source code inside
 This is not available from a Dockerfile due to the portability and sharing purpose of built images. The host directory is, by its nature, host-dependent, so a host directory specified in a Dockerfile probably wouldn’t work on all hosts. 
 we can also mount a directory read-only - using :ro 
  
-Docker File 
+## Docker File ##
 Avoid using your root directory, /, as the root of the source repository. The docker build command will use whatever directory contains the Dockerfile as the build context (including all of its subdirectories). This means if / is used, the entire contents of your hard drive will get sent to the daemon. 
 .dockerignore  
 */temp*  
