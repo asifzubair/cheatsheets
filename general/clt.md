@@ -45,8 +45,74 @@ wget -r -np -nH –cut-dirs=3 -R 'index.html*' -A '*_xwalk.csv' http://lehd.ce
 
 **ssh**
 
+* `ssh-keygen -R [localhost]:2222` - to remove a particular hostkey from list of known hosts 
+
 **qsub**
+
+to kill jobs !
+
+```
+#!/bin/bash -xv 
+
+export USER=asifzuba 
+
+# to kill all the jobs 
+qstat -u $USER | grep "$USER" | cut -d"." -f1 | xargs qdel 
+
+# to kill all the running jobs 
+qstat -u $USER | grep "R" | cut -d"." -f1 | xargs qdel 
+
+# to kill all the queued jobs 
+qstat -u $USER | grep "Q" | cut -d"." -f1 | xargs qdel 
+```
+
+interactive node:
+
+`qsub -I -q cmb -l nodes=1:ppn=24 -l walltime=12:00:00 -l mem=48000mb -l vmem=48000mb -l pmem=2000mb`
+
+**pbs**
+```
+#PBS -S /bin/bash 
+#PBS -o /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq  
+#PBS -e /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq 
+#PBS -l walltime=24:00:00 
+#PBS -l nodes=1:ppn=1 
+#PBS -l mem=1900MB 
+#PBS -q cmb
+```
+
+**rpm**
+
+```
+rpm --initdb --root /home/cmb-02/sn1/asifzuba --dbpath /home/cmb-02/sn1/asifzuba/lib/rpm 
+rpm --dbpath /home/cmb-02/sn1/asifzuba/chimera/lib/rpm/ --relocate /usr=/home/cmb-02/sn1/asifzuba/chimera/ --nodeps -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
+  
+CPPFLAGS=-I /usr/local/include -I /tmp-old/backup/usr/include/readline 
+LDFLAGS=-L/usr/local/lib -L/home3/fa/faga001/vol/readline-5.1/lib 
+  
+CFLAGS= -I/tmp-old/backup/usr/include/readline -L/tmp-old/backup/usr/lib64 
+  
+rpm --dbpath /home/cmb-02/sn1/asifzuba/rpm --relocate /usr=/home/cmb-02/sn1/asifzuba/chimera/ --nodeps -ivh readline-6.0-4.el6.src.rpm
+```
 
 ---
 
 `mkdir -p some_dir/dir1 some_dir/dir2 some_dir/dir3`
+
+`$ ps -p $$` // to find your shell particulars 
+Or simply `echo $SHELL` 
+
+`uname -a` # Linux version 
+`cat /etc/*release` # what flavor of Linux
+
+`gdb example core` // to examine core dump for seg fault etc.  
+
+`setfacl -m u:msalomon:rwx SOL_CHICKADEE` // give particular user a permission
+
+```
+# for loop in cshell 
+foreach i (`seq 1 5 20`) 
+... body … 
+end
+```
+
