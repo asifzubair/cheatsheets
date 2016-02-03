@@ -62,6 +62,43 @@ $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt
 bash my.file.sh > output.log 2>&1
 ```
 
+**arithmetic operations**
+
+```
+# does only integer arithmetic
+
+f=$((1/3))
+echo $f
+
+# will do floating point arithmetic
+g=$(echo 1/3 | bc -l)
+echo $g 
+```  
+
+**comparison operations**
+
+`[["cat" == "cat" ]]` - returns 1 failure or 0 success 
+`echo $?` - return value 
+
+`[[ $a -lt $b]]` - used for integers !!  
+
+String is null or not. 
+
+`[[ -z $a && -n $b ]]` - a is null and b is not null 
+`echo $?`
+
+**arrays**
+
+```
+a=() 
+b=("apple" "banana" "cherry") 
+echo ${b[2]} 
+b[5]="kiwi" 
+b+=("mango") 
+# outputs the whole array
+echo ${b[@]}
+```
+
 ---
 
 `/dev/null` ! Great blue nowhere 
@@ -69,9 +106,29 @@ bash my.file.sh > output.log 2>&1
 `echo $SECONDS` - time script has been running.  
 `echo $0` - script name. 
   
-`a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)`
-Stuff in parenthesis will be executed as system command.
+`a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)` - Stuff in parenthesis will be executed as system command.
 
+`echo -e '\033[34;42mColorTest\033[0m'` - try it.  
+
+```
+flashred="\033[5;31;40m" 
+red="\033[31;40m" 
+none="\033[0m" 
+  
+echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
+  
+# Also, can use "tput" notation 
+  
+flashred=$(tput setab 0; tput setaf 1; tput blink) 
+red=$(tput setab 0; tput setaf 1) 
+none=$(tput sgr 0) 
+
+echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
+```
+
+`printf "Name:\t%s\nID:\t%04d\n" "asif" "007"`
+
+`cat < filename`
 
 ### Resources ###
 
