@@ -28,35 +28,16 @@ awk '$1==4 && $2>2279734 && $2<2333528{print $0}' RAL-100_INDELS.vcf.tab
 
 Install pyqt5 without python3
 
-**wget**
-
+**pbs**
 ```
-wget $URL
-wget -r -np -nH –cut-dirs=3 -R 'index.html*' -A '*_xwalk.csv' http://lehd.ces.census.gov/data/lodes/LODES7
+#PBS -S /bin/bash 
+#PBS -o /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq  
+#PBS -e /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq 
+#PBS -l walltime=24:00:00 
+#PBS -l nodes=1:ppn=1 
+#PBS -l mem=1900MB 
+#PBS -q cmb
 ```
-
-**vi**
-* For global substitution, use something like this   
- * `:%s/foo/bar/g`  - for all occurrences of foo change to bar 
-* go to line: 
- * `G` - go to eof 
- * `A` - go to eol and append 
-* If you wanted to go to line 14, you could press `Esc` and then enter `:14` 
-* to change behaviour of `tab` and have LINE NUMBERS, put this into your `.vimrc` - it will be in your `$HOME` directory 
- * `set number` 
- * `set tabstop=4 shiftwidth=4 expandtab` 
-* to turn on syntax highlighting, do this: 
- * `filetype plugin indent on` 
- * `syntax on`
-
-**sed**
-* `head $filename.csv | sed 's/\$//g' | csvlook | less -S` 
-* have white spaces at the end and want to remove trailing `,` 
- * `cat filename | sed 's/,[[:blank:]]*$//g' > tmp.tmp; mv tmp.tmp desired_filename`
-
-**ssh**
-
-* `ssh-keygen -R [localhost]:2222` - to remove a particular hostkey from list of known hosts 
 
 **qsub**
 
@@ -81,17 +62,6 @@ interactive node:
 
 `qsub -I -q cmb -l nodes=1:ppn=24 -l walltime=12:00:00 -l mem=48000mb -l vmem=48000mb -l pmem=2000mb`
 
-**pbs**
-```
-#PBS -S /bin/bash 
-#PBS -o /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq  
-#PBS -e /home/cmb-02/sn1/asifzuba/SOL_CHICKADEE/vcf/allelefrq 
-#PBS -l walltime=24:00:00 
-#PBS -l nodes=1:ppn=1 
-#PBS -l mem=1900MB 
-#PBS -q cmb
-```
-
 **rpm**
 
 ```
@@ -105,6 +75,39 @@ CFLAGS= -I/tmp-old/backup/usr/include/readline -L/tmp-old/backup/usr/lib64
   
 rpm --dbpath /home/cmb-02/sn1/asifzuba/rpm --relocate /usr=/home/cmb-02/sn1/asifzuba/chimera/ --nodeps -ivh readline-6.0-4.el6.src.rpm
 ```
+
+**sed**
+* `head $filename.csv | sed 's/\$//g' | csvlook | less -S` 
+* have white spaces at the end and want to remove trailing `,` 
+ * `cat filename | sed 's/,[[:blank:]]*$//g' > tmp.tmp; mv tmp.tmp desired_filename`
+
+**ssh**
+
+* `ssh-keygen -R [localhost]:2222` - to remove a particular hostkey from list of known hosts 
+
+**vi**
+* For global substitution, use something like this   
+ * `:%s/foo/bar/g`  - for all occurrences of foo change to bar 
+* go to line: 
+ * `G` - go to eof 
+ * `A` - go to eol and append 
+* If you wanted to go to line 14, you could press `Esc` and then enter `:14` 
+* to change behaviour of `tab` and have LINE NUMBERS, put this into your `.vimrc` - it will be in your `$HOME` directory 
+ * `set number` 
+ * `set tabstop=4 shiftwidth=4 expandtab` 
+* to turn on syntax highlighting, do this: 
+ * `filetype plugin indent on` 
+ * `syntax on`
+
+**wget**
+
+```
+wget $URL
+wget -r -np -nH –cut-dirs=3 -R 'index.html*' -A '*_xwalk.csv' http://lehd.ces.census.gov/data/lodes/LODES7
+```
+
+
+
 
 ---
 
