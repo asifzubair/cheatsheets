@@ -1,6 +1,6 @@
 # Git / Github #
 
-[Merg Conflicts](http://www.bogotobogo.com/cplusplus/Git/Git_GitHub_Merge_Conflicts_with_Simple_Example.php)
+[Merge Conflicts](http://www.bogotobogo.com/cplusplus/Git/Git_GitHub_Merge_Conflicts_with_Simple_Example.php)
 
 ```
 git clone RepoURL 
