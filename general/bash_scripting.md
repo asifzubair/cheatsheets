@@ -131,6 +131,13 @@ echo -e $flashred"ERROR: "$none$red"Something went wrong."$none
 `cat < filename`
 
 ---
+#### Up and Running Notes ####
+
+`bash` major differences: http://tiswww.case.edu/php/chet/bash/bashref.html#SEC138
+
+
+
+---
 
 **How do I upgrade Bash in Mac OSX Mountain Lion and set it the correct path?**
  
