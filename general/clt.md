@@ -13,6 +13,14 @@ fi
 
 Now when you login to your machine from a console `.bashrc` will be called.
 
+**redirection**
+
+```
+cp -v * ../otherfolder 1> ../success.txt 2> ../error.txt
+cp -v * ../otherfolder &> ../log.txt
+ls > /dev/null
+```
+
 **awk**
 
 ```
@@ -27,6 +35,17 @@ awk '$1==4 && $2>2279734 && $2<2333528{print $0}' RAL-100_INDELS.vcf.tab
 `brew -v install --with-docs --with-python --without-python3 pyqt5`
 
 Install pyqt5 without python3
+
+**chmod**  
+
+**grep**  
+
+```
+grep --color = auto <pattern> <filename>
+export GREP_OPTIONS='--color=auto'
+grep -i break-in auth.log | awk {'print $12'} # case-insensitive search
+ping -c l example.com | grep 'bytes from' | cut -d = -f 4
+```
 
 **pbs**
 ```
