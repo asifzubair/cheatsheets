@@ -1,5 +1,49 @@
 # Bash Scripting #
 
+**arithmetic operations**
+
+```
+# does only integer arithmetic
+
+f=$((1/3))
+echo $f
+
+# will do floating point arithmetic
+g=$(echo 1/3 | bc -l)
+echo $g 
+```  
+
+**arrays**
+
+```
+a=() 
+b=("apple" "banana" "cherry") 
+echo ${b[2]} 
+b[5]="kiwi" 
+b+=("mango") 
+# outputs the whole array
+echo ${b[@]}
+```
+
+**brace  expansion**
+
+```
+$touch {apple, banana, cherry, durian} 
+$touch file_{01..1000} # zero padding.  
+```
+
+**comparison operations**
+
+`[["cat" == "cat" ]]` - returns 1 failure or 0 success 
+`echo $?` - return value 
+
+`[[ $a -lt $b]]` - used for integers !!  
+
+String is null or not. 
+
+`[[ -z $a && -n $b ]]` - a is null and b is not null 
+`echo $?`
+
 **debugging**
 
 ```
@@ -45,13 +89,6 @@ exit 1
 fi
 ```
 
-**brace  expansion**
-
-```
-$touch {apple, banana, cherry, durian} 
-$touch file_{01..1000} # zero padding.  
-```
-
 **redirecting output**
 
 ```
@@ -60,43 +97,6 @@ $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt
 
 # will redirect stdout and stderr to output.log
 bash my.file.sh > output.log 2>&1
-```
-
-**arithmetic operations**
-
-```
-# does only integer arithmetic
-
-f=$((1/3))
-echo $f
-
-# will do floating point arithmetic
-g=$(echo 1/3 | bc -l)
-echo $g 
-```  
-
-**comparison operations**
-
-`[["cat" == "cat" ]]` - returns 1 failure or 0 success 
-`echo $?` - return value 
-
-`[[ $a -lt $b]]` - used for integers !!  
-
-String is null or not. 
-
-`[[ -z $a && -n $b ]]` - a is null and b is not null 
-`echo $?`
-
-**arrays**
-
-```
-a=() 
-b=("apple" "banana" "cherry") 
-echo ${b[2]} 
-b[5]="kiwi" 
-b+=("mango") 
-# outputs the whole array
-echo ${b[@]}
 ```
 
 ---
