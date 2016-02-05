@@ -29,7 +29,14 @@ echo ${b[@]}
 
 ```
 $touch {apple, banana, cherry, durian} 
-$touch file_{01..1000} # zero padding.  
+$touch file_{01..1000} # zero padding. 
+
+echo {A..Z}
+echo {a..Z}
+echo {A..z}
+echo {w..d..2}
+
+touch {apple, banana, cherry, durian}_{01..100}{w..d}
 ```
 
 **comparison operations**
