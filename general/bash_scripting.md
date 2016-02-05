@@ -34,13 +34,12 @@ $touch file_{01..1000} # zero padding.
 
 **comparison operations**
 
-`[["cat" == "cat" ]]` - returns 1 failure or 0 success 
+`[["cat" == "cat" ]]` - returns 1 failure or 0 success  
 `echo $?` - return value 
 
 `[[ $a -lt $b]]` - used for integers !!  
 
-String is null or not. 
-
+String is null or not.  
 `[[ -z $a && -n $b ]]` - a is null and b is not null 
 `echo $?`
 
@@ -106,7 +105,8 @@ bash my.file.sh > output.log 2>&1
 `echo $SECONDS` - time script has been running.  
 `echo $0` - script name. 
   
-`a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)` - Stuff in parenthesis will be executed as system command.
+`a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)`  
+Stuff in parenthesis will be executed as system command.
 
 `echo -e '\033[34;42mColorTest\033[0m'` - try it.  
 
