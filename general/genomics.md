@@ -1,7 +1,7 @@
 # Genomics #
 
-* [GGD](http://www.gettinggeneticsdone.com/2012/04/awk-command-to-count-total-unique-and.html):
-Useful `awk` script.
+* [GGD](http://www.gettinggeneticsdone.com/2012/04/awk-command-to-count-total-unique-and.html):Useful `awk` script.  
+
 ```
 gzip -d -c myfile.fq.gz | awk '((NR-2)%4==0){read=$1;total++;count[read]++}END{for(read in count)\
 {if(!max||count[read]>max){max=count[read];maxRead=read};if(count[read]==1){unique++}}; \
@@ -18,12 +18,7 @@ This is telling you:
 5. The number of times that sequence is present (354).  
 6. The frequency of that sequence as a proportion of the total number of reads (0.35%).  
 
-
-
-
-
-
-
+---
 
 
 
