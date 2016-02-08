@@ -7,7 +7,7 @@ gzip -d -c myfile.fq.gz | awk '((NR-2)%4==0){read=$1;total++;count[read]++}END{f
 {if(!max||count[read]>max){max=count[read];maxRead=read};if(count[read]==1){unique++}}; \
 print total,unique,unique*100/total,maxRead,count[maxRead],count[maxRead]*100/total}'
 ```
-The output would look something like this for some RNA-seq data:  
+The output would look something like this for RNA-seq data:  
 `99115 60567 61.1078 ACCTCAGGA 354 0.357161`
 
 This is telling you:
@@ -19,7 +19,6 @@ This is telling you:
 6. The frequency of that sequence as a proportion of the total number of reads (0.35%).  
 
 ---
-
 
 
 
