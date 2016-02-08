@@ -30,3 +30,7 @@ This is telling you:
 
 **References:**  
 GGD: http://www.gettinggeneticsdone.com
+
+**Bioinformatics**
+* https://wikis.utexas.edu/display/bioiteam/SSC+Intro+to+NGS+Bioinformatics+Course
+* http://www.personal.psu.edu/iua1/2015_fall_852/main_2015_fall_852.html
