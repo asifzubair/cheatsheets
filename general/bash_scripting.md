@@ -137,8 +137,7 @@ echo -e $flashred"ERROR: "$none$red"Something went wrong."$none
 
 `cat < filename`
 
----
-#### Up and Running Notes ####
+## Up and Running Notes ##
 
 `bash` major differences: http://tiswww.case.edu/php/chet/bash/bashref.html#SEC138
 
