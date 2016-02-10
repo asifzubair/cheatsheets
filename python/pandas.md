@@ -6,8 +6,8 @@
  
 * `a = pd.read_json(x, typ='series', orient='records')` - to read `json` in `pandas` 
  
-* groupby returns a groupby object. | `set_index()` | `reindex()` 
-  
+* `groupby` returns a `groupby` object. | `set_index()` | `reindex()`  
+
 * read/write from a PostgreSQL  
 `pd.readsql(SQL_STATEMENT, conn)`  
 for WRITE, specify DB type from `SQLAlchemy` 
@@ -40,10 +40,10 @@ there does seem to be a restriction with `.iloc` in that indices are required an
   
 ``` 
 ## script takes "unc*" files in a directory and spits out a file with matrix of expression data.  
-  
+
 import subprocess 
 import pandas as pd 
-  
+
 p = subprocess.Popen('ls unc*', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) 
 flag = 0 
  
@@ -61,5 +61,4 @@ fullSet = fullSet.rename(columns = {'normalized_count':line.strip()})
 fullSet.to_csv('fullSet.txt', sep = '\t', line_terminator = "\n", index = False) 
 ```
 
-* date parsing can be done in pandas read_csv/read_table command. If done this way, we don't have to change the column to date time format later. 
- 
+* date parsing can be done in pandas `read_csv`/`read_table` command. If done this way, we don't have to change the column to date time format later. 
