@@ -77,7 +77,7 @@ with open('someFile.txt', 'r')  as f:
 
 with open('someFile.txt', 'r') as f:
 	for line in f.readlines():
-    print line, 
+    		print line, 
 ```  
 
 * Concatenate two `numpy` arrays in the 4th dimension
@@ -94,7 +94,10 @@ c = np.concatenate((a[...,np.newaxis],b[...,np.newaxis]),axis=3)
 ```
 >>> import keyword
 >>> keyword.kwlist
-['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif',
+'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import',
+'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try',
+'while', 'with', 'yield']
 ```
 
 ```
