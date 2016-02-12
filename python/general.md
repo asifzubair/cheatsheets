@@ -32,10 +32,11 @@
 * use [enumerate](http://stackoverflow.com/questions/1540049/replace-values-in-list-using-python) 
 * `filter`
 
-* if, else in list comprehension - with unicode characters
-  * `columns = [unicodedata.normalize('NFKD', s).encode('ascii','ignore') if isinstance(col, unicode) else col for col in columns]`  
-  * NEED to find out what [NKFD](http://www.peterbe.com/plog/unicode-to-ascii ) is above
-
+* if, else in list comprehension - with unicode characters  
+```
+columns = [unicodedata.normalize('NFKD', s).encode('ascii','ignore') if isinstance(col, unicode) else col for col in columns]
+```
+NEED to find out what [NKFD](http://www.peterbe.com/plog/unicode-to-ascii ) is above  
 
 • `[0]*100` will print a list with 100 zeros
 
