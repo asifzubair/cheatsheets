@@ -33,10 +33,10 @@ Everthing is an object:
 ```
 string welcome = "Hello!";
 string welcome = new String("Hello!");
-```
-	* equivalent calls
-	* string is an array of `char` objects
-	* many mehtods for `string` class
+```  
+* equivalent calls
+* string is an array of `char` objects
+* many mehtods for `string` class
 
 **Anatomy of a java program**
 
@@ -69,12 +69,12 @@ public class HelloWorld{
 
 **simple**
 
-`int newVar = 10;  
+`int newVar = 10;`  
 
 **complex**
 
 `Date newDate = new Date();`  
-initial UPPER CASE | always `_lower_` case begin | constructor
+initial **UPPER** case | always `_lower_` case begin | constructor
 
 **Primitives**
 
