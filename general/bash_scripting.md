@@ -3,12 +3,13 @@
 **arithmetic operations**
 
 ```
-# does only integer arithmetic
+## needs double parenthesis
 
+## does only integer arithmetic
 f=$((1/3))
 echo $f
 
-# will do floating point arithmetic
+## will do floating point arithmetic
 g=$(echo 1/3 | bc -l)
 echo $g 
 ```  
@@ -17,12 +18,24 @@ echo $g
 
 ```
 a=() 
-b=("apple" "banana" "cherry") 
+b=("apple" "banana" "cherry") # notice no commas ! 
 echo ${b[2]} 
-b[5]="kiwi" 
-b+=("mango") 
+b[5]="kiwi" # don't have to populate every element.
+b+=("mango") # append at the end, paranthesis is important.
 # outputs the whole array
 echo ${b[@]}
+echo ${b[@]: -1}
+```
+
+**associative arrays**
+`bash > 3.0`
+
+```
+declare -A myarray
+myarray[color]=blue
+myarray["office building"]="HQ West"
+
+echo ${myarray["office building"]} is ${myarray[color]}
 ```
 
 **brace  expansion**
@@ -39,16 +52,37 @@ echo {w..d..2}
 touch {apple, banana, cherry, durian}_{01..100}{w..d}
 ```
 
+**colouring options**
+
+`echo -e "\033[5;31;40mERROR: \033[0m\033[31;40mSomething went wrong.\033[0m"`
+
+```
+flashred="\033[5;31;40m"
+red="\033[31;40m"
+none="\033[0m"
+echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
+
+## Also, can use "tput" notation 
+
+flashred=$(tput setab 0; tput setaf 1; tput blink) 
+red=$(tput setab 0; tput setaf 1) 
+none=$(tput sgr 0) 
+
+echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
+```
+
 **comparison operations**
 
 `[["cat" == "cat" ]]` - returns 1 failure or 0 success  
 `echo $?` - return value 
 
-`[[ $a -lt $b]]` - used for integers !!  
+`[[ $a -lt $b]]` - used for integers !!  other comparison will be lexically. 
 
 String is null or not.  
-`[[ -z $a && -n $b ]]` - a is null and b is not null 
-`echo $?`
+```
+[[ -z $a && -n $b ]] # a is null and b is not null 
+echo $? # returns result of the last comparison. 0 - success, 1 - failure.
+```
 
 **debugging**
 
@@ -78,6 +112,15 @@ mv ${file} $prefix$file
 done
 ```
 
+**declare**
+
+```
+declare -i d=123 # d is an integer
+declare -r e=456 # e is read-only
+declare -l f="LOLcats" # f is lolcats
+declare -u g="LOLCATS" # g is LOLCATS
+```
+
 **exit codes**
 
 ``` 
@@ -95,6 +138,45 @@ exit 1
 fi
 ```
 
+**file i/o**
+
+```
+echo "some text" > file.txt
+cat file.txt
+> file.txt
+echo "some more text" >> file.txt
+```
+```
+i=1
+while read f; do
+ echo "Line $i: $f"
+ ((i++))
+done < file.txt
+```
+
+**here document**
+
+to help display instructions:
+```
+cat << EndOfText
+This is a 
+multiline
+text string
+EndOfText
+```
+use `-` to remove tabs from following string.
+
+```
+ftp -n <<- DoneWithTheUpdate
+ open mirrors.xmission.com
+ user anonymous nothinghere
+ ascii
+ cd gutenberg
+ get GUTINDEX.01
+ bye
+DoneWithTheUpdate
+```
+
 **redirecting output**
 
 ```
@@ -105,35 +187,32 @@ $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt
 bash my.file.sh > output.log 2>&1
 ```
 
+**working with strings**
+
+```
+a="hello "
+b="world"
+c=$a$b
+echo $c # concatenated string
+
+echo ${#a} # length of string
+echo ${c:3} # substring from third character
+echo ${c:3:4}
+echo ${c: -4}
+echo ${c: -4:3}
+
+## string replacement
+fruit="apple banana banana cherry"
+echo ${fruit/banana/durian} # only first instance is replaced
+echo ${fruit//banana/durian} # all instances are replaced
+
+echo ${fruit/#apple/durian} # replace only if instance occurs at very beginning of string
+echo $fruit/%cherry/durian} # replace only if instance occurs at end of string
+```
+
 ---
 
-`/dev/null` ! Great blue nowhere 
-  
-`echo $SECONDS` - time script has been running.  
-`echo $0` - script name. 
-  
-`a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)`  
-Stuff in parenthesis will be executed as system command.
 
-`echo -e '\033[34;42mColorTest\033[0m'` - try it.  
-
-```
-flashred="\033[5;31;40m" 
-red="\033[31;40m" 
-none="\033[0m" 
-  
-echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
-  
-# Also, can use "tput" notation 
-  
-flashred=$(tput setab 0; tput setaf 1; tput blink) 
-red=$(tput setab 0; tput setaf 1) 
-none=$(tput sgr 0) 
-
-echo -e $flashred"ERROR: "$none$red"Something went wrong."$none 
-```
-
-`printf "Name:\t%s\nID:\t%04d\n" "asif" "007"`
 
 `cat < filename`
 
@@ -141,7 +220,68 @@ echo -e $flashred"ERROR: "$none$red"Something went wrong."$none
 
 `bash` major differences: http://tiswww.case.edu/php/chet/bash/bashref.html#SEC138
 
+ENV. Variables : `$MACHTYPE`, `$HOSTNAME`, `$BASH_VERSION`, `$SECONDS`
 
+`/dev/null` ! Great blue nowhere 
+
+`echo $SECONDS` - time script has been running.  
+`echo $0` - script name. 
+
+```
+a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)
+echo "The ping was $a"
+```
+
+`echo -e '\033[34;42mColorTest\033[0m'` - try it.  
+
+```
+date +"%d-%m-%Y"
+date +"%H:%M:%S"
+```
+
+`printf "Name:\t%s\nID:\t%04d\n" "asif" "7"`
+
+```
+today=$(date +"%d-%m-%Y")
+time=$(date +"%H:%M:%S")
+printf -v d "Current User:\t%s\nDate:\t\t%s @ %s\n" $USER $today $time
+echo $d
+```
+
+One would write the below text in a file:
+```
+open mirrors.xmission.com
+user anonymous nothinghere
+ascii
+cd gutenberg
+get GUTINDEX.00
+```
+and then pass that file to something like `ftp` to execute line by line - `ftp -n < ftp.txt`
+
+```
+freespace=$(df -h / | grep -E "\/$" | awk '{print $4}')
+greentext="\033[32m"
+bold="\033[1m"
+normal="\033[0m"
+logdate=$(date +"%Y%m%d")
+logfile="$logdate"_report.log
+
+echo -e $bold"Quick system report for "$greentext"$HOSTNAME"$normal
+printf "\tSystem type:\t%s\n" $MACHTYPE
+printf "\tBash Version:\t%s\n" $BASH_VERSION
+printf "\tFree Space:\t%s\n" $freespace
+printf "\tFiles in dir:\t%s\n" $(ls | wc -l)
+printf "\tGenerated on:\t%s\n" $(date +"%m/%d/%y) # US date format
+echo -e $greentext"A summary of this info has been saved to $logfile"$normal
+
+cat <<- EOF> $logfile
+ This report was automatically generated by my Bash script
+ It contains a brif summary of some systme information.
+EOF
+
+printf "SYS:\t%s\n" $MACHTYPE >> $logfile
+printf "BASH:\t%s\n" $BASH_VERSION >> $logfile
+```
 
 ---
 
