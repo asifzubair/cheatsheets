@@ -93,3 +93,47 @@ default initialisation is zero
 
 **Dates**
 
+```
+class java.util
+
+Date d = new date();
+//systime
+
+GregorianCalendar gc = new GregorianCalendar();
+gc.add();
+
+DateFormat df = DateFormat.getDateInstance(DateFormat.Full);
+```
+
+**Data type conversion**
+
+```
+long l = 100L;
+float f = 150.5f;
+double d =150.5d;
+
+double doubleValue = 156.5d;
+Double doubleObj = new Double(doubleValue);
+
+byte myByteValue = doubleObj.byteValue();
+String myString = doubleObj.toString();
+```
+
+**BIG DECIMAL**
+
+- retina precision when calculating and rounding  
+
+```
+double d = 1115.37;
+String ds = Double.toString(d);
+Bigdecimal bd = new Bigdecimal(ds);
+
+System.out.println("The value is " + bd.toString());
+```
+
+**Casting**
+
+```
+double doubleValue = 3.99;
+int intResult = (int)doubleValue;
+```
