@@ -338,3 +338,47 @@ public class CopyFile{
 	}
 }
 ```
+
+## Functions ##
+
+**Operators:**  
+	- Assignment  
+	- Equality or relational  
+	- Mathematical  
+	- Conditional  
+	- Ternary (short hand conditional)  
+
+`instanceof` - Class membership
+
+method : access modifiers
+	- public
+	- private
+	- protected
+	
+* static   
+	- class method
+* non-static
+	- instance method
+
+```
+... main(){
+
+	...                   use eclipse extract method
+
+}
+```
+
+**method overloading**  
+```
+public static int addValues(int i1, int i2){
+	return i1 + i2;
+}
+
+public static int addValues (String s1, String s2){
+	
+	int i1 = Integer.parseInt(s1);
+	int i2 = Integer.parseInt(s2);
+	
+	return i1+i2;
+}
+```
