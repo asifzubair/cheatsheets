@@ -137,3 +137,84 @@ System.out.println("The value is " + bd.toString());
 double doubleValue = 3.99;
 int intResult = (int)doubleValue;
 ```
+
+## Strings/ArrayLists ##
+
+**Strings**
+
+comparing strings: `s1.equal(s2);`
+
+```
+char dollar = '\u0024';
+// unicode character for $
+System.out.println(Character.toUpperCase(a[]));
+```
+
+**String Class**
+
+```
+String s1 = "welcome to cal!";
+String s2 = new String("welcome to cal!");
+```
+
+`String` class is immutable
+
+* use `StringBuilder`
+```
+String s1 = "Welcome";
+StringBuilder sb = new StringBuilder(s1);
+sb.append("to Cal!");
+Systerm.out.println(sb);
+```
+
+**String functions***
+```
+String s1 = "Welcome to Cal!";
+s1.Legth();
+s1.indexOF("Cal");
+s1.substring("u");
+s1.trim(); // removes whitespaces !
+```
+
+### Collections ###
+
+**simple arrays**
+- all elements of same type
+- fixed type
+
+int[] a1 = new int[3];
+int[] a3 = {3,6,9};
+
+**ArrayLists:** special class
+- ordered collection of data
+- resizable
+
+```
+ArrayList<String> list = new ArrayList<String>();
+
+list.add("Cal");
+list.add("Ore");
+list.add("Wash");
+list.remove(0);
+list.get(1);
+list.indexOf("Alaska");
+```
+
+- associative arrays 
+- structures
+- dictionary
+- hashmap
+
+**Unordered Collection of data**
+
+```
+HashMap<String, String> map = new HashMAp<String, String>();
+map.out();
+```
+
+iterator class for both `HashMap` and `ArrayLists` exists
+```
+ListIterator<String> listIterator = list.listIterator();
+Set<String> keys = map.keySet();
+Iterator<String> iterator = keys.iterator();
+```
