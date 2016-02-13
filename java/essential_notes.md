@@ -218,3 +218,123 @@ ListIterator<String> listIterator = list.listIterator();
 Set<String> keys = map.keySet();
 Iterator<String> iterator = keys.iterator();
 ```
+
+## File I/O ##
+
+```
+import java.io.File
+...
+
+// Read a file using native functions in JAVA.
+public class CopyFile{
+	
+	public static void main(String[] args){
+	
+		try{
+		
+			File f1 = new File("lormipsum.txt");
+			File f2 = new File("target.txt");
+		
+			InputStream in = new FileInputStream(f1);
+			OutputStream out = new FileOutputStream(f2);
+			
+			byte[] buf = new byte[1024];
+			int len;
+		
+			while ( (len = in.read(buf)) > 0){
+			
+				out.write(buf, 0, len);
+		
+			}
+	
+			in.close();
+			out.close();
+		
+			System.out.println("File copied!")
+			
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+			
+		}
+			
+	
+	}
+}
+```
+
+```
+import java.net.URL;
+
+public class ReadNetworkFile {
+
+	public static void main (String[] args){
+	
+		URL url = new URL("http://services. explorecalifornia.org/RSS/tours.php");
+		InputStream stream = url.openStream();
+		BufferedInputStream buf = new BufferedInputStream(stream);
+		
+		StringBuilder sb = new StringBuilder(); 
+		// let's you append or insert content into String without having to rebuild string.
+		
+		while(true){
+		
+			int data = buf.read();
+			
+			if(data == -1){
+				break;
+			} else {
+				sb.append((char)data);
+				
+			}
+			
+			System.out.println(sb);
+			
+		}
+	
+	}
+
+}
+
+// can use Apache Commons lib to do this faster. 
+```
+
+[ApacheFileUtils](http://commons.apache.org)
+
+- download the commons package from Apache page. 
+- good practice to load the JAR files in a `lib` folder.
+		* need to add to the build path  
+		* `R-Click > build_path > Add to Build_Path`  
+- use the functions in Apache Lib to copy files faster.
+
+```
+public class CopyFile{
+	
+	public static void main(String[] args){
+		
+		try{
+			
+			File f1 = new File("lormipsum.txt");
+			File f2 = new File("target.txt");
+		
+			FileUtils.copyfile(f1, f2);
+			System.out.println("File copied!")
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+
+		} catch (IOException e) {
+			
+			e.printStackTrace();	
+		
+		}		
+	}
+}
+```
+
+
