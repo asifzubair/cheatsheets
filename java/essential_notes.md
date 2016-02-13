@@ -318,31 +318,23 @@ public class CopyFile{
 ## Functions ##
 
 **Operators:**  
-	- Assignment  
-	- Equality or relational  
-	- Mathematical  
-	- Conditional  
-	- Ternary (short hand conditional)  
+- Assignment  
+- Equality or relational  
+- Mathematical  
+- Conditional  
+- Ternary (short hand conditional)  
 
 `instanceof` - Class membership
 
-method : access modifiers
-	- public
-	- private
-	- protected
+method : access modifiers  
+- public  
+- private  
+- protected  
 	
 * static   
 	- class method
 * non-static
 	- instance method
-
-```
-... main(){
-
-	...                   use eclipse extract method
-
-}
-```
 
 **method overloading**  
 ```
