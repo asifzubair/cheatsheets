@@ -1,4 +1,4 @@
-# Java #
+# JAVA #
 
 these are notes from Lynda's essential training course. 
 
@@ -291,8 +291,8 @@ public class ReadNetworkFile {
 
 - download the commons package from Apache page. 
 - good practice to load the JAR files in a `lib` folder.
-		* need to add to the build path  
-		* `R-Click > build_path > Add to Build_Path`  
+	* need to add to the build path  
+	* `R-Click > build_path > Add to Build_Path`  
 - use the functions in Apache Lib to copy files faster.
 
 ```
