@@ -16,8 +16,8 @@ This is telling you:
 * The frequency of unique reads as a proportion of the total (61%).  
 * The most abundant sequence (useful for finding adapters, linkers, etc).  
 * The number of times that sequence is present (354).  
-* The frequency of that sequence as a proportion of the total number of reads (0.35%).
-   
+* The frequency of that sequence as a proportion of the total number of reads (0.35%).  
+
 
 * GGD: Useful [oneliners](https://github.com/stephenturner/oneliners)  
 
