@@ -5,6 +5,12 @@
 
 [SO](http://stackoverflow.com/questions/6344076/differences-between-distribute-distutils-setuptools-and-distutils2) has a great answer (as of 2014) for what the are the differences between `setuptools` etc. Also, the [Python Package User Guide](https://python-packaging-user-guide.readthedocs.org/en/latest/index.html) is a great resource.
 
+**Style Guides**
+
+Python style guide by [google](https://google.github.io/styleguide/pyguide.html).  
+
+Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-convert-python-code-to-be-pep8-compliant) post on testing if your code is [PEP8](https://www.python.org/dev/peps/pep-0008/) compliant. Can use a module called [pep8](https://github.com/PyCQA/pep8) itself to check if code is compliant. [autopep8](https://pypi.python.org/pypi/autopep8) can be used to change PEP8 violations that don't change meaning of the code. There is **aggressive** mode as well, but use at own risk. 
+
 ---
 
 * Keywords and Functions
