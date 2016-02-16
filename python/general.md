@@ -107,6 +107,7 @@ c = np.concatenate((a[...,np.newaxis],b[...,np.newaxis]),axis=3)
 'while', 'with', 'yield']
 ```
 
+Check out a neat `sorted` example. Here I want to sort entries of the tuples in opposing directions. Trick: negate one of them.
 ```
 """Count words."""
 
