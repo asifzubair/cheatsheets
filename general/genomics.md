@@ -10,14 +10,15 @@ print total,unique,unique*100/total,maxRead,count[maxRead],count[maxRead]*100/to
 The output would look something like this for RNA-seq data:  
 `99115 60567 61.1078 ACCTCAGGA 354 0.357161`
 
-This is telling you:  
-* The total number of reads (99,115).  
-* The number of unique reads (60,567).  
-* The frequency of unique reads as a proportion of the total (61%).  
-* The most abundant sequence (useful for finding adapters, linkers, etc).  
-* The number of times that sequence is present (354).  
-* The frequency of that sequence as a proportion of the total number of reads (0.35%).  
-
+This is telling you: 
+```
+- The total number of reads (99,115).  
+- The number of unique reads (60,567).  
+- The frequency of unique reads as a proportion of the total (61%).  
+- The most abundant sequence (useful for finding adapters, linkers, etc).  
+- The number of times that sequence is present (354).  
+- The frequency of that sequence as a proportion of the total number of reads (0.35%).  
+```
 
 * GGD: Useful [oneliners](https://github.com/stephenturner/oneliners)  
 
