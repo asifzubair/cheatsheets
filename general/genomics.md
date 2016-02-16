@@ -18,6 +18,8 @@ This is telling you:
 * The number of times that sequence is present (354).  
 * The frequency of that sequence as a proportion of the total number of reads (0.35%).  
 
+* GGD: Useful [oneliners](https://github.com/stephenturner/oneliners)  
+
 ---
 
 ## Bioconductor ##
