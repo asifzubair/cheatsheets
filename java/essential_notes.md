@@ -40,7 +40,7 @@ string welcome = new String("Hello!");
 
 **Anatomy of a java program**
 
-```
+```java
 // package declaration
 package com.lynda.javatrainig
 
@@ -93,7 +93,7 @@ default initialisation is zero
 
 **Dates**
 
-```
+```java
 class java.util
 
 Date d = new date();
@@ -191,7 +191,7 @@ int[] a3 = {3,6,9};
 - ordered collection of data
 - resizable
 
-```
+```java
 ArrayList<String> list = new ArrayList<String>();
 
 list.add("Cal");
@@ -215,7 +215,7 @@ map.out();
 ```
 
 iterator class for both `HashMap` and `ArrayLists` exists
-```
+```java
 ListIterator<String> listIterator = list.listIterator();
 Set<String> keys = map.keySet();
 Iterator<String> iterator = keys.iterator();
@@ -223,7 +223,7 @@ Iterator<String> iterator = keys.iterator();
 
 ## File I/O ##
 
-```
+```java
 import java.io.File
 ...
 
@@ -258,7 +258,7 @@ public class CopyFile{
 }
 ```
 
-```
+```java
 import java.net.URL;
 
 public class ReadNetworkFile {
@@ -295,7 +295,7 @@ public class ReadNetworkFile {
 	* `R-Click > build_path > Add to Build_Path`  
 - use the functions in Apache Lib to copy files faster.
 
-```
+```java
 public class CopyFile{
 	public static void main(String[] args){
 		try{
@@ -337,7 +337,7 @@ method : access modifiers
 	- instance method
 
 **method overloading**  
-```
+```java
 public static int addValues(int i1, int i2){
 	return i1 + i2;
 }
