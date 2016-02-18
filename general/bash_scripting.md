@@ -84,6 +84,17 @@ String is null or not.
 echo $? # returns result of the last comparison. 0 - success, 1 - failure.
 ```
 
+**control structures**
+
+```
+if expression 
+then 
+ echo "True"
+elif expression; then
+ echo "ex is False, e2 is True"
+fi
+```
+
 **debugging**
 
 ```
@@ -175,6 +186,143 @@ ftp -n <<- DoneWithTheUpdate
  get GUTINDEX.01
  bye
 DoneWithTheUpdate
+```
+
+**interacting with the user**
+
+> working with arguments
+
+arguments are assigned the way they are passed - `$1`, `$2`, etc.  
+
+for large number of arguments use `$@` and `$#`.
+```
+for i in $@
+do
+ echo $i
+done
+
+echo "There were $# arguments."
+```
+
+> working with flags
+
+```
+#!/bin/bash -xv
+
+help_message(){
+printf "Usage\t$0\n"
+printf "\t-u:\tUser\t\tdefault: user\n"
+printf "\t-p:\tPassword\tdefault: password\n"
+}
+
+default_values(){
+user="user"
+pass="pass"
+}
+
+if [ $# -eq 0 ];
+then
+  help_message
+  exit 0
+fi
+
+default_values
+
+while getopts :u:p:ab option; do
+ case $option in
+  u) user=$OPTARG;;
+  p) pass=$OPTARG;;
+  a) echo "Got the A flag!";;
+  b) echo "Got the B flag!";;
+  ?) echo "I don't know what &OPTARG is!";;
+ esac
+done
+
+echo "User: $user / Pass: $pass"
+```
+
+> getting input during execution
+
+```
+echo "What is your name?"
+read name
+
+## silent mode - typed text will not appear. 
+echo "What is your password?"
+read -s pass
+
+## inlne prompt
+read -p Waht is your favourite animal? " animal
+
+echo name: $name, pass: $pass, animal: $animal
+```
+
+Look at this [link](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html) for other options.
+
+```
+## this will produce a menued list
+select animal in "cat" "dog" "bird" "fish"
+do 
+ echo "You selected $animal!"
+ break
+done
+```
+
+```
+## using a case block can be useful
+select animal in "cat" "dog" "quit"
+do 
+ case $option in
+  cat) echo "Cats like to sleep.";;
+  dog) echo "Dogs like to play catch.";;
+  quit) break;;
+  *) echo "I'm not sure what that is.";;
+ esac
+done
+```
+
+> ensuring a response
+
+```
+#!/bin/bash 
+
+if [#t -lt 3]; then
+ cat <<- EOM
+ This command requires three arguments:
+ username, userid, and favourite number.
+ EOM
+else
+ ## the program goes here
+ echo "Username: #1"
+ echo "UserID: $2"
+ echo "Favourite Number: $3"
+fi
+```
+
+```
+read -p "Favourite animal? " a
+while [[ -z "$a" ]]; do
+ read -p "I need an answer! " a
+done
+echo "$a was selected."
+```
+
+```
+read -p "Favourite animal?[cat] " a
+## the -z option checks that the variable is not empty
+while [[ -z "$a" ]]; do
+ a="cat"
+done
+echo "$a was selected."
+```
+
+```
+## basic validation using regex
+read -p "What year? [nnnn] " a
+while [[ ! $a =~ [0-9]{4} ]]; do
+ read -p "A year, please! [nnnn] " a
+done
+echo "Selected year: $a"
 ```
 
 **redirecting output**
