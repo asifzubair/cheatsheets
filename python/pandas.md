@@ -38,7 +38,7 @@ there does seem to be a restriction with `.iloc` in that indices are required an
   
 [merging](http://pandas.pydata.org/pandas-docs/stable/merging.html) 
   
-``` 
+```python 
 ## script takes "unc*" files in a directory and spits out a file with matrix of expression data.  
 
 import subprocess 
