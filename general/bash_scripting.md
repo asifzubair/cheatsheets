@@ -2,7 +2,7 @@
 
 **arithmetic operations**
 
-```
+```shell
 ## needs double parenthesis
 
 ## does only integer arithmetic
@@ -16,7 +16,7 @@ echo $g
 
 **arrays**
 
-```
+```shell
 a=() 
 b=("apple" "banana" "cherry") # notice no commas ! 
 echo ${b[2]} 
@@ -30,7 +30,7 @@ echo ${b[@]: -1}
 **associative arrays**
 `bash > 3.0`
 
-```
+```shell
 declare -A myarray
 myarray[color]=blue
 myarray["office building"]="HQ West"
@@ -40,7 +40,7 @@ echo ${myarray["office building"]} is ${myarray[color]}
 
 **brace  expansion**
 
-```
+```shell
 $touch {apple, banana, cherry, durian} 
 $touch file_{01..1000} # zero padding. 
 
@@ -56,7 +56,7 @@ touch {apple, banana, cherry, durian}_{01..100}{w..d}
 
 `echo -e "\033[5;31;40mERROR: \033[0m\033[31;40mSomething went wrong.\033[0m"`
 
-```
+```shell
 flashred="\033[5;31;40m"
 red="\033[31;40m"
 none="\033[0m"
@@ -86,7 +86,7 @@ echo $? # returns result of the last comparison. 0 - success, 1 - failure.
 
 **control structures**
 
-```
+```shell
 if expression 
 then 
  echo "True"
@@ -97,7 +97,7 @@ fi
 
 **debugging**
 
-```
+```shell
 # quick debugging 
 # this will produce some interesting output information 
  
@@ -125,7 +125,7 @@ done
 
 **declare**
 
-```
+```shell
 declare -i d=123 # d is an integer
 declare -r e=456 # e is read-only
 declare -l f="LOLcats" # f is lolcats
@@ -134,7 +134,7 @@ declare -u g="LOLCATS" # g is LOLCATS
 
 **exit codes**
 
-``` 
+``` shell
 #!/bin/bash  
  
 touch /root/test 2> /dev/null  
@@ -151,13 +151,13 @@ fi
 
 **file i/o**
 
-```
+```shell
 echo "some text" > file.txt
 cat file.txt
 > file.txt
 echo "some more text" >> file.txt
 ```
-```
+```shell
 i=1
 while read f; do
  echo "Line $i: $f"
@@ -168,7 +168,7 @@ done < file.txt
 **here document**
 
 to help display instructions:
-```
+```shell
 cat << EndOfText
 This is a 
 multiline
@@ -177,7 +177,7 @@ EndOfText
 ```
 use `-` to remove tabs from following string.
 
-```
+```shell
 ftp -n <<- DoneWithTheUpdate
  open mirrors.xmission.com
  user anonymous nothinghere
@@ -195,7 +195,7 @@ DoneWithTheUpdate
 arguments are assigned the way they are passed - `$1`, `$2`, etc.  
 
 for large number of arguments use `$@` and `$#`.
-```
+```shell
 for i in $@
 do
  echo $i
@@ -206,7 +206,7 @@ echo "There were $# arguments."
 
 > working with flags
 
-```
+```shell
 #!/bin/bash -xv
 
 help_message(){
@@ -243,7 +243,7 @@ echo "User: $user / Pass: $pass"
 
 > getting input during execution
 
-```
+```shell
 echo "What is your name?"
 read name
 
@@ -259,7 +259,7 @@ echo name: $name, pass: $pass, animal: $animal
 
 Look at this [link](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html) for other options.
 
-```
+```shell
 ## this will produce a menued list
 select animal in "cat" "dog" "bird" "fish"
 do 
@@ -268,7 +268,7 @@ do
 done
 ```
 
-```
+```shell
 ## using a case block can be useful
 select animal in "cat" "dog" "quit"
 do 
@@ -283,7 +283,7 @@ done
 
 > ensuring a response
 
-```
+```shell
 #!/bin/bash 
 
 if [#t -lt 3]; then
@@ -307,7 +307,7 @@ done
 echo "$a was selected."
 ```
 
-```
+```shell
 read -p "Favourite animal?[cat] " a
 ## the -z option checks that the variable is not empty
 while [[ -z "$a" ]]; do
@@ -316,7 +316,7 @@ done
 echo "$a was selected."
 ```
 
-```
+```shell
 ## basic validation using regex
 read -p "What year? [nnnn] " a
 while [[ ! $a =~ [0-9]{4} ]]; do
@@ -337,7 +337,7 @@ bash my.file.sh > output.log 2>&1
 
 **working with strings**
 
-```
+```shell
 a="hello "
 b="world"
 c=$a$b
@@ -406,7 +406,7 @@ get GUTINDEX.00
 ```
 and then pass that file to something like `ftp` to execute line by line - `ftp -n < ftp.txt`
 
-```
+```shell
 freespace=$(df -h / | grep -E "\/$" | awk '{print $4}')
 greentext="\033[32m"
 bold="\033[1m"
