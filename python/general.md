@@ -18,7 +18,7 @@ Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-co
   * `kwargs`
   * The `**kwargs` will give you all keyword arguments except for those corresponding to a formal parameter as a dictionary.
 
-```
+```python
 	def colorbar_index(ncolors, cmap, labels=None, **kwargs):
 		...
 		
@@ -47,7 +47,7 @@ NEED to find out what [NKFD](http://www.peterbe.com/plog/unicode-to-ascii ) is a
 • `[0]*100` will print a list with 100 zeros
 
 * OS module
-```  
+```python  
 import os 
 print os.environ['HOME']
 # os.getenv can give a default value instead of 'None'
@@ -58,7 +58,7 @@ print os.getenv('KEY_THAT_MIGHT_EXIST', default_value)
   * `conn = pg2.connect(**json.load(open('/home/azubair/psql.password')))`
 	
 * Defining connection string with settings file
-```
+```python
 import psycopg2 as pg2 
 import settings
 conn = pg2.connect('host={db.DB_HOST} user={db.DB_USER} dbname={db.DB_NAME} password={db.DB_PASSWD}'.format(db=settings))
@@ -75,7 +75,7 @@ conn = pg2.connect('host={db.DB_HOST} user={db.DB_USER} dbname={db.DB_NAME} pass
 ```
 
 * File I/O  
-```
+```python
 with open('someFile.txt', 'r')  as f:
 	line = f.readline()  
 	while line != '': 
@@ -89,7 +89,7 @@ with open('someFile.txt', 'r') as f:
 
 * Concatenate two `numpy` arrays in the 4th dimension
 
-``` 
+```python 
 import numpy as np 
 a = np.ones((3,4,5))
 b = np.ones((3,4,5))
@@ -108,7 +108,7 @@ c = np.concatenate((a[...,np.newaxis],b[...,np.newaxis]),axis=3)
 ```
 
 Check out a neat `sorted` example. Here I want to sort entries of the tuples in opposing directions. Trick: negate one of them.
-```
+```python
 """Count words."""
 
 from collections import Counter
