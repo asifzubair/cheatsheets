@@ -77,7 +77,8 @@ rpm --dbpath /home/cmb-02/sn1/asifzuba/rpm --relocate /usr=/home/cmb-02/sn1/asif
 **sed**
 * `head $filename.csv | sed 's/\$//g' | csvlook | less -S` 
 * have white spaces at the end and want to remove trailing `,` 
- * `cat filename | sed 's/,[[:blank:]]*$//g' > tmp.tmp; mv tmp.tmp desired_filename`
+  * `cat filename | sed 's/,[[:blank:]]*$//g' > tmp.tmp; mv tmp.tmp desired_filename`
+* `sed -i '' -e '$ d' $f`  - remove last line - inplace
 
 **ssh**
 
