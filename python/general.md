@@ -87,6 +87,10 @@ with open('someFile.txt', 'r') as f:
     		print line, 
 ```  
 
+```
+data = map(float, open('data', 'r').readlines())
+```
+
 * Concatenate two `numpy` arrays in the 4th dimension
 
 ```python 
