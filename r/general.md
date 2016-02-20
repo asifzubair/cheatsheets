@@ -38,3 +38,5 @@ else 
 * http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml
 
 ## Tips/Tricks ##
+
+* [1L vs. 1](http://stackoverflow.com/questions/7014387/whats-the-difference-between-1l-and-1)
