@@ -9,8 +9,10 @@ stitch_rmd('an-r-script.r')
 ```
 
 * Shell command line
-You can run R from the command line and call `knitr::stitch_rmd`.
-```Rscript -e 'knitr::stitch_rmd("an-r-script.r")'```
+You can run R from the command line and call `knitr::stitch_rmd`.  
+```
+Rscript -e 'knitr::stitch_rmd("an-r-script.r")'
+```
 
 
 ##Installing Pandoc##
