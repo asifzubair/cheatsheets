@@ -1,6 +1,5 @@
 # General #
 
-
 **Package Management**
 
 [SO](http://stackoverflow.com/questions/6344076/differences-between-distribute-distutils-setuptools-and-distutils2) has a great answer (as of 2014) for what the are the differences between `setuptools` etc. Also, the [Python Package User Guide](https://python-packaging-user-guide.readthedocs.org/en/latest/index.html) is a great resource.
@@ -19,20 +18,20 @@ Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-co
   * The `**kwargs` will give you all keyword arguments except for those corresponding to a formal parameter as a dictionary.
 
 ```python
-	def colorbar_index(ncolors, cmap, labels=None, **kwargs):
-		...
-		
-		colorbar = plt.colorbar(mappable, **kwargs)
-		colorbar.set_ticks(np.linspace(0, ncolors, ncolors))
-		
-		...
+def colorbar_index(ncolors, cmap, labels=None, **kwargs):
+	...
+	
+	colorbar = plt.colorbar(mappable, **kwargs)
+	colorbar.set_ticks(np.linspace(0, ncolors, ncolors))
+	
+	...
 ```
 * [yield](http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python)
 
 * `eval`: evaluate any string: 
 ```
-		code = "1 + 1"
-		eval(code)
+	code = "1 + 1"
+	eval(code)
 ```
 
 * use [enumerate](http://stackoverflow.com/questions/1540049/replace-values-in-list-using-python) 
@@ -54,17 +53,18 @@ print os.environ['HOME']
 print os.getenv('KEY_THAT_MIGHT_EXIST', default_value)
 ```
 
-* `psycopg2`  
-  * `conn = pg2.connect(**json.load(open('/home/azubair/psql.password')))`
+- `psycopg2`  
+  - `conn = pg2.connect(**json.load(open('/home/azubair/psql.password')))`
 	
-* Defining connection string with settings file
+- Defining connection string with settings file  
+
 ```python
 import psycopg2 as pg2 
 import settings
 conn = pg2.connect('host={db.DB_HOST} user={db.DB_USER} dbname={db.DB_NAME} password={db.DB_PASSWD}'.format(db=settings))
 ```
 **Warning:** Never, never, NEVER use Python string concatenation (+) or string parameters interpolation (%) to pass variables to a SQL query string. Not even at gunpoint.  
-* The correct way to pass variables in a SQL command is using the second argument of the `execute()` method:
+- The correct way to pass variables in a SQL command is using the second argument of the `execute()` method:
 
 ```
 >>> SQL = "INSERT INTO authors (name) VALUES (%s);" 
@@ -74,7 +74,7 @@ conn = pg2.connect('host={db.DB_HOST} user={db.DB_USER} dbname={db.DB_NAME} pass
 # Note: no % operator
 ```
 
-* File I/O  
+- File I/O  
 ```python
 with open('someFile.txt', 'r')  as f:
 	line = f.readline()  
