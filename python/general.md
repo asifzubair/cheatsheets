@@ -30,8 +30,8 @@ def colorbar_index(ncolors, cmap, labels=None, **kwargs):
 
 * `eval`: evaluate any string: 
 ```
-	code = "1 + 1"
-	eval(code)
+code = "1 + 1"
+eval(code)
 ```
 
 * use [enumerate](http://stackoverflow.com/questions/1540049/replace-values-in-list-using-python) 
