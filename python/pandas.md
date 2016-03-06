@@ -30,10 +30,8 @@ conn.close()
 * indexing
 `iloc` is MUCH MUCH faster than `ix`   
 `df.iloc[rowNumber,:]` & `df.ix[rowNumber,:]` give same output.  
-there does seem to be a restriction with `.iloc` in that indices are required and column names can't be used. MUST VERIFY.  
- 
-* How to do pivoting ? 
- 
+there does seem to be a restriction with `.iloc` in that indices are required and column names can't be used.   
+
 [Difference](http://stackoverflow.com/questions/19798153/difference-between-map-applymap-and-apply-methods-in-pandas) between `apply`, `applymap` and `map` functions.  
   
 [merging](http://pandas.pydata.org/pandas-docs/stable/merging.html) 
