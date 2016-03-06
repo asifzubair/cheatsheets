@@ -1,6 +1,6 @@
 # R markdown #
 
-* R command line
+* R command line  
 The R function `stitch_rmd` does something very similar to `File -> Compile Notebook`.
 
 ```
