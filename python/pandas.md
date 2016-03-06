@@ -12,7 +12,7 @@
 `pd.readsql(SQL_STATEMENT, conn)`  
 for WRITE, specify DB type from `SQLAlchemy` 
  
-```
+```python
 import pandas.io.sql as psql  
 from sqlalchemy import create_engine  
 engine = create_engine(r'postgresql://some:user@host/db')  
