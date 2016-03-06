@@ -87,7 +87,7 @@ with open('someFile.txt', 'r') as f:
     		print line, 
 ```  
 
-```
+```python
 data = map(float, open('data', 'r').readlines())
 ```
 
