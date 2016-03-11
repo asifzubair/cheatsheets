@@ -89,9 +89,9 @@ echo $? # returns result of the last comparison. 0 - success, 1 - failure.
 ```shell
 if expression 
 then 
- echo "True"
+    echo "True"
 elif expression; then
- echo "ex is False, e2 is True"
+    echo "ex is False, e2 is True"
 fi
 ```
 
@@ -110,16 +110,15 @@ fi
 # raise warning if argument/file not given. 
  
 if [$1 = ]; then 
-echo "no arguments given" 
-exit 0 
+    echo "no arguments given" 
+    exit 0 
 fi 
  
 # this loop iterates through all of the files that we gave the program 
 # it does one rename per file given. 
  
-for file in $* 
-do 
-mv ${file} $prefix$file 
+for file in $*; do 
+    mv ${file} $prefix$file 
 done
 ```
 
@@ -139,13 +138,12 @@ declare -u g="LOLCATS" # g is LOLCATS
  
 touch /root/test 2> /dev/null  
  
-if [ $? -eq 0 ]  
-then  
-echo "Successfully created file"  
-exit 0  
+if [ $? -eq 0 ]; then  
+    echo "Successfully created file"  
+    exit 0  
 else  
-echo "Could not create file" >&2  
-exit 1  
+    echo "Could not create file" >&2  
+    exit 1  
 fi
 ```
 
@@ -160,8 +158,8 @@ echo "some more text" >> file.txt
 ```shell
 i=1
 while read f; do
- echo "Line $i: $f"
- ((i++))
+    echo "Line $i: $f"
+    ((i++))
 done < file.txt
 ```
 
@@ -179,12 +177,12 @@ use `-` to remove tabs from following string.
 
 ```shell
 ftp -n <<- DoneWithTheUpdate
- open mirrors.xmission.com
- user anonymous nothinghere
- ascii
- cd gutenberg
- get GUTINDEX.01
- bye
+    open mirrors.xmission.com
+    user anonymous nothinghere
+    ascii
+    cd gutenberg
+    get GUTINDEX.01
+    bye
 DoneWithTheUpdate
 ```
 
@@ -196,9 +194,8 @@ arguments are assigned the way they are passed - `$1`, `$2`, etc.
 
 for large number of arguments use `$@` and `$#`.
 ```shell
-for i in $@
-do
- echo $i
+for i in $@; do
+    echo $i
 done
 
 echo "There were $# arguments."
@@ -220,10 +217,9 @@ user="user"
 pass="pass"
 }
 
-if [ $# -eq 0 ];
-then
-  help_message
-  exit 0
+if [ $# -eq 0 ]; then
+    help_message
+    exit 0
 fi
 
 default_values
@@ -261,23 +257,21 @@ Look at this [link](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.htm
 
 ```shell
 ## this will produce a menued list
-select animal in "cat" "dog" "bird" "fish"
-do 
- echo "You selected $animal!"
- break
+select animal in "cat" "dog" "bird" "fish"; do 
+    echo "You selected $animal!"
+    break
 done
 ```
 
 ```shell
 ## using a case block can be useful
-select animal in "cat" "dog" "quit"
-do 
- case $option in
-  cat) echo "Cats like to sleep.";;
-  dog) echo "Dogs like to play catch.";;
-  quit) break;;
-  *) echo "I'm not sure what that is.";;
- esac
+select animal in "cat" "dog" "quit"; do 
+    case $option in
+    cat) echo "Cats like to sleep.";;
+    dog) echo "Dogs like to play catch.";;
+    quit) break;;
+    *) echo "I'm not sure what that is.";;
+    esac
 done
 ```
 
@@ -287,22 +281,22 @@ done
 #!/bin/bash 
 
 if [#t -lt 3]; then
- cat <<- EOM
- This command requires three arguments:
- username, userid, and favourite number.
- EOM
+    cat <<- EOM
+    This command requires three arguments:
+    username, userid, and favourite number.
+    EOM
 else
  ## the program goes here
- echo "Username: #1"
- echo "UserID: $2"
- echo "Favourite Number: $3"
+    echo "Username: #1"
+    echo "UserID: $2"
+    echo "Favourite Number: $3"
 fi
 ```
 
 ```
 read -p "Favourite animal? " a
 while [[ -z "$a" ]]; do
- read -p "I need an answer! " a
+    read -p "I need an answer! " a
 done
 echo "$a was selected."
 ```
@@ -311,7 +305,7 @@ echo "$a was selected."
 read -p "Favourite animal?[cat] " a
 ## the -z option checks that the variable is not empty
 while [[ -z "$a" ]]; do
- a="cat"
+    a="cat"
 done
 echo "$a was selected."
 ```
@@ -320,7 +314,7 @@ echo "$a was selected."
 ## basic validation using regex
 read -p "What year? [nnnn] " a
 while [[ ! $a =~ [0-9]{4} ]]; do
- read -p "A year, please! [nnnn] " a
+    read -p "A year, please! [nnnn] " a
 done
 echo "Selected year: $a"
 ```
@@ -357,12 +351,6 @@ echo ${fruit//banana/durian} # all instances are replaced
 echo ${fruit/#apple/durian} # replace only if instance occurs at very beginning of string
 echo $fruit/%cherry/durian} # replace only if instance occurs at end of string
 ```
-
----
-
-
-
-`cat < filename`
 
 ## Up and Running Notes ##
 
