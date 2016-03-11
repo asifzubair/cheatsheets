@@ -155,8 +155,7 @@ nohup
 Allows for a process to live when the terminal gets killed.
 
 - Run process that can live beyond the terminal:
-
-nohup command options
+    nohup command options
 
 Asifs-Mac-mini:~ asifzubair$ tldr nice
 nice
@@ -165,6 +164,30 @@ Execute a program with a custom scheduling priority (niceness).
 Niceness values range from -20 (the highest priority) to 19 (the lowest).
 
 - Launch a program with altered priority:
+    nice -n niceness_value command
 
-nice -n niceness_value command
+Asifs-Mac-mini:~ asifzubair$ tldr tmux
+tmux
+Multiplex several virtual consoles.
+
+- Start a new tmux session:
+    tmux
+
+- Start a new named tmux session:
+    tmux new -s name
+
+- List sessions:
+    tmux ls
+
+- Attach to a session:
+    tmux a
+
+- Attach to a named session:
+    tmux a -t name
+
+- Detach from session:
+    ctrl+b d
+
+- Kill session:
+    tmux kill-session -t name
 ```
