@@ -147,3 +147,24 @@ foreach i (`seq 1 5 20`)
 end
 ```
 
+
+```
+Asifs-Mac-mini:~ asifzubair$ tldr nohup
+nohup
+
+Allows for a process to live when the terminal gets killed.
+
+- Run process that can live beyond the terminal:
+
+nohup command options
+
+Asifs-Mac-mini:~ asifzubair$ tldr nice
+nice
+
+Execute a program with a custom scheduling priority (niceness).
+Niceness values range from -20 (the highest priority) to 19 (the lowest).
+
+- Launch a program with altered priority:
+
+nice -n niceness_value command
+```
