@@ -1,5 +1,9 @@
 # Pandas #
 
+## indexing ##
+
+---
+
 * when reading into `pandas` better to specify `dtype` especially `datetime` at READ time. 
  
 * `print df.reset_index().to_json(orient='records')` - for `json` without indices 
@@ -8,10 +12,8 @@
  
 * `groupby` returns a `groupby` object. | `set_index()` | `reindex()`  
 
-* read/write from a PostgreSQL  
-`pd.readsql(SQL_STATEMENT, conn)`  
+* read/write from a PostgreSQL  - `pd.readsql(SQL_STATEMENT, conn)`  
 for WRITE, specify DB type from `SQLAlchemy` 
- 
 ```python
 import pandas.io.sql as psql  
 from sqlalchemy import create_engine  
@@ -46,15 +48,15 @@ p = subprocess.Popen('ls unc*', shell=True, stdout=subprocess.PIPE, stderr=subpr
 flag = 0 
  
 for line in p.stdout.readlines(): 
- print line, 
- if not flag: 
-  fullSet = pd.io.parsers.read_csv(line.strip(), sep = "\t") 
-  fullSet = fullSet.rename(columns = {'normalized_count':line.strip()}) 
-  flag = 1 
- else: 
-  newSet = pd.io.parsers.read_csv(line.strip(), sep = "\t") 
-  fullSet = pd.concat((fullSet, newSet['normalized_count']), axis = 1) 
-  fullSet = fullSet.rename(columns = {'normalized_count':line.strip()}) 
+    print line, 
+    if not flag: 
+        fullSet = pd.io.parsers.read_csv(line.strip(), sep = "\t") 
+        fullSet = fullSet.rename(columns = {'normalized_count':line.strip()}) 
+        flag = 1 
+    else: 
+        newSet = pd.io.parsers.read_csv(line.strip(), sep = "\t") 
+        fullSet = pd.concat((fullSet, newSet['normalized_count']), axis = 1) 
+        fullSet = fullSet.rename(columns = {'normalized_count':line.strip()}) 
  
 fullSet.to_csv('fullSet.txt', sep = '\t', line_terminator = "\n", index = False) 
 ```
