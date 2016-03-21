@@ -29,4 +29,4 @@ splot<- function(x,y,…){
 
 MA plot:`maplot<- function(x,y,…) splot((x+y)/2,y-x,…)`  
 
-[EDA for NGS data](https://github.com/genomicsclass/labs/blob/master/course4/EDA_plots_for_NGS.Rmd)
+[EDA for NGS data](http://genomicsclass.github.io/book/pages/exploratory_data_analysis.html)
