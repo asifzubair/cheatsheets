@@ -166,3 +166,20 @@ what are `asserts` under the hood:
 #endif
 ```
 this way you can turn off all `assert` statements when using in production code. 
+
+## Compilaton process ##
+
+```cpp
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+
+int main()
+{
+	void *mem = malloc(400);
+	assert(mem != NULL);
+	printf("yay!");
+	free(mem);
+	return 0;
+}
+```
