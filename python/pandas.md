@@ -2,17 +2,18 @@
 
 ## indexing ##
 
+`iloc` is MUCH MUCH faster than `ix`   
+`df.iloc[rowNumber,:]` & `df.ix[rowNumber,:]` give same output.  
+there does seem to be a restriction with `.iloc` in that indices are required and column names can't be used.   
+
 ---
 
 * when reading into `pandas` better to specify `dtype` especially `datetime` at READ time. 
- 
 * `print df.reset_index().to_json(orient='records')` - for `json` without indices 
- 
 * `a = pd.read_json(x, typ='series', orient='records')` - to read `json` in `pandas` 
- 
 * `groupby` returns a `groupby` object. | `set_index()` | `reindex()`  
-
 * read/write from a PostgreSQL  - `pd.readsql(SQL_STATEMENT, conn)`  
+
 for WRITE, specify DB type from `SQLAlchemy` 
 ```python
 import pandas.io.sql as psql  
@@ -28,11 +29,6 @@ conn.close()
 `read.csv()` can have a specific RE delimiter  
 
 `\s{4,}|\.\d{2,2}\s{2,2}W` => strange beast but just means match either "4 whitespaces or more" OR an expression like this ".23  W" 
- 
-* indexing
-`iloc` is MUCH MUCH faster than `ix`   
-`df.iloc[rowNumber,:]` & `df.ix[rowNumber,:]` give same output.  
-there does seem to be a restriction with `.iloc` in that indices are required and column names can't be used.   
 
 [Difference](http://stackoverflow.com/questions/19798153/difference-between-map-applymap-and-apply-methods-in-pandas) between `apply`, `applymap` and `map` functions.  
   
