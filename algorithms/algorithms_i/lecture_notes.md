@@ -16,7 +16,7 @@ We are **only** trying to ask the question whether objects/nodes are connected a
 
 JAVA model
 
-```
+```java
 public class UF
 
 	UF(int N) 
@@ -25,22 +25,18 @@ public class UF
 ```
 
 dynaimic-connectivity client
-```
+```java
 public static void main(String[] args){
-
 	int N = StdIn.readInt();
 	UF uf = new UF(N);
 
 	while (!StdIn.isEmpty()){
-
 		int p = StdInt.readInt();
 		int q = StdInt.readint();
 
 		if (!uf.connected(p,q)){
-
 			uf.union(p,q);
 			StdOut.println(p + " " + q);
-
 		}
 	}
 }
@@ -59,9 +55,8 @@ greedy algorithm
 
 **java implementation**
 
-```
+```java
 public class QuickFindUF{
-	
 	private int[] id;
 
 	public QuickFindUF(int N){
@@ -93,7 +88,7 @@ however, `quick-find` is rather slow, becasue union is too expensive. (worst cas
 lazy approach. 
 
 
-```
+```java
 public class QuickUnionUF
 {
 	private int[] id;
@@ -126,7 +121,7 @@ this approach suffers in the **find** operation, the trees might get really big 
 
 a qucik improvement would be to not let the trees get very deep. use a **weighted** algorithm to move the smaller tree - this way not item is too far from the tree. this improvement is really effective for large number of nodes. 
 
-```
+```java
 publlic class QuickUnionUF{
 	private int[] id;
 	private int[] sz;
@@ -153,15 +148,14 @@ publlic class QuickUnionUF{
 		int j = root(q);
 		if(i == j) return;
 		if (sz[i] < sz[j]) {id[i] = j; sz[j] += sz[i];}
-		else 				{id[j] = i; sz[i] += sz[j];}
+		else	{id[j] = i; sz[i] += sz[j];}
 	}
 }
 ```
 
 another improvement is **path compression**
 
-**two-pass variant:** add second loop to `root()` to set the `id[]` of each examined note to the root.
-
+**two-pass variant:** add second loop to `root()` to set the `id[]` of each examined note to the root.  
 **one-pass variant:** make every other node in path point to its grandparent (thereby halving path length).
 
 ```
@@ -216,6 +210,5 @@ Two useful resources/programs are [checkstyle](http://checkstyle.sourceforge.net
 this forum [post](https://class.coursera.org/algs4partI-010/forum/thread?thread_id=413) gave me a better handle on how to get the `Percolation` class and `WeightedQuickUnionUF` class to play together.  
 
 ## Analysis of Algorithms ##
-
 
 
