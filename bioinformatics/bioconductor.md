@@ -11,7 +11,7 @@ GRanges
 * use the density function  
 	* `par(mfrow=c(1,1))`  
 
-```
+```r
 for (i in 1:ncol(int)) 
 	if (i == 1) plot(density(log2(int[,i])), col = (i == 4) + 1) else lines(density(log2(int[,i])), col = (i == 4) + 1) 
 ```
@@ -19,7 +19,7 @@ for (i in 1:ncol(int))
 * correlation plots, MA plots 
 * scatter plot: take a random sample and do it 
 
-```
+```r
 splot<- function(x,y,…){ 
 	ind<-sample(length(x),10000) 
 	x=x[ind];y=y[ind] 
