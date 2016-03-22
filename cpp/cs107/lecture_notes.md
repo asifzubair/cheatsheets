@@ -174,6 +174,10 @@ this way you can turn off all `assert` statements when using in production code.
 #include <stdio.h>
 #include <assert.h>
 
+// only commenting out assert.h  
+// affects at the linking phase
+// commenting out stdio, stdlib 
+// will not affect compilation and execution
 int main()
 {
 	void *mem = malloc(400);
@@ -183,3 +187,16 @@ int main()
 	return 0;
 }
 ```
+__Note:__ when a function type is inferred, the return value is assumed to be `int`.
+```cpp
+int main()
+{
+	int num = 65;
+	// strlen call without prototype
+	// also, strlen should have one arg
+	int length = strlen((char *)&num, num); 
+	printf("Length = %d\n", length);
+	return 0;
+}
+```
+also, we can manually prototype `int strlen(char *s, int len);` in the beginning of the program if we don't want to inlcude the big header file. 
