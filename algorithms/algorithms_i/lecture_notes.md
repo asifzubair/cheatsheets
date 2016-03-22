@@ -158,7 +158,7 @@ another improvement is **path compression**
 **two-pass variant:** add second loop to `root()` to set the `id[]` of each examined note to the root.  
 **one-pass variant:** make every other node in path point to its grandparent (thereby halving path length).
 
-```
+```java
 // one pass-variant
 private int root(int i){
 	while (i != id[i]){
