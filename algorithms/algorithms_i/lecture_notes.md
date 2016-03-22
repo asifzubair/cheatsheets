@@ -18,7 +18,6 @@ JAVA model
 
 ```java
 public class UF
-
 	UF(int N) 
 	void union(int p, int q)
 	bool connected(int p, int q)
@@ -26,15 +25,15 @@ public class UF
 
 dynaimic-connectivity client
 ```java
-public static void main(String[] args){
+public static void main(String[] args) {
 	int N = StdIn.readInt();
 	UF uf = new UF(N);
 
-	while (!StdIn.isEmpty()){
+	while (!StdIn.isEmpty()) {
 		int p = StdInt.readInt();
 		int q = StdInt.readint();
 
-		if (!uf.connected(p,q)){
+		if (!uf.connected(p,q)) {
 			uf.union(p,q);
 			StdOut.println(p + " " + q);
 		}
@@ -56,21 +55,20 @@ greedy algorithm
 **java implementation**
 
 ```java
-public class QuickFindUF{
+public class QuickFindUF {
 	private int[] id;
 
-	public QuickFindUF(int N){
+	public QuickFindUF(int N) {
 		id = new int[N];
 		for (int i = 0; i < N; i++)
 			id[i] = i;
 	}
 
-	public boolean connected(int p, int q){
+	public boolean connected(int p, int q) {
 		return id[p] == id[q];
 	}
 
-	public void union(int p, int q){
-
+	public void union(int p, int q) {
 		\\ store ids before re-setting. 
 		int pid = id[p];
 		int qid = id[q];
@@ -89,25 +87,24 @@ lazy approach.
 
 
 ```java
-public class QuickUnionUF
-{
+public class QuickUnionUF {
 	private int[] id;
 
-	public QuickFindUF(int N){
+	public QuickFindUF(int N) {
 		id = new int[N];
 		for (int i = 0; i < N; i++) id[i] = i;
 	}
 
-	private int root(int i){
+	private int root(int i) {
 		while (i != id[i]) i = id[i]
 		return i;
 	}
 
-	public boolean connected(int p, int q){
+	public boolean connected(int p, int q) {
 		return root(p) == root(q);
 	}
 
-	public void union(int p, int q){
+	public void union(int p, int q) {
 		int i = root(p);
 		int q = root(q);
 		id[i] = j;
@@ -122,33 +119,38 @@ this approach suffers in the **find** operation, the trees might get really big 
 a qucik improvement would be to not let the trees get very deep. use a **weighted** algorithm to move the smaller tree - this way not item is too far from the tree. this improvement is really effective for large number of nodes. 
 
 ```java
-publlic class QuickUnionUF{
+publlic class QuickUnionUF {
 	private int[] id;
 	private int[] sz;
 
-	public QuicUnionUF(int N){
+	public QuicUnionUF(int N) {
 		id = new int[N];
-		for(int i = 0; i < N; i++){
+		for(int i = 0; i < N; i++) {
 			id[i] = i;
 			sz[i] = 1;
 		} 
 	}
 
-	private int root(int i){
+	private int root(int i) {
 		while(i != id[i]) i = id[i];
 		return i;
 	}
 
-	publiv boolean connected(int p, int q){
+	publiv boolean connected(int p, int q) {
 		return root(p) == root(q);
 	}
 
-	public void union(int p, int q){
+	public void union(int p, int q) {
 		int i = root(p);
 		int j = root(q);
 		if(i == j) return;
-		if (sz[i] < sz[j]) {id[i] = j; sz[j] += sz[i];}
-		else	{id[j] = i; sz[i] += sz[j];}
+		if (sz[i] < sz[j]) {
+			id[i] = j; 
+			sz[j] += sz[i];
+		} else {
+			id[j] = i; 
+			sz[i] += sz[j];
+		}
 	}
 }
 ```
@@ -160,8 +162,8 @@ another improvement is **path compression**
 
 ```java
 // one pass-variant
-private int root(int i){
-	while (i != id[i]){
+private int root(int i) {
+	while (i != id[i]) {
 		id[i] = id[id[i]];
 		i = id[i];
 	}
@@ -210,5 +212,3 @@ Two useful resources/programs are [checkstyle](http://checkstyle.sourceforge.net
 this forum [post](https://class.coursera.org/algs4partI-010/forum/thread?thread_id=413) gave me a better handle on how to get the `Percolation` class and `WeightedQuickUnionUF` class to play together.  
 
 ## Analysis of Algorithms ##
-
-
