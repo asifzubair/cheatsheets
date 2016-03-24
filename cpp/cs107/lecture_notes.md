@@ -188,7 +188,9 @@ int main()
 }
 ```
 __Note:__ when a function type is inferred, the return value is assumed to be `int`.
-```cpp
+```c
+// this code can be evaluated by 
+// considering how the stack is populated
 int main()
 {
 	int num = 65;
@@ -200,3 +202,30 @@ int main()
 }
 ```
 also, we can manually prototype `int strlen(char *s, int len);` in the beginning of the program if we don't want to inlcude the big header file. 
+
+slightly complicated version of `while(True)`:
+```c
+int main()
+{
+	int i;
+	int array[4];
+	for (i=0; i<=4; i++){
+		array[i] = 0;
+	}
+	return 0;
+}
+```
+the following code will decrement the `saved PC` by 4:
+```c
+void foo()
+{
+	int array[4];
+	int i;
+	for (i=0; i<=4; i++){
+		array[i] -= 4;
+	}
+}
+```
+because of the decrement, it will call `foo` again.
+
+## printf ##
