@@ -4,7 +4,7 @@ Stanford's [programming paradigms](https://see.stanford.edu/Course/CS107) class 
 
 Advanced memory management features of C and C++; the differences between imperative and object-oriented paradigms. The functional paradigm (using LISP) and concurrent programming (using C and C++). Brief survey of other modern languages such as Python, Objective C, and C#.
 
-## Data Types ##
+## L2/3 - Data Types ##
 
 * `bool`    :    1 byte
 * `char`    :    2 bytes
@@ -50,7 +50,7 @@ float f = 7.0;
 short s = *(short *)&f;
 ```
 
-## Generics in C ##
+## L4/5 - Generics in C ##
 
 __swapping two ints:__
 
@@ -127,7 +127,7 @@ int StrCmp(void *vp1, void *vp2)
 }
 ```
 
-## Preprocessing Commands ##
+## L12 - Preprocessing Commands ##
 
 ```cpp
 #define kWidth 40
@@ -167,7 +167,7 @@ what are `asserts` under the hood:
 ```
 this way you can turn off all `assert` statements when using in production code. 
 
-## Compilaton process ##
+## L13 - Compilaton process ##
 
 ```cpp
 #include <stdlib.h>
@@ -228,4 +228,41 @@ void foo()
 ```
 because of the decrement, it will call `foo` again.
 
-## printf ##
+## L14 - printf ##
+
+```c
+int main( int argc, char *argv[])
+{
+	DeclareAndInitArray();
+	PrintArray();
+}
+
+void DeclareAndInitArray()
+{
+	int array[100];
+	int i;
+	for (i=0; i<100; i++)
+		array[i]=i;
+}
+
+void PrintArray()
+{
+	// naming array as in decalare function will not be helpful
+	// however, how it is called in main()
+	// printarray will still print out 0-99
+	int array[100];
+	int i;
+	for(i=0; i<100; i++)
+		printf("%d\n", array[i]);
+}
+```
+
+```c
+int printf(const char * control, ...);
+
+printf("Hello\n");
+printf("%d + %d = %d\n", 4, 4, 8); //2
+```
+in 2 above, `printf` will look above the stack and infer the types based on what information is passed. 
+
+## L14/15 - Sequential to Concurrent ##
