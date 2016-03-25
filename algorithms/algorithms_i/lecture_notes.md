@@ -184,9 +184,9 @@ So, the **weighted quick-union with path compression** algorithm is a simple one
 * **kruskal's** minimum spanning tree algorithm
 ...
 
-**Percolation**
+## Percolation ##
 
-the **percolation** can be used as a model for electricity, fluid flow and social networks ! wow!  
+percolation can be used as a model for electricity, fluid flow and social networks ! wow!  
 
 for a random percolator, if we chose a site being open with some probability - then at intermediates probabilities, it is still open to find out if a system percolates or not. this can be answered using computational simulations.  
 
@@ -194,7 +194,7 @@ a **brute-force** solution would be to say that the system percolates iff any si
 
 * open site is connected to all its adjacent open sites.  
 
-**assignement**  
+### assignement ###
 
 while this is a great exercise - i think i will read a few notes from stanford's [cs108](http://web.stanford.edu/class/cs108) - to get my programming style in order. 
 
@@ -212,3 +212,188 @@ Two useful resources/programs are [checkstyle](http://checkstyle.sourceforge.net
 this forum [post](https://class.coursera.org/algs4partI-010/forum/thread?thread_id=413) gave me a better handle on how to get the `Percolation` class and `WeightedQuickUnionUF` class to play together.  
 
 ## Analysis of Algorithms ##
+
+### Memory ###
+
+- 1byte - 8bits
+- 1MB - 2^20 bytes
+- 1GB - 2^30 bytes
+- 32-bit machine - 4 byte pointers
+- 64-bit machine - 8 byte pointers
+
+|type|bytes|
+|:--:|:---:|
+|boolean|1|
+|byte|1|
+|char|2|
+|int|4|
+|float|4|
+|long|8|
+|double|8|
+|`char[]`|2N+24|
+|`int[]`|4N+24|
+|`double[]`|8N+24|
+|`char[][]`|~2MN|
+|`int[][]`|~4MN|
+|`double[][]`|~8MN|
+
+- array: 24bytes + memory for each array entry
+
+objects in JAVA
+
+- object overhead 16 bytes
+- reference 8 bytes
+- padding each object uses a multiple of 8 bytes
+
+ex:
+```java
+public class Date
+{
+	private int day;
+	private int month;
+	private int year;
+		...
+} // will take 32 bytes
+
+public class String
+{
+	private char[] value; // reference to array 8bytes & 2N+24 bytes for the char[] array
+	private int offset;
+	private int count;
+	private int hash;
+		...
+} // a virgin string of length N uses ~2N bytes of memory
+```
+
+## Stacks and Queues ##
+
+modular programming:
+- separate interface and implementation.
+- the details of the implementation should be completely separated from the client.
+- __also__, implementation can't know details of client needs => many clients can re-use the same implementation.
+- design: allows modular reusable libraries.
+- performance: use optimized implementation where it matters.
+
+### Stacks ###
+
+test client:
+```java
+public static void main(String[] args)
+{
+	StackOfStrings stack = new StackOFStrings();
+	while (!StdIN.isEmpty())
+	{
+		String s = StdIn.readString();
+		if(s.equals("-")) StdOut.print(stack.pop());
+		else			  stack.push(s);
+	}
+}
+```
+stack implementation using linked lists:
+```java
+public class LinkedStackOfStrings{
+	private Node first = null;
+	
+	private class Node
+	{
+		String item;
+		Node next; // references another object of node class.
+	}
+	
+	public boolean isEmpty()
+	{ return first == null; }
+	
+	public void push(String item)
+	{
+		Node oldfirst = first;
+		first = new Node();
+		first.item = item;
+		first.next = oldfirst;
+	}
+	
+	public String pop()
+	{
+		String item = first.item;
+		first = first.next;
+		return item;
+	}
+}
+```
+to delete last element in a null-terminated linked-list:
+```java
+Node x = first;
+while(x.next.next != null){
+	x = x.next;
+}
+x.next = null;
+```
+array implementation:
+```java
+public class FixedCapacityStackOfStrings
+{
+	private String[] s;
+	private int N = 0;
+	
+	public FixedCapacityStackOfStrings(int capacity)
+	{ s = new String[capacity]; }
+
+	public boolean isEmpty()
+	{ return N == 0; }
+	
+	public void push(String item)
+	{ s[N++] = item; } // use to index into the array; then increment N
+	
+	public String pop()
+	{ return s[--N]; } // decrement N; then use to index into array
+}
+```
+considerations:
+- underflow: pop from empty stack 
+- overflow: can use resizing array for array implementation
+- null items: we allow nnull items to be inserted
+- loitering: holding reference to an object when it is no longer needed
+
+```
+// to prevent loitering
+public String pop()
+{ return s[--N]; }
+
+// should be
+public String pop()
+{
+	String item = s[--N];
+	s[N] = null;
+	return item;
+}
+```
+
+
+### Resizing arrays ###
+
+```java
+public ResizingArrayStackOfStrings()
+{ s = new String[1]; }
+
+public void push(String item)
+{
+	if (N == s.length) resize(2 * s.length);
+	s[N++] = item;
+}
+
+public String pop()
+{
+	String item = s[--N];
+	S[N] = null;
+	if (N > 0 && N == s.length/4) resize(s.length/2);
+	return item;
+}
+
+private void resize(int capacity)
+{
+	String[] copy = new String[capacity];
+	for(int i = 0; i < N; i++)
+		copy[i] = c[i]
+	s = copy;
+}
+```
+
