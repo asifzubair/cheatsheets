@@ -353,7 +353,7 @@ considerations:
 - null items: we allow nnull items to be inserted
 - loitering: holding reference to an object when it is no longer needed
 
-```
+```java
 // to prevent loitering
 public String pop()
 { return s[--N]; }
