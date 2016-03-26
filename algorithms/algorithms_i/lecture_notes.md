@@ -449,7 +449,7 @@ s.push(a);
 a = s.pop();
 ```
 
-generic implementation:
+generic implementation using linked list:
 ```java
 public class Stack<Item>
 {
@@ -480,4 +480,29 @@ public class Stack<Item>
 	}
 }
 ```
+
+generic implementation using arrays:
+```java
+public class FixedCapacityStack<Item>
+{
+	private Item[] s;
+	private int N = 0;
+	
+	// need a cast here as
+	// JAVA doesn't allow generic arrays!!
+	public FixedCapacityStack(int capacity)
+	{ s = (Item[]) new Object[capacity]; }
+	
+	public boolean isEmpty()
+	{ return N == 0; }
+	
+	public void push(Item item)
+	{ s[N++] = item }
+	
+	public Item pop()
+	{ return s[--N]; }
+}
+```
+
+__Sedgewick__ says: Good code should have zero cast! 
 
