@@ -437,5 +437,47 @@ public class LinkedQueueOfStrings
 ### Generics ###
 
 how to implement a parameterized stack - with different data types: `StackOfURLs`, `StackOfInts`, `StackOfVans` ...
+Use Java Generics!
 
-Use Java Generics.
+```java
+Stack<Apple> s = new Stack<Apple>();
+Apple a  = new Apple();
+Orange b = new Orange();
+s.push(a);
+// pushing an orange will throw a compiler error
+// s.push(b);
+a = s.pop();
+```
+
+generic implementation:
+```java
+public class Stack<Item>
+{
+	private Node first = null;
+	
+	public class Node
+	{
+		Item item;
+		Node next;
+	}
+	
+	public boolean isEmpty()
+	{ retrun first == null; }
+	
+	public void push (Item item)
+	{
+		Node oldfirst = first;
+		first = new Node();
+		first.item = item;
+		first.next = oldfirst;
+	}
+
+	public Item pop()
+	{
+		Item item = first.item;
+		first = first.next;
+		return item;
+	}
+}
+```
+
