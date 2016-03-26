@@ -435,3 +435,7 @@ public class LinkedQueueOfStrings
 #### queues using resizing arrays ####
 
 ### Generics ###
+
+how to implement a parameterized stack - with different data types: `StackOfURLs`, `StackOfInts`, `StackOfVans` ...
+
+Use Java Generics.
