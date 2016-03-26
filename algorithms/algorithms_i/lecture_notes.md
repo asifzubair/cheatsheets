@@ -289,6 +289,7 @@ public static void main(String[] args)
 	}
 }
 ```
+
 stack implementation using linked lists:
 ```java
 public class LinkedStackOfStrings{
@@ -319,6 +320,7 @@ public class LinkedStackOfStrings{
 	}
 }
 ```
+
 to delete last element in a null-terminated linked-list:
 ```java
 Node x = first;
@@ -327,6 +329,7 @@ while(x.next.next != null){
 }
 x.next = null;
 ```
+
 array implementation:
 ```java
 public class FixedCapacityStackOfStrings
@@ -347,12 +350,12 @@ public class FixedCapacityStackOfStrings
 	{ return s[--N]; } // decrement N; then use to index into array
 }
 ```
+
 considerations:
 - underflow: pop from empty stack 
 - overflow: can use resizing array for array implementation
 - null items: we allow nnull items to be inserted
 - loitering: holding reference to an object when it is no longer needed
-
 ```java
 // to prevent loitering
 public String pop()
@@ -434,11 +437,18 @@ public class LinkedQueueOfStrings
 
 #### queues using resizing arrays ####
 
+```cpp
+public class FixedCapacityQueue
+{
+	
+}
+```
+
 ### Generics ###
 
 how to implement a parameterized stack - with different data types: `StackOfURLs`, `StackOfInts`, `StackOfVans` ...
-Use Java Generics!
 
+Use Java Generics!
 ```java
 Stack<Apple> s = new Stack<Apple>();
 Apple a  = new Apple();
@@ -503,6 +513,7 @@ public class FixedCapacityStack<Item>
 	{ return s[--N]; }
 }
 ```
-
 __Sedgewick__ says: Good code should have zero cast! 
+
+### Iterators ###
 
