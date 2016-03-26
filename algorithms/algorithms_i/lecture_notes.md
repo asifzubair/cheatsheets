@@ -136,7 +136,7 @@ publlic class QuickUnionUF {
 		return i;
 	}
 
-	publiv boolean connected(int p, int q) {
+	public boolean connected(int p, int q) {
 		return root(p) == root(q);
 	}
 
@@ -517,3 +517,45 @@ __Sedgewick__ says: Good code should have zero cast!
 
 ### Iterators ###
 
+Support to iterate over stack items by client, without revealing internal representation of the stack.
+
+Make the stack implement `Iterable` interface!
+
+iterable:
+```java
+// has a method that returns an Iterator
+public interface Iterable<item>
+{
+	Iterator<Item> iterator();
+}
+```
+
+iterator interface:
+```java
+public interface Iterator<Item>
+{	
+	// should have the following functions
+	boolean hasNext();
+	Item next();
+	
+	// can optionally have remove
+	// be careful with this!
+	void remove();
+}
+```
+
+this allows very compact `foreach` client code
+```java
+for (String s: stack)
+	StdOut.println(s);
+
+// as opposed to 
+// equivalent longhand code
+
+Iterator<String> i = stack.iterator();
+while (i.hasNext())
+{
+	String s = i.next();
+	StdOut.println(s);
+}
+```
