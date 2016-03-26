@@ -184,7 +184,7 @@ So, the **weighted quick-union with path compression** algorithm is a simple one
 * **kruskal's** minimum spanning tree algorithm
 ...
 
-## Percolation ##
+## PA1: Percolation ##
 
 percolation can be used as a model for electricity, fluid flow and social networks ! wow!  
 
@@ -199,8 +199,9 @@ a **brute-force** solution would be to say that the system percolates iff any si
 while this is a great exercise - i think i will read a few notes from stanford's [cs108](http://web.stanford.edu/class/cs108) - to get my programming style in order. 
 
 The programming assignment is [here](http://coursera.cs.princeton.edu/algs4/assignments/percolation.html) and 
-instructions are [here](https://class.coursera.org/algs4partI-010/assignment/view?assignment_id=1). 
-Also, check out the case study for percolation on the booksites 
+instructions are [here](https://class.coursera.org/algs4partI-010/assignment/view?assignment_id=1). There is a useful checklist [here](http://coursera.cs.princeton.edu/algs4/checklists/percolation.html).
+
+Check out the case study for percolation on the booksites 
 for [algorithms](http://algs4.cs.princeton.edu/15uf) and [java](http://introcs.cs.princeton.edu/java/24percolation). 
 
 instructions on using the `algs4` library is [here](http://algs4.cs.princeton.edu/mac).
@@ -617,3 +618,66 @@ public class Bag<item> implements Iterable<item>
 implementation: Stack (without pop) or queue (without dequeue)
 
 ### Stack and Queue Applications ###
+
+JAVA collections library
+
+__List interface:__ `java.util.list` is API for a sequence of items.
+```java
+public interface List<Item> implements Iterable<Item>
+					List()
+			boolean	isEmpty()
+			int		size()
+			void	add(Item item)
+			Item	get(int index)
+			Item	remove(int index)
+			boolean	contains(Item item)
+	Iterator<Item> 	iterator()
+	...
+```
+__implementations:__ `java.util.ArrayList` uses resizing array; `java.util.LinkedList` uses linked list. __note:__ only some operations are efficient.
+
+not always efficient to use native implementations
+- `java.util.Stack`: bloated and poorly-designed API
+- `java.util.Queue`: an interface, not implementation of queue
+so, __DO NOT__ use a library until you understand its API!
+
+Stack applications:
+- parsing in a compiler
+- java virtual machine
+- undo in a word processor
+- implementing function calls in a compiler
+	- function call: `push` local env and return address
+	- return: `pop` return address and local env
+	...
+
+__Dijkstra's two stack algorithm__ for computing an arithmetic expression:
+```java
+pulic class Evaluate
+{
+	public static void main(String[] args)
+	{
+		Stack<String> ops = new Stack<String>();
+		Stack<Double> vals = new Stack<Double>();
+		while (!Std.In.IsEmpty()) {
+			String s = StdIn.readString();
+			if		(s.equals("("))			       ;
+			else if	(s.equals("+"))		ops.push(s);
+			else if	(s.equals("*"))		ops.push(s);
+			else if	(s.equals(")"))
+			{
+				String op = ops.pop();
+				if		(op.equals("+")) vals.push(vals.pop() + vals.pop());
+				else if	(op.equals("*")) vals.push(vals.pop() * vals.pop());
+			}
+			else vals.push(Double.parseDouble(s));
+		}
+		StdOut.println(vals.pop());
+	}
+}
+// % java Evaluate ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
+// 101.0
+```
+
+## PA2: Randomized Queues and Deques ##
+
+The assignment is [here](https://class.coursera.org/algs4partI-010/assignment/view?assignment_id=3). The assignment specifcation is [here](http://coursera.cs.princeton.edu/algs4/assignments/queues.html) and a useful checklist [here](http://coursera.cs.princeton.edu/algs4/checklists/queues.html).
