@@ -517,9 +517,8 @@ __Sedgewick__ says: Good code should have zero cast!
 
 ### Iterators ###
 
-Support to iterate over stack items by client, without revealing internal representation of the stack.
-
-Make the stack implement `Iterable` interface!
+Support to iterate over stack items by client, without revealing internal representation of the stack.  
+to do this, Make the stack implement `Iterable` interface!
 
 iterable:
 ```java
@@ -559,3 +558,62 @@ while (i.hasNext())
 	StdOut.println(s);
 }
 ```
+
+Stack Iterator:
+```java
+import java.util.Iterator;
+
+public class Stack<Item> implements Iterable<Item>
+{
+	...
+	public Iterator<Item> Iterator() { return new ListIterator(); }
+	
+	private class ListIterator implements Iterator<Item>
+	{
+		private Node current = first;
+		
+		public boolean hasNext() { return current != null; }
+		public void remove() { /* not supported */ }
+		public Item next()
+		{
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
+	}
+}
+```
+
+array implementation:
+```java
+import java.util.Iterator;
+
+public class Stack<Item> implements Iterable<Item>
+{
+	...
+	public Iterator<Item> iterator()
+	{ return new ReverseArrayIterator(); }
+	
+	private class ReverseArrayIterator implemenets Iterator<Item>
+	{
+		private int i = N;
+		
+		public boolean hasNext() { return i > 0; }
+		public void remove() { /* not supported */ }
+		public Item next() { return s[--i]; }
+	}
+}
+```
+
+__bag API__: adding items to a collection and iterating (order doesn't matter)
+```java
+public class Bag<item> implements Iterable<item>
+
+					Bag()
+			void	add(Item x)
+			int 	size()
+	Iterable<Item>	iterator()
+```
+implementation: Stack (without pop) or queue (without dequeue)
+
+### Stack and Queue Applications ###
