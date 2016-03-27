@@ -30,7 +30,7 @@ conn.close()
 
 `\s{4,}|\.\d{2,2}\s{2,2}W` => strange beast but just means match either "4 whitespaces or more" OR an expression like this ".23  W" 
 
-[Difference](http://stackoverflow.com/questions/19798153/difference-between-map-applymap-and-apply-methods-in-pandas) between `apply`, `applymap` and `map` functions.  
+[Difference](http://stackoverflow.com/questions/19798153/difference-between-map-applymap-and-apply-methods-in-pandas) between `apply`, `applymap` and `map` functions: `apply` works on a row/column basis of a DataFrame, `applymap` works element-wise on a DataFrame, and `map` works element-wise on a Series.
   
 [merging](http://pandas.pydata.org/pandas-docs/stable/merging.html) 
   
