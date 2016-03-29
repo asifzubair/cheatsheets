@@ -1,4 +1,4 @@
-## Stacks and Queues ##
+# Stacks and Queues #
 
 modular programming:
 - separate interface and implementation.
@@ -7,7 +7,7 @@ modular programming:
 - design: allows modular reusable libraries.
 - performance: use optimized implementation where it matters.
 
-### Stacks ###
+## Stacks ##
 
 test client:
 ```java
@@ -103,7 +103,7 @@ public String pop()
 }
 ```
 
-### Resizing arrays ###
+## Resizing arrays ##
 
 ```java
 public ResizingArrayStackOfStrings()
@@ -132,7 +132,7 @@ private void resize(int capacity)
 }
 ```
 
-### Queues ###
+## Queues ##
 
 ```java
 public class LinkedQueueOfStrings
@@ -168,7 +168,7 @@ public class LinkedQueueOfStrings
 }
 ```
 
-#### queues using resizing arrays ####
+### queues using resizing arrays ###
 
 ```cpp
 public class FixedCapacityQueue
@@ -177,7 +177,7 @@ public class FixedCapacityQueue
 }
 ```
 
-### Generics ###
+## Generics ##
 
 how to implement a parameterized stack - with different data types: `StackOfURLs`, `StackOfInts`, `StackOfVans` ...
 
@@ -248,7 +248,7 @@ public class FixedCapacityStack<Item>
 ```
 __Sedgewick__ says: Good code should have zero cast! 
 
-### Iterators ###
+## Iterators ##
 
 Support to iterate over stack items by client, without revealing internal representation of the stack.  
 to do this, Make the stack implement `Iterable` interface!
@@ -349,7 +349,7 @@ public class Bag<item> implements Iterable<item>
 ```
 implementation: Stack (without pop) or queue (without dequeue)
 
-### Stack and Queue Applications ###
+## Stack and Queue Applications ##
 
 JAVA collections library
 
