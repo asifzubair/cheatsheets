@@ -1,4 +1,4 @@
-## Union-Find ##
+# Union-Find #
 
 **Dynamic Connectivity**
 
@@ -34,7 +34,7 @@ public static void main(String[] args) {
 }
 ```
 
-### Quick-find ###
+## Quick-find ##
 
 greedy algorithm
 
@@ -74,7 +74,7 @@ public class QuickFindUF {
 
 however, `quick-find` is rather slow, becasue union is too expensive. (worst case N^2)
 
-### Quick-Union ###
+## Quick-Union ##
 
 lazy approach. 
 
@@ -107,7 +107,7 @@ public class QuickUnionUF {
 
 this approach suffers in the **find** operation, the trees might get really big and then to **find** if two nodes are connected might take linear time. so, basically, we are going for sub-linear time. 
 
-### Quick-Union Improvements ###
+## Quick-Union Improvements ##
 
 a qucik improvement would be to not let the trees get very deep. use a **weighted** algorithm to move the smaller tree - this way not item is too far from the tree. this improvement is really effective for large number of nodes. 
 
@@ -170,7 +170,7 @@ So, the **weighted quick-union with path compression** algorithm is a simple one
 
 **algorithm design enables quicker solution**
 
-### Union-Find Applications ###
+## Union-Find Applications ##
 
 * percolation  
 * dynamic connectivity  
