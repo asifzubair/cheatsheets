@@ -1,4 +1,4 @@
-## Elementary Sorts ##
+# Elementary Sorts #
 
 we want to sort __any__ kind of data. Client might have various types of data.
 
@@ -84,7 +84,7 @@ implements Comparable<File>
 ```
 java built-in types generally implement comparable. 
 
-### Selection Sort ###
+## Selection Sort ##
 
 - in iteration i, find index min of smallest remaining entry
 - swap a[i] and a[min]
@@ -98,16 +98,44 @@ public class Selection
 		{
 			int min = i;
 			for (int j = i+1; j < N; j++)
-				if (less(a[k], a[min]))
+				if (less(a[j], a[min]))
 					min = j;
 			exch(a, i, min);
 		}
 	}
 	
 	private static boolean less(Comparable v, Comparable w)
-	{ }
+	{ /* as before */ }
 	private static void exch(Comparable[] a, int i, int j)
-	{ }
+	{ /* as before */ }
 }
 ```
 time complexity is `O(N^2)`, even if input is sorted!
+
+## Insertion Sort ##
+
+i think this is similar to __bubble sort__. 
+- in iteration `i`, swap `a[i]` with each larger entry to its left
+```java
+public class Insertion
+{
+	public static void sort(Comparable[] a)
+	{
+		int N = a.length;
+		for (int i = 0; i < N; i++)
+			for (int j = i; j > 0; j--)
+				if (less(a[j], a[j-i]))
+					exch(a, j, j-1);
+				else break;
+	}
+	
+	private static boolean less (Comparable v, Comparable w)
+	{ /* as before */ }
+	
+	private static void exch(Comparable[] a, int i, int j)
+	{ /* as before */ }
+}
+```
+__Note:__ for partially sorted arrays, insertion sort takes linear time.
+
+## Shellsort ##
