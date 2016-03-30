@@ -9,14 +9,12 @@
 Python style guide by [google](https://google.github.io/styleguide/pyguide.html).  
 
 Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-convert-python-code-to-be-pep8-compliant) post on testing if your code is [PEP8](https://www.python.org/dev/peps/pep-0008/) compliant. Can use a module called [pep8](https://github.com/PyCQA/pep8) itself to check if code is compliant. [autopep8](https://pypi.python.org/pypi/autopep8) can be used to change PEP8 violations that don't change meaning of the code. There is **aggressive** mode as well, but use at own risk. 
-
 ---
 
 * Keywords and Functions
 
   * `kwargs`
   * The `**kwargs` will give you all keyword arguments except for those corresponding to a formal parameter as a dictionary.
-
 ```python
 def colorbar_index(ncolors, cmap, labels=None, **kwargs):
 	...
@@ -43,7 +41,16 @@ columns = [unicodedata.normalize('NFKD', s).encode('ascii','ignore') if isinstan
 ```
 NEED to find out what [NKFD](http://www.peterbe.com/plog/unicode-to-ascii ) is above  
 
-• `[0]*100` will print a list with 100 zeros
+- `[0]*100` will print a list with 100 zeros
+- One very important aside relating to the repetition operator is that the result is a repetition of references to the data objects in the sequence. This can best be seen by considering the following session:
+```python
+myList = [1,2,3,4]
+A = [myList]*3
+print(A)
+myList[2]=45
+print(A)
+# [[1, 2, 45, 4], [1, 2, 45, 4], [1, 2, 45, 4]]
+```
 
 * OS module
 ```python  
@@ -55,9 +62,7 @@ print os.getenv('KEY_THAT_MIGHT_EXIST', default_value)
 
 - `psycopg2`  
   - `conn = pg2.connect(**json.load(open('/home/azubair/psql.password')))`
-	
 - Defining connection string with settings file  
-
 ```python
 import psycopg2 as pg2 
 import settings
@@ -65,7 +70,6 @@ conn = pg2.connect('host={db.DB_HOST} user={db.DB_USER} dbname={db.DB_NAME} pass
 ```
 **Warning:** Never, never, NEVER use Python string concatenation (+) or string parameters interpolation (%) to pass variables to a SQL query string. Not even at gunpoint.  
 - The correct way to pass variables in a SQL command is using the second argument of the `execute()` method:
-
 ```
 >>> SQL = "INSERT INTO authors (name) VALUES (%s);" 
 # Note: no quotes 
@@ -92,7 +96,6 @@ data = map(float, open('data', 'r').readlines())
 ```
 
 * Concatenate two `numpy` arrays in the 4th dimension
-
 ```python 
 import numpy as np 
 a = np.ones((3,4,5))
@@ -101,7 +104,6 @@ c = np.concatenate((a[...,np.newaxis],b[...,np.newaxis]),axis=3)
 ```
 
 * Is it possible to get a list of `keywords` in Python?
-
 ```
 >>> import keyword
 >>> keyword.kwlist
@@ -115,16 +117,13 @@ Check out a neat `sorted` example. Here I want to sort entries of the tuples in 
 __Trick:__ negate one of them.  
 ```python
 """Count words."""
-
 from collections import Counter
 
 def count_words(s, n):
     """Return the n most frequently occuring words in s."""
-    
     words = s.split()
     word_counts = Counter(words).items()
     top_n = sorted(word_counts, key = lambda x: (-x[1],x[0]))
-    
     return top_n[:n]
 
 def test_run():
