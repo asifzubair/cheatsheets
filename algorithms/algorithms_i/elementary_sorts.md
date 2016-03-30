@@ -139,3 +139,70 @@ public class Insertion
 __Note:__ for partially sorted arrays, insertion sort takes linear time.
 
 ## Shellsort ##
+
+- move entries more than one position at a time by __h-sorting__ the array.
+- to __h-sort__ an array, we use insertion sort with stride length _h_.
+
+__proposition:__ a g-sorted array remains g-sorted after h-sorting it.
+
+what should be the increment sequence?
+- powers of two: does not work
+- powers of two minus one: maybe
+- knuth: `3x + 1`
+- sedgewick: 1, 5, 19, 41, 109, 209, 505 - tough to beat in empirical studies
+	- merging of `(9*4^i) - (9*2^i) + 1` and `4^i - (3*2^i) + 1`
+
+```java
+public class Shell
+{
+	public static void sort(Comparable[] a)
+	{
+		int N = a.length;
+		
+		int h = 1;
+		while (h < N/3) h = 3*h +1;
+		
+		while (h >= 1)
+		{ // h-sort the array
+			for (int i = h; i < N; i++)
+			{
+				// cool 'for loop' 
+				for (int j = i; j >= h && less(a[j], a[j-h]); j -= h)
+					exch(a, j, j-h);
+			}
+			
+			h = h/3;
+		}
+	}
+	
+	private static boolean less(Comparable v, Comparable w)
+	{ /* as before */}
+	private static void exch(Comparable[] a, int i, int j)
+	{ /* as before */}
+}
+```
+
+## Shuffling ##
+
+one way:
+- generate a random real number for each array entry
+- sort the array
+
+knuth shuffle:
+- in iteration `i`, pick integer r between `0` and `i` uniformly at random.
+- swap `a[i]` and `a[r]`
+```java
+public class StdRandom
+{
+	...
+	public static void shuffle(Object[] a)
+	{
+		int N = a.length;
+		for (int i = 0; i < N; i++)
+		{
+			int r = StdRandom.uniform(i + 1);
+			exch(a, i , r);
+		}
+	}
+}
+```
