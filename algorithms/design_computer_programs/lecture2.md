@@ -1,4 +1,4 @@
-# Lectrue 2 #
+# Lecture 2 #
 
 List Comprehensions: 
 ```python
