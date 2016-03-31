@@ -1,8 +1,4 @@
-# Design of Computer Programs #
-
-my notes from udacity's [design of computer programs](https://www.udacity.com/course/design-of-computer-programs--cs212) course taught by [peter norvig](http://norvig.com/). Peter's [list](http://norvig.com/ipython/README.html) of ipython notebooks are a thing of interest.  
-
-## Lecture 1 ##
+# Lecture 1 #
 
 this lecture deals with a random shuffling and comparing of poker hands.  
 
@@ -46,7 +42,7 @@ assert poker([sf] + 99*[fk]) == sf
 
 lexicographic ordering to compare tuples - `(7,9,5) > (7,3,2)`  
 
-## Shuffling ##
+# Shuffling #
 
 python function for shuffle:
 ```python
