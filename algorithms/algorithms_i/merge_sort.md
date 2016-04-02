@@ -62,3 +62,59 @@ public class Merge
 }
 ```
 
+- `mergesort` will take 18 min when working on a billion items. 
+- it uses at most `NlgN` compares and `6NlgN` array accesses to sort any array of size `N`
+- can use _recurrence relation_ to compute time complexity
+
+some imporvement:  
+- cutoff to insertion sort for smaller number of items
+```java
+private static void sort(Comparable[] a, Comaparable[] aux, int lo, int hi)
+{
+    if (hi <- lo + CUTOFF - 1)
+    {
+        Insertion.sort(a, lo, hi);
+        return;
+    }
+    int mid = lo + (hi - lo)/2;
+    sort (a, aux, lo, mid);
+    sort ( a, aux, mid+1, hi);
+    merge(a, aux, lo, mid, hi);
+}
+```
+- stop if already sorted
+    - is biggest item in first half `<=` smallest item in second half
+```java
+private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi)
+{
+    if (hi <= lo) return;
+    int mid = lo + (hi - lo)/2;
+    sort (a, aux, lo, mid);
+    sort (a, aux, mid+1, hi);
+    if (!less(a[mid+1], a[mid])) return;
+    merge(a, aux, lo, mid, hi);
+}
+```
+- eliminate the copy to the auxiliary array
+```java
+private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi)
+{
+    int i = lo, j = mid+1;
+    for(int k = lo; k <= hi; k++)
+    {
+        if      (i > mid)           aux[k] = a[j++];
+        else if (j > hi)            aux[k] = a[i++];
+        else if (less(a[j], a[i]))  aux[k] = a[j++]; // merge from a[] to aux[]
+        else                        aux[k] = a[i++];
+    }
+}
+
+private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi)
+{
+    if (hi <= lo) return;
+    int mid = lo + (hi - lo)/2;
+    sort (aux, a, lo, mid);
+    sort (aux, a, mid+1, hi);   // sort(a) initializes aux[] and sets aux[i] = a[i] for each i 
+    merge (a, aux, lo, mid, hi); // switch roles of aux[] and a[]
+}
+```
