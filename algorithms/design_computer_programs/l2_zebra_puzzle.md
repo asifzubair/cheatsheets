@@ -32,3 +32,17 @@ some reasons to use generators:
 - less indentation
 - stop early
 - easier to edit
+
+generator functions:
+```python
+def ints(start, end):
+    i = start
+    while i <= end:
+        yield i
+        i += 1
+"""
+L = ints(0, 1000000)
+L = <generator>
+next(L)
+"""
+```
