@@ -276,11 +276,9 @@ void SellTickets (int agent ID, int numTicketsToSell)
 		printf("Agent %d sells a ticket\n", agentNo);
 		numTicketsToSell--;
 	}
-	printf (Agent %d: All done!\', agentNo)
+	printf ('Agent %d: All done!\n', agentNo)
 }
-```
 
-```c
 // called in simple for loop
 int main()
 {
@@ -305,11 +303,9 @@ void SellTickets (int agent ID, int numTicketsToSell)
 		// with some randomization, some threads are made to sleep
 		if(RandomChance(0.1)) ThreadSleep(1000);
 	}
-	printf (Agent %d: All done!\', agentNo)
+	printf ('Agent %d: All done!\n', agentNo)
 }
-```
 
-```c
 int main()
 {
 	int numAgents = 10;
