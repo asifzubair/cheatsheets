@@ -266,3 +266,58 @@ printf("%d + %d = %d\n", 4, 4, 8); //2
 in 2 above, `printf` will look above the stack and infer the types based on what information is passed. 
 
 ## L14/15 - Sequential to Concurrent ##
+
+selling airline tickets:
+```c
+// agents sell tickets
+void SellTickets (int agent ID, int numTicketsToSell)
+{
+	while (numTicketsToSell > 0){
+		printf("Agent %d sells a ticket\n", agentNo);
+		numTicketsToSell--;
+	}
+	printf (Agent %d: All done!\', agentNo)
+}
+
+// called in simple for loop
+int main()
+{
+	int numAgents = 10;
+	int numTickets = 150;
+	
+	for (int agent = 1; agent <= numAgents; agent++){
+		SellTickets(agent, numTickets/numAgents);
+	}
+	
+	return 0;
+}
+```
+
+we can use threading to simultaneously sell tickets:
+```c
+void SellTickets (int agent ID, int numTicketsToSell)
+{
+	while (numTicketsToSell > 0){
+		printf("Agent %d sells a ticket\n", agentNo);
+		numTicketsToSell--;
+		// with some randomization, some threads are made to sleep
+		if(RandomChance(0.1)) ThreadSleep(1000);
+	}
+	printf (Agent %d: All done!\', agentNo)
+}
+
+int main()
+{
+	int numAgents = 10;
+	int numThreads = 150;
+	
+	initThreadPackage(false);
+	for (int agent; agent <= numAgents; agent++){
+		char name[32];
+		sprintf(name, "Agent %d Thread", agent);
+		ThreadNew(name, SellTickets, 2, agent, numTickets/numAgents);
+	}
+	RunAllThreads();
+	return 0;
+}
+```
