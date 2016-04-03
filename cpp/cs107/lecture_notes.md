@@ -1,59 +1,53 @@
-# CS 107 #
-
-Stanford's [programming paradigms](https://see.stanford.edu/Course/CS107) class by [Jerry Cain](https://twitter.com/jerrycainjr)
-
-Advanced memory management features of C and C++; the differences between imperative and object-oriented paradigms. The functional paradigm (using LISP) and concurrent programming (using C and C++). Brief survey of other modern languages such as Python, Objective C, and C#.
-
-## L2/3 - Data Types ##
-
-* `bool`    :    1 byte
-* `char`    :    2 bytes
-* `short`    :    4 bytes
-* `int`    :    4 bytes
-* `long`    :    4 bytes
-* `float`    :    4 bytes
-* `double`    :    8 bytes
-
-__data type manipulations__
-
+# L2/3 - Data Types #
+```c
+bool    :    1 byte
+char    :    2 bytes
+short   :    4 bytes
+int		:    4 bytes
+long	:    4 bytes
+float	:    4 bytes
+double	:    8 bytes
 ```
+
+## data type manipulations ##
+
+```c
 char ch = "A";
 short s = ch;
 cout << s << endl; //65
 ```
 
-```
+```c
 short s = 67;
 char ch = s;
 cout << ch << endl; //"c"
 ```
 
-```
+```c
 short s = pow(2,10) + pow(2,3) + pow(2,0);
 int i = s;
 ```
 
-```
+```c
 int i = pow(2,23) + pow(2,21) + pow(2,15) + 7;
 short s = i;
 ```
 
-__pointer manipulation__
+## pointer manipulation ##
 
-```
+```c
 int i = 37;
 float f = *(float *)&i; //0.00
 ```
 
-```
+```c
 float f = 7.0;
 short s = *(short *)&f;
 ```
 
-## L4/5 - Generics in C ##
+# L4/5 - Generics in C #
 
 __swapping two ints:__
-
 ```cpp
 void swap(int *ap, int *bp)
 {
@@ -64,7 +58,6 @@ void swap(int *ap, int *bp)
 ```
 
 __generic swap:__
-
 ```cpp
 void swap(void *vp1, void *vp2, int size)
 {
@@ -87,7 +80,6 @@ swap(&husband, &wife, sizeof(char *));
 ```
 
 __generic lsearch:__
-
 ```cpp
 void * lsearch(void *key, void *base, int n, int elemSize, int (*cmpfn)(void *, void *))
 {
@@ -127,7 +119,7 @@ int StrCmp(void *vp1, void *vp2)
 }
 ```
 
-## L12 - Preprocessing Commands ##
+# L12 - Preprocessing Commands #
 
 ```cpp
 #define kWidth 40
@@ -167,7 +159,7 @@ what are `asserts` under the hood:
 ```
 this way you can turn off all `assert` statements when using in production code. 
 
-## L13 - Compilaton process ##
+# L13 - Compilaton process #
 
 ```cpp
 #include <stdlib.h>
@@ -228,7 +220,7 @@ void foo()
 ```
 because of the decrement, it will call `foo` again.
 
-## L14 - printf ##
+# L14 - printf #
 
 ```c
 int main( int argc, char *argv[])
@@ -265,7 +257,7 @@ printf("%d + %d = %d\n", 4, 4, 8); //2
 ```
 in 2 above, `printf` will look above the stack and infer the types based on what information is passed. 
 
-## L14/15 - Sequential to Concurrent ##
+# L14/15 - Sequential to Concurrent #
 
 selling airline tickets:
 ```c
