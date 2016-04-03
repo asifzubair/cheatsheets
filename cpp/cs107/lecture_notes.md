@@ -278,7 +278,9 @@ void SellTickets (int agent ID, int numTicketsToSell)
 	}
 	printf (Agent %d: All done!\', agentNo)
 }
+```
 
+```c
 // called in simple for loop
 int main()
 {
@@ -305,7 +307,9 @@ void SellTickets (int agent ID, int numTicketsToSell)
 	}
 	printf (Agent %d: All done!\', agentNo)
 }
+```
 
+```c
 int main()
 {
 	int numAgents = 10;
