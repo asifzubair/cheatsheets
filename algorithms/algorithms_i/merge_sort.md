@@ -118,3 +118,29 @@ private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi)
     merge (a, aux, lo, mid, hi); // switch roles of aux[] and a[]
 }
 ```
+
+## Bottom-up Mergesort ##
+
+- pass through array, merging subarrays of size 1
+- repeat for subarrays of size 2, 4, 8, 16 ...
+
+```java
+public class MergeBU
+{
+    private static Comparable[] aux;
+    
+    private static void merge(Comparable[] 1, int lo, int mid, int hi)
+    { /* as before */ }
+    
+    public static void sort(Comparable[] a)
+    {
+        int N = a.length;
+        aux = new Comparable[N];
+        for (int sz = 1; sz < N; sz = sz+sz)
+            for (int lo = 0; lo < N-sz; lo += sz+sz)
+                merge(a, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
+    }
+}
+```
+concise industrial-strength code, if you hav space! 
+
