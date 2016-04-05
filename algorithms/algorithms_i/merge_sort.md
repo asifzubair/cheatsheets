@@ -243,8 +243,9 @@ public class Point2D
 
 - kinda like multiple-index sort in pandas.
 - sort by one field and then another
-- entries must remain sorted after second sort with respect to first field
+- entries must remain sorted after second sort with respect to first field  
 
+examining sorting algorithms:  
 - insertion sort is stable
     - equal items never move past each other
 - selection sort is __not__ stable
