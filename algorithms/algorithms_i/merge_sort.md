@@ -144,3 +144,115 @@ public class MergeBU
 ```
 concise industrial-strength code, if you hav space! 
 
+## Sorting Complexity ##
+
+- Any compare-based sorting algorithm must use at least `lg(N!) ~ NlgN` compares in the worst case.
+- this means the lower bound is `Nlg(N)`.
+- this means that mergesort is optimal with respect to # compares but __not__ optimal with respect to space.
+
+however, lower bound assumes we don't know the initial order of the input. partially sorted arrays can be sorted faster than `NlgN` by just using insertion sort.
+
+## Comparators ##
+
+Earlier we used JAVA's __comparable interface__, but another interface is the __comparator interface:__ helps us sort using an alternate order. The requirement is that is must be a __total order__.
+
+JAVA system sort:
+- create `Comparator` object
+- pass a second argument to `Arrays.sort()`
+
+for our `sort` implementations, we can support `Comparator` by:
+- using `Object` instead of `Comparable`
+- pass `Comparator` to `sort()` and `less()` and use it in `less()`
+
+insertion sort using comparator:
+```java
+public static void sort(Object[] a, Comparator comparator)
+{
+    int N = a.length;
+    for (int i = 0; i < N; i++)
+        for (int j = i; j > 0 && less(comparator, a[j], a[j-1]; j--)
+            exch(a, j, j-1);
+}
+
+private static boolean less(Comparator c, Object v, Object w)
+{ return c.compare(v, w) < 0; }
+
+private static void ech(Object[] a, int i, int j)
+{ Object swap = a[i]; a[i] = a[j]; a[j] = swap; }
+```
+
+to implement a comparator:
+- define a (nested) class that implements the `Comparator` interface.
+- implement the `compare()` method
+```java
+public class Student
+{
+    // use of static keyword ensures that there is on Comparator for the class
+    public static final Comparator<Student> BY_NAME     = new ByName();
+    public static final Comparator<Student> BY_SECTION  = new BySection();
+    private final String name;
+    private final int section;
+    ...
+    
+    private static class ByName implements Comparator<Student>
+    {
+        public int compare(Student v, Student w)
+        { return v.name.compareTo(w.name); }
+    }
+    
+    private static class BySection implements Comparator<Student>
+    {
+        public int compare(Student v, Student w)
+        { return v.section - w.section; } // this technique works because these is no danger of overflow
+    }
+}
+/* Arrays.sort(a, Student.BY_NAME);
+   Arrays.sort(a, Student.BY_SECTION); */
+```
+
+polar order:
+```java
+public class Point2D
+{
+    // one Comparator for each point (not static)
+    public final Comparator<Point2D> POLAR_ORDER = new PolarOrder();
+    private final double s, y;
+    ...
+    
+    private static int ccw(Point2D a, Point2D b, Point2D c)
+    { /* as seen previously */ }
+    
+    private class PolarOrder implements Comparator<Point2D>
+    {
+        public int compare(Point2D q1, Point2D q2)
+        {
+            double dy1 = q1.y - y;
+            double dy2 = q2.y - y;
+            
+            if      (df1 == 0 && dy2 == 0) { ... }      // p, q1, q2 horizontal
+            else if (dy1 >= 0 && dy2 < 0) return -1;    // q1 above p; q2 below p
+            else if (dy2 >= 0 && dy1 < 0) return +1;    // q1 below p; q2 above p
+            else return -ccw(Point2D.this, q1, q2);    // both above or below p
+            // 'this' accesses invoking point from within inner class
+        }
+    }
+}
+```
+
+## Stability ##
+
+- kinda like multiple-index sort in pandas.
+- sort by one field and then another
+- entries must remain sorted after second sort with respect to first field
+
+- insertion sort is stable
+    - equal items never move past each other
+- selection sort is __not__ stable
+    - long-distance exchange might move an item past some equal item
+- shell sort is __not__ stable
+    - long distance exchange
+- mergesort is stable
+    - as long as merge operation is stable
+
+
+
