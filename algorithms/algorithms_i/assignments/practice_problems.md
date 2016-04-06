@@ -11,3 +11,20 @@
 Design a data type so that all operations (except construction) should take logarithmic time or better.
 
 4. __Union-by-size.__ Develop a union-find implementation that uses the same basic strategy as weighted quick-union but keeps track of tree height and always links the shorter tree to the taller one. Prove a `lgN` upper bound on the height of the trees for `N` sites with your algorithm.
+
+## Analysis of Algorithms ##
+
+1. __3-SUM in quadratic time.__ Design an algorithm for the 3-SUM problem that takes time proportional to N2 in the worst case. You may assume that you can sort the N integers in time proportional to N2 or better.
+
+2. __Search in a bitonic array.__ An array is bitonic if it is comprised of an increasing sequence of integers followed immediately by a decreasing sequence of integers. Write a program that, given a bitonic array of N distinct integer values, determines whether a given integer is in the array.  
+
+    - Standard version: Use ∼3lgN compares in the worst case.
+    - Signing bonus: Use ∼2lgN compares in the worst case (and prove that no algorithm can guarantee to perform fewer than ∼2lgN compares in the worst case).
+
+3. __Egg drop.__ Suppose that you have an N-story building (with floors 1 through N) and plenty of eggs. An egg breaks if it is dropped from floor T or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of T given the following limitations on the number of eggs and tosses:
+
+    - Version 0: 1 egg, ≤ T tosses.
+    - Version 1: ∼1lgN eggs and ∼1lgN tosses.
+    - Version 2: ∼lgT eggs and ∼2lgT tosses.
+    - Version 3: 2 eggs and ∼2√N tosses.
+    - Version 4: 2 eggs and ≤c√T tosses for some fixed constant c.
