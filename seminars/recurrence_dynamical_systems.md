@@ -7,6 +7,4 @@
 - http://www.math.uh.edu/~climenha/2014-school-projects/liverani-decay.pdf
 - https://en.wikipedia.org/wiki/Dyadic_transformation
 - https://homepages.warwick.ac.uk/~maslav/Teaching/warwick_ergodic_notes.pdf
-- https://github.com/prakhar1989/awesome-courses
-
 - http://viterbi.usc.edu/academics/faculty/faculty-directory/profile.php?faculty=fokas_athanassios.xml
