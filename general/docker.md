@@ -39,7 +39,7 @@ When you exit from the container it will be automatically removed.
  
 Here is an example on how to clean up old containers that are weeks old. 
 
-`$ docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm` 
+`$ docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm` 
 
 Similar command to remove all untagged images:
 
@@ -47,7 +47,7 @@ Similar command to remove all untagged images:
 
 **docker-machine**
 
-`docker-machine create -d virtualbox --virtualbox-memory 8192 --virtual-disksize 600000 default` - [SO](http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
+`docker-machine create -d virtualbox --virtualbox-memory 8192 --virtualbox-disk-size 600000 default` - [SO](http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
 
  
 ## Data sharing ##
