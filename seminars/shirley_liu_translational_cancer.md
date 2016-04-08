@@ -2,7 +2,6 @@
 
 ### Shirley Liu ###
 
-- emperor of maladies
 - epigenetic regulation and transriptional regulation
 - cancer-specific TF targets
 - [H3K27ac](http://www.noncode.org/cgi-bin/hgEncodeVocab?ra=encode%2Fcv.ra&target=%22H3K27ac%22)
