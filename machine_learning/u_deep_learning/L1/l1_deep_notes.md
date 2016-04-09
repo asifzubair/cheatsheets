@@ -54,16 +54,15 @@ conda will sometimes give SSL error - just do [this](https://github.com/conda/co
 
 I'm still not satisfied with my installation. Will look at it later.
 
-I also thought of the running docker as this [page](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/README.md) advises, but their memory requirement is `8gb` and I have only 8gb on the machine. Also, what is interesting is that while running the docker container is easy 
-
-```
+I also thought of the running docker as this [page](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/README.md) advises, but their memory requirement is `8gb` and I have only 8gb on the machine. Also, what is interesting is that while running the docker container is easy:
+```shell
 docker run -p 8888:8888 -it --rm b.gcr.io/tensorflow-udacity/assignments
 ```
 very few tutorials on actually stopping it - [this](https://www.ctl.io/developers/blog/post/gracefully-stopping-docker-containers) could be promising. 
 
 on Mac, we need to figure out the IP `docker` is broadcasting on:
 
-```
+```shell
 docker-machine ip default
 ```
 
@@ -75,7 +74,7 @@ The trick is that after creating the environment we need to uninstall `setuptool
 
 For posterity, my steps were:
 
-```
+```shell
 conda create -n tensorflow python
 source activate tensorflow
 conda list
@@ -89,15 +88,12 @@ source deactivate
 
 ---
 
-Vncent V introduced a concept that I had some difficulty coming to terms with. I understood the idea of Cross-Validation, but I was having trouble understanding **Validation and Test Set**. Vincent explained it very well. 
-He says that when we train and test classifier - over time as we run many experiments, the test set bleeds into the training set - through user decisions. To eliminate this, he advises a three-way split of the data - training, validation and testing.  
+Vncent V introduced a concept that I had some difficulty coming to terms with. I understood the idea of Cross-Validation, but I was having trouble understanding **Validation and Test Set**. Vincent explained it very well. He says that when we train and test classifier - over time as we run many experiments, the test set bleeds into the training set - through user decisions. To eliminate this, he advises a three-way split of the data - training, validation and testing.  
 
 We would train and validate the classifier on the training and validation set respectively, and some of the validation set will bleed into the test set but that is okay because we will always have the test set that we have well hidden from the classifier. 
 
 
-**rule of thumb:** a change that affects 30 examples in your validation set either way is statistically significant and can be trusted. 
-
-This rule of thumb dictates that we can hold back 30000 examples to see a call a change in accuracy of 0.1% as significant. However, this only holds when the classes are balanced, and if some important classes are rare - this heuristic is no good. 
+**rule of thumb:** a change that affects 30 examples in your validation set either way is statistically significant and can be trusted. This rule of thumb dictates that we can hold back 30000 examples to see a call a change in accuracy of 0.1% as significant. However, this only holds when the classes are balanced, and if some important classes are rare - this heuristic is no good. 
 
 **Stochastic Gradient Descent**
 
@@ -108,14 +104,12 @@ So, since gradient descent is constly, so we estimate it - badly. Instead of com
 SGD scales well with both data nd model size. 
 
 Helping SGD:  
-
 - inputs  
     - zero mean and equal variance  
 - initial weights  
     - random weights with relatively small variance  
 
-
-## Need To Redo ##
-**momentum**  
-**learning rate decay**  
-**learning rate tuning**  
+Redo:
+- momentum
+- learning rate decay  
+- learning rate tuning
