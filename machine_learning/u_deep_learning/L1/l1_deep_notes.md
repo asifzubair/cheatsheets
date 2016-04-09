@@ -4,7 +4,7 @@
 
 Already `numpy` is giving me grief, but I think as I play around with more I will get used to the conventions.  
 
-```
+```python
 """Softmax."""
 
 scores = [3.0, 1.0, 0.2]
@@ -110,11 +110,10 @@ SGD scales well with both data nd model size.
 Helping SGD:  
 
 - inputs  
-    * zero mean and equal variance  
+    - zero mean and equal variance  
 - initial weights  
-    * random weights with relatively small variance  
+    - random weights with relatively small variance  
 
-Bitbucket is really ... anyway, it is [finicky](https://bitbucket.org/tutorials/markdowndemo/overview#markdown-header-lists)
 
 ## Need To Redo ##
 **momentum**  
