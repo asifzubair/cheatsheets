@@ -27,4 +27,60 @@ Design a data type so that all operations (except construction) should take loga
     - Version 1: ∼1lgN eggs and ∼1lgN tosses.
     - Version 2: ∼lgT eggs and ∼2lgT tosses.
     - Version 3: 2 eggs and ∼2√N tosses.
-    - Version 4: 2 eggs and ≤c√T tosses for some fixed constant c.
+    - Version 4: 2 eggs and ≤ c√T tosses for some fixed constant c.
+
+## Stacks and Queues ##
+
+1. __Queue with two stacks.__ Implement a queue with two stacks so that each queue operations takes a constant amortized number of stack operations.
+
+2. __Stack with max.__ Create a data structure that efficiently supports the stack operations (push and pop) and also a return-the-maximum operation. Assume the elements are reals numbers so that you can compare them.
+
+3. __Java generics.__ Explain why Java prohibits generic array creation.
+
+4. __Detect cycle in a linked list.__ A singly-linked data structure is a data structure made up of nodes where each node has a pointer to the next node (or a pointer to null). Suppose that you have a pointer to the first node of a singly-linked list data structure:
+    - Determine whether a singly-linked data structure contains a cycle. You may use only two pointers into the list (and no other variables). The running time of your algorithm should be linear in the number of nodes in the data structure.
+    - If a singly-linked data structure contains a cycle, determine the first node that participates in the cycle. you may use only a constant number of pointers into the list (and no other variables). The running time of your algorithm should be linear in the number of nodes in the data structure.
+You may not modify the structure of the linked list.
+
+5. __Clone a linked structure with two pointers per node.__ Suppose that you are given a reference to the first node of a linked structure where each node has two pointers: one pointer to the next node in the sequence (as in a standard singly-linked list) and one pointer to an arbitrary node.  
+    ```java
+    private class Node {
+        private String item;
+        private Node next;
+        private Node random;
+    }
+    ```  
+Design a linear-time algorithm to create a copy of the doubly-linked structure. You may modify the original linked structure, but you must end up with two copies of the original.
+
+## Elementary Sorts ##
+
+1. __Intersection of two sets.__ Given two arrays `a[]` and `b[]`, each containing N distinct 2D points in the plane, design a subquadratic algorithm to count the number of points that are contained both in array `a[]` and array `b[]`.
+
+2. __Permutation.__ Given two integer arrays of size N, design a subquadratic algorithm to determine whether one is a permutation of the other. That is, do they contain exactly the same entries but, possibly, in a different order.
+
+3. __Dutch national flag.__ Given an array of N buckets, each containing a red, white, or blue pebble, sort them by color. The allowed operations are:
+    - `swap(i,j)`: swap the pebble in bucket `i` with the pebble in bucket `j`.
+    - `color(i)`: color of pebble in bucket `i`.  
+The performance requirements are as follows:  
+    - At most N calls to `color()`.
+    - At most N calls to `swap()`.
+Constant extra space.
+
+## Mergesort ##
+
+1. __Merging with smaller auxiliary array.__ Suppose that the subarray `a[0]` to `a[N-1]` is sorted and the subarray `a[N]` to `a[2*N-1]` is sorted. How can you merge the two subarrays so that `a[0]` to `a[2*N-1]` is sorted using an auxiliary array of size N (instead of 2N)?
+
+2. __Counting inversions.__ An inversion in an array `a[]` is a pair of entries `a[i]` and `a[j]` such that `i<j` but `a[i]>a[j]`. Given an array, design a linearithmic algorithm to count the number of inversions.
+
+3. __Shuffling a linked list.__ Given a singly-linked list containing N items, rearrange the items uniformly at random. Your algorithm should consume a logarithmic (or constant) amount of extra memory and run in time proportional to `NlogN` in the worst case.
+
+## Quicksort ##
+
+1. __Nuts and bolts.__ A disorganized carpenter has a mixed pile of N nuts and N bolts. The goal is to find the corresponding pairs of nuts and bolts. Each nut fits exactly one bolt and each bolt fits exactly one nut. By fitting a nut and a bolt together, the carpenter can see which one is bigger (but the carpenter cannot compare two nuts or two bolts directly). Design an algorithm for the problem that uses NlogN compares (probabilistically).
+
+2. __Selection in two sorted arrays.__ Given two sorted arrays `a[]` and `b[]`, of sizes N1 and N2, respectively, design an algorithm to find the kth largest key. The order of growth of the worst case running time of your algorithm should be `logN`, where `N=N1+N2`.
+    - Version 1: N1=N2 and k=N/2
+    - Version 2: k=N/2
+    - Version 3: no restrictions
+
+3. __Decimal dominants.__ Given an array with N keys, design an algorithm to find all values that occur more than N/10 times. The expected running time of your algorithm should be linear.
