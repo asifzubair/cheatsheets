@@ -171,3 +171,50 @@ private static void sort(Comparable[] a, int lo, int hi)
 }
 ```
 ## System Sorts ##
+
+use sorting to make problem easy:
+- finding duplicates
+- identify statistical outliers
+- binary search in a database
+non-obvious applicaitons:
+- data compression
+- computer graphics
+- load balancing on a parallel computer
+
+java system sort, `Arrays.sort()`:
+- has different method for each primitive type
+- has a method for data types that implement Comparable
+- has a method that uses a comparator
+- has tuned quicksort for primitive types; tuned mergesort for objects
+    - The Java API for `Arrays.sort()` for reference types requires that it is stable and that it offers guaranteed `NlogN` performance. Neither of these are properties of standard quicksort.
+    - Quicksort uses less memory and is faster in practice on typical inputs (and is typically used by `Arrays.sort()` when sorting primitive types, where stability is not relevant).
+```java
+import java.util.Arrays;
+
+public class StringSort
+{
+    public static void man(String[] args)
+    {
+        String[] a = StdIn.readStrings();
+        Arrays.sort(a);
+        for (int i = 0; i < N; i++)
+            StdOut.println(a[i]);
+    }
+}
+```
+
+Tukey's ninther: Median of 3 samples, each 3 entries.
+- approximates the median of 9.
+- uses at most 12 compares.
+- used for partitioning in large arrays in system sorts
+
+Applications have diverse attributes:
+- stability
+- parallel computaitons
+- deterministic
+- keys all different
+- multiple key types
+- linked list or arrays
+- large or small items
+- is array randomly ordered
+- need guaranteed performance
