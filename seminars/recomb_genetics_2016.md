@@ -76,3 +76,27 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 ## Gene and network analysis of common variants reveals novel associations in multiple complex diseases. ##
 ### Priyanka Nakka ###
 
+- lack of power in GWAS could be due to __genetic heterogencity__
+- basically, how to combine p-values of variants within a gene
+    - naive approach, use the min p-value of variants in a gene
+    - biased by gene length
+- PEGASUS: gene scores are not biased by gene length
+- [HotNet2](http://compbio.cs.brown.edu/projects/hotnet2)
+
+## Simultaneous modeling of disease status and clinical phenotypes to increase power in GWAS ##
+### Michael Bilow ###
+
+- bayesian multivariate technique
+- data is binary; use liability threshold model; back to safe world of normality
+- using __multiple phenotypes__ increase power
+
+## Sensitive detection of chromatin-altering polymorphisms reveals autoimmune disease mechanisms ##
+### Ricardo Del Rosario, Shyam Prabhakar ###
+
+- >90% of GWAS SNPs are in non-coding regions
+- H3K27ac marks active enhancers and promoters
+- Genotype-Independent Signal Correlation and Imbalance (GSCI) Test
+
+## MUSE: a Multi-locus Sampling-based Epistasis Algorithm for Quantitative Genetic Trait Prediction ##
+### Dan He ###
+
