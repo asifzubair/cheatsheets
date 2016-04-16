@@ -48,7 +48,7 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 - `SNP -> GE -> Disease` 
 - various regularized methods like [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction) etc
 - ensemble learning of cis-regulated expression
-- [gEUVADIS](http://www.geuvadis.org/web/geuvadis;jsessionid=6C3CEC4B93669043F5EF2E9F01641051)
+- [gEUVADIS](http://www.geuvadis.org/web/geuvadis;jsessionid=6C3CEC4B93669043F5EF2E9F01641051) dataset analysed
 
 ##  Polygenic adaptation of human complex traits. ##
 ### Jonathan Pritchard ###
