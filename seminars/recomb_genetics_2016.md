@@ -73,3 +73,6 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
     - SDS measures differences in tip length between allelic backgrounds
 - Detect polygenic adaptation in the last 2000 years: trait-SDS
 
+## Gene and network analysis of common variants reveals novel associations in multiple complex diseases. ##
+### Priyanka Nakka ###
+
