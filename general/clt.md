@@ -100,9 +100,21 @@ rpm --dbpath /home/cmb-02/sn1/asifzuba/rpm --relocate /usr=/home/cmb-02/sn1/asif
 
 **wget**
 
+this [SO](http://stackoverflow.com/questions/273743/using-wget-to-recursively-fetch-a-directory-with-arbitrary-files-in-it) gives some clarity on downloading all files from a website.
+
 ```
 wget $URL
 wget -r -np -nH –cut-dirs=3 -R 'index.html*' -A '*_xwalk.csv' http://lehd.ces.census.gov/data/lodes/LODES7
+
+## Pass the --no-parent option, otherwise it will follow the link in the directory index 
+## on the site to the parent directory. So the command would look like this:
+wget -r --no-parent http://example.com/configs/.vim/
+
+## To avoid downloading the index.html files, use this command:
+wget -r --no-parent --reject "index.html*" http://example.com/configs/.vim/
+
+## To avoid downloading the directory structure as well:
+wget -r -nH -nd -np -R index.html* http://example.com/configs/.vim/
 ```
 
 ---
