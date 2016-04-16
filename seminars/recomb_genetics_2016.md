@@ -8,7 +8,7 @@
 - [PheWAS](https://github.com/PheWAS/PheWAS) - package not related
 
 ## locLMM for heritability partitioning ##
-### Lisa Gai ###
+### Lisa Gai, Eleazar Eskin ###
 
 Accounting for linkage disequilibrium when estimating the contribution of a genomic region.
 - heritability partitioning can give insights into:
@@ -17,7 +17,7 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 - LD leads to inflated heritability estimates. traditional methods ignore this
 
 ## Local joint testing improves power and identifies missing heritability in association studies ##
-### Brielin Brown ###
+### Brielin Brown, Lior Pachter ###
 
 - hidden versus missing heritability
 - h^2_gwas vs. h^2_chip vs. h^2_fam
@@ -84,7 +84,7 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 - [HotNet2](http://compbio.cs.brown.edu/projects/hotnet2)
 
 ## Simultaneous modeling of disease status and clinical phenotypes to increase power in GWAS ##
-### Michael Bilow ###
+### Michael Bilow, Eleazar Eskin ###
 
 - bayesian multivariate technique
 - data is binary; use liability threshold model; back to safe world of normality
