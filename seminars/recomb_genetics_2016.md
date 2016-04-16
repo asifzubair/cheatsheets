@@ -1,6 +1,6 @@
 # RECOMB Genetics #
 
-## Buidling catalog linking genes to the medical phenome ##
+## Building catalog linking genes to the medical phenome ##
 ### Nancy Cox ###
 
 - [PrediXcan](https://github.com/hakyim/PrediXcan): new approach to data integration
