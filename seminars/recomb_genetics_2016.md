@@ -100,3 +100,19 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 ## MUSE: a Multi-locus Sampling-based Epistasis Algorithm for Quantitative Genetic Trait Prediction ##
 ### Dan He ###
 
+- Epistasis models
+    - exhaustive search
+    - greed algorithms: consider only strong marginal effects
+- select significant interactions without generating them
+- MUSE
+    - sampling based approach
+    - contraint based sampling
+    - other sampling techniques explored
+        - encoding based sampling
+        - iterative sampling
+
+##  Improving imputation accuracy by inferring causal variants in genetic studies ##
+### Yue Wu, Eleazar Eskin ###
+
+- estimate underlying haplotypes via hidden Markov Models
+- CAUSAL-Imp
