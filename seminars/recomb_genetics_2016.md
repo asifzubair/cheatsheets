@@ -49,4 +49,27 @@ Accounting for linkage disequilibrium when estimating the contribution of a geno
 - various regularized methods like [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction) etc
 - ensemble learning of cis-regulated expression
 - [gEUVADIS](http://www.geuvadis.org/web/geuvadis;jsessionid=6C3CEC4B93669043F5EF2E9F01641051)
-- 
+
+##  Polygenic adaptation of human complex traits. ##
+### Jonathan Pritchard ###
+
+- selective sweeps
+    - the hitch hiking effect of a favourable gene, JM Smith, 1974
+    - sweep model in humans
+    - selection on at least 5 genes inolved in lighter skin pigementation in non-Africans
+- soft sweeps
+    - Przeworski et al., 2005
+    - adaptation to high altitude
+    - Yi et al , Science, 2010; Huerta-Sanchez, Nature, 2014
+- overall, few clear examples of strong sweeps in human genome
+    - Coop et al.
+- adaptive shifts may instead occur through __polygenic adaptation__
+    - Pritchard et al., 2010
+    - polygeneic adaptation can be extremely raid, but leaves very subtle signal
+        - example height; weedon et al 20008
+        - _tall_ alleles systematicallyhigher frequencies in Northern vs. Southern Europe
+        - Turchin ... Hirshhorn 2012, Robinson ... Visscher 2015
+- Singleton Density Score ([SDS](https://cehg.stanford.edu/events/evolgenome-yair-field-stanford-university-pritchard-lab)) for measuring recent changes in allele frequencies
+    - SDS measures differences in tip length between allelic backgrounds
+- Detect polygenic adaptation in the last 2000 years: trait-SDS
+
