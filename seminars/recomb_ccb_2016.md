@@ -4,3 +4,5 @@
 ### Russell Schwartz ###
 
 - [paper](http://arxiv.org/abs/1604.02487)
+- tumours are eolutionary systems
+- simplicial complex substructure - roan et al. 2015
