@@ -10,7 +10,12 @@ Python style guide by [google](https://google.github.io/styleguide/pyguide.html)
 
 Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-convert-python-code-to-be-pep8-compliant) post on testing if your code is [PEP8](https://www.python.org/dev/peps/pep-0008/) compliant. Can use a module called [pep8](https://github.com/PyCQA/pep8) itself to check if code is compliant. [autopep8](https://pypi.python.org/pypi/autopep8) can be used to change PEP8 violations that don't change meaning of the code. There is **aggressive** mode as well, but use at own risk. 
 
+__Python names and values__  
+- this [talk](https://www.youtube.com/watch?v=_AEJHKGk9ns)
+- this [page]()
+
 ---
+
 * Keywords and Functions
 
   * `kwargs`
