@@ -12,7 +12,7 @@ Also, really helpful [SO](http://stackoverflow.com/questions/14328406/tool-to-co
 
 __Python names and values__  
 - this [talk](https://www.youtube.com/watch?v=_AEJHKGk9ns)
-- this [page]()
+- this [page](http://robertheaton.com/2014/02/09/pythons-pass-by-object-reference-as-explained-by-philip-k-dick)
 
 ---
 
