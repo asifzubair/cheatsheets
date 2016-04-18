@@ -53,16 +53,16 @@ terminology may help clarify the syntax of the call.
 
 The C++ string header file must be included when using the C++ string class.
 Note the absence of a .h suffix in modern C++ include statements.
-
+```cpp
 #include <string>
-
+```
 C++ declarations may use either of the following style of initializers.
 Knowing this may make the plethora of string class constructors seem a
 bit more regular.
-
+```cpp
     int i(10);
     int i = 10;
-
+```
 There is an additional difference between the string class and C-style
 strings:  The string class may contain the NUL character ('\0') within
 a string, and C-style strings may not.  When a NUL-containing string is
@@ -82,35 +82,35 @@ example code uses both C++ and C output.
 
 To include the C stdio facility, the following syntax is used in modern
 C++ compilers.  Use <stdio.h> instead for older compilers.
-
+```
 #include <cstdio>
-
+```
 To include the C++ stdio facility:
-
+```
 #include <iostream>
-
+```
 C++ standard output uses cout instead of printf.  The symbol << can be
 thought of as directing information to be printed into cout.  It is 
 customary to output endl instead of "\n" to generate a newline.  To
 output integer i, the following would work:
-
+```
     cout << i << endl;
-
+```
 To output integers i and j, with descriptive text:
-
+```
     cout << "i = " << i << "j = " << j << endl;
-
+```
 To output string s, with additional text:
-
+```
     cout << "s = " << s << endl;
-
+```
 Note that no format specifiers need to be given, as long as the default
 formatting is considered acceptable.  Type detection is automatic.
 
 
 First Example:
 --------------
-
+```cpp
 //
 // File str-ex4.cc
 //
@@ -363,7 +363,8 @@ int main ()
 
     return(0);
 }
-
+```
+```
 Example output:
 
 stdio:     sstr = "Some string"
@@ -427,7 +428,7 @@ y = ring me some time
 ring metal bells some time
 rr = C++ Sucks!
 C++ Rocks!
-
+```
 
 Second Example:  A Quick Strlib Port:
 -------------------------------------
@@ -436,7 +437,7 @@ A few of the comments have slight changes in meaning due to the string class
 port.  The original comments have not been altered.  The section 5 code has
 not been ported, as it is not really relevant to the string class.
 
-
+```cpp
 /*
  * File:  strlib_hacked.cc
  * Based on strlib.h written by Eric Roberts
@@ -723,14 +724,14 @@ string RealToString(double d);
 double StringToReal(string s);
 
 #endif
-
+```
 
 Building the Example Code:
 --------------------------
 
 The example and test code was built and run on a leland machine, using
 g++ 2.95.3.
-
+```shell
 make str-ex4
 g++   -g -Wall  str-ex4.cc   -o str-ex4
 make str-ex3
@@ -742,7 +743,7 @@ g++ -g -Wall str-ex3.o strlib_hacked.o -o str-ex3
 g++ -v
 Reading specs from /usr/pubsw/lib/gcc-lib/sparc-sun-solaris2.8/2.95.3/specs
 gcc version 2.95.3 20010315 (release)
-
+```
 
 References:
 -----------
