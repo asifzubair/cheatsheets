@@ -84,3 +84,50 @@ Constant extra space.
     - Version 3: no restrictions
 
 3. __Decimal dominants.__ Given an array with N keys, design an algorithm to find all values that occur more than N/10 times. The expected running time of your algorithm should be linear.
+
+## Priority Queues ##
+
+1. __Dynamic median.__ Design a data type that supports insert in logarithmic time, find-the-median in constant time, and remove-the-median in logarithmic time.
+
+2. __Randomized priority queue.__ Describe how to add the methods `sample()` and `delRandom()` to our binary heap implementation. The two methods return a key that is chosen uniformly at random among the remaining keys, with the latter method also removing that key. The `sample()` method should take constant time; the `delRandom()` method should take logarithmic time. Do not worry about resizing the underlying array.
+
+3. __Taxicab numbers.__ A taxicab number is an integer that can be expressed as the sum of two cubes of integers in two different ways: `a^3 + b^3 = c^3 + d^3`. For example, `1729 = 9^3 + 10^3 = 1^3 + 12^3`. Design an algorithm to find all taxicab numbers with a, b, c, and d less than N.
+    - Version 1: Use time proportional to `N^2logN` and space proportional to `N^2`.
+    - Version 2: Use time proportional to `N^2logN` and space proportional to `N`.
+
+## Elementary Symbol Tables ##
+
+1. __Java autoboxing and equals().__ Consider two double values `a` and `b` and their corresponding `Double` values `x` and `y`.
+    - Find values such that `(a == b)` is `true` but `x.equals(y)` is `false`.
+    - Find values such that `(a == b)` is `false` but `x.equals(y)` is `true`.
+
+2. __Check if a binary tree is a BST.__ Given a binary tree where each `Node` contains a key, determine whether it is a binary search tree. Use extra space proportional to the height of the tree.
+
+3. __Inorder traversal with constant extra space.__ Design an algorithm to perform an inorder traversal of a binary search tree using only a constant amount of extra space.
+
+4. __Web tracking.__ Suppose that you are tracking `N` web sites and `M` users and you want to support the following API:
+    - User visits a website.
+    - How many times has a given user visited a given site?  
+What data structure or data structures would you use?
+
+## Balanced Search Trees ##
+
+1. __Red-black BST with no extra memory.__ Describe how to save the memory for storing the color information when implementing a red-black BST.
+
+2. __Document search.__ Design an algorithm that takes a sequence of `N` document words and a sequence of `M` query words and find the shortest interval in which the `M` query words appear in the document in the order given. The length of an interval is the number of words in that interval.
+
+3. __Generalized queue.__ Design a generalized queue data type that supports all of the following operations in logarithmic time (or better) in the worst case.
+    - Create an empty data structure.
+    - Append an item to the end of the queue.
+    - Remove an item from the front of the queue.
+    - Return the `ith` item in the queue.
+    - Remove the `ith` item from the queue.
+
+## Hash Tables ##
+
+1. __4-SUM.__ Given an array `a[]` of `N` integers, the 4-SUM problem is to determine if there exist distinct indices `i`, `j`, `k`, and `l` such that `a[i] + a[j] = a[k] + a[l]`. Design an algorithm for the 4-SUM problem that takes time proportional to `N^2` (under suitable technical assumptions).
+
+2. __Hashing with wrong hashCode() or equals().__ Suppose that you implement a data type `OlympicAthlete` for use in a `java.util.HashMap`.
+    - Describe what happens if you override `hashCode()` but not `equals()`.
+    - Describe what happens if you override `equals()` but not `hashCode()`.
+    - Describe what happens if you override `hashCode()` but implement `public boolean equals(OlympicAthlete that)` instead of `public boolean equals(Object that)`.
