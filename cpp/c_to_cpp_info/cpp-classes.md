@@ -16,21 +16,21 @@ Simple Classes:
 
 In their simplest form, C++ classes are essentially the same as structures.
 For example,
-
+```
 class NumPair {
     int num1;
     int num2;
 };
-
+```
 is almost the same as:
-
+```
 struct NumPair {
     int num1;
     int num2;
 };
-
+```
 So, it seems like the following small C++ program should work, right?
-
+```
 class Square {
     int num;
     int squareOfNum;
@@ -43,30 +43,30 @@ int main ()
     sq.num = 2;
     return(0);
 }
-
+```
 Well, almost.  The compiler generates an error, complaining that
-Square::num is inaccessible.  Why?  It turns out that C++ classes have the
+`Square::num` is inaccessible.  Why?  It turns out that C++ classes have the
 notion of access controls, or private and public regions, and the data is
 in a private region by default.  If the definition of the class is changed to:
-
+```
 class Square {
   public:
     int num;
     int squareOfNum;
 };
-
+```
 Then the program compiles and works as expected.  By default, all class data
 is private, so the original class definition is equivalent to:
-
+```
 class Square {
   private:
     int num;
     int squareOfNum;
 };
-
+```
 Now, using the definition of class Square with public data, we can store a
 number and its square in an instance of the class:
-
+```
 class Square {
   public:
     int num;
@@ -81,7 +81,7 @@ int main ()
     sq.squareOfNum = 5;
     return(0);
 }
-
+```
 Umm... Wait a minute!  Our intrepid programmer seems a bit mathematically
 challenged.  This simple class doesn't care what data is stored into it any
 more than a structure does.  The coder can store data which violates the
@@ -134,7 +134,7 @@ the statement:
 makes it clear that enterNumAndSquare() is a member of Square, the class that
 sq instantiates.  And, it should be clear that enterNumAndSquare() is being
 invoked on this particuar instance of Square only.
-
+```cpp
 #include <cstdio>
 
 class Square {
@@ -179,13 +179,13 @@ int main ()
 
     return(0);
 }
-
+```
 When run, the program generates the following output:
-
+```
 Square:  num = 4, squareOfNum = -4261764
 main:  num = 5, squareOfNum = 25
 Square:  num = 5, squareOfNum = 25
-
+```
 Note that the first line prints garbage from uninitialized member variables
 
 
@@ -198,16 +198,16 @@ are not considered.
 
 So, the following prototypes (and the corresponding functions) could all
 coexist within the same C++ program:
-
+```cpp
     int foo(int abc);
     int foo(int abc, int xyz);
     int foo(double abc);
-
+```
 The following would generate a conflict with the first prototype, above,
 since both have the parameter footprint "<disregarded return type> foo(int)":
-
+```cpp
     double foo(int baz);
-
+```
 The C++ compiler generates unique symbol names for each function by
 name mangling, which encodes information about the parameter types into
 the resulting name.  The linker can then select the correct overloaded
@@ -234,7 +234,7 @@ to write your own constructor if you want to do any useful initialization.
 A constructor always has the same name as the class of which it is a member.
 So, if we insert the following function in the public section of the Square
 class, it will replace the default constructor:
-
+```cpp
     Square ()
     {
         printf("Square:  Constructor called\n");
@@ -242,7 +242,7 @@ class, it will replace the default constructor:
         num = 0;
         squareOfNum = 0;
     }
-
+```
 We will discover that our constructor is called before any of the member
 functions which generate output.  We can now rely on the fact that the member
 variables of any Square object are initialized to 0 before use.
@@ -251,7 +251,7 @@ We can manually invoke a different constructor instead, if we want to.  Here
 is a constructor which incorporates the functionality of enterNumAndSquare(),
 initializing the values within an instantiated Square class based on user
 supplied data:
-
+```cpp
     Square (int n)
     {
         printf("Square:  Second constructor called\n");
@@ -259,22 +259,22 @@ supplied data:
         num = n;
         squareOfNum = n * n;
     }
-
+```
 If we add the constructor to the public region of Square, and the following
 test code to main():
-
+```cpp
     Square *square = new Square(3);
     square->printValues();
-
+```
 We will get the following output:
-
+```
 Square:  Constructor called
 Square:  num = 0, squareOfNum = 0
 main:  num = 5, squareOfNum = 25
 Square:  num = 5, squareOfNum = 25
 Square:  Second constructor called
 Square:  num = 3, squareOfNum = 9
-
+```
 The added test code invokes new to dynamically allocate a new Square object in
 the heap, and then calls our newly-written constructor to initialize it.  square
 is assigned a pointer to that object.
