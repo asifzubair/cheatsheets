@@ -12,7 +12,7 @@ like most things in C and C++, has a meaning far from that of the word
 itself.  Suppose you've graduated, and sold out to work for the krispy
 kreme corporation.  You've got a donut class where you've implemented
 all the functionality common to all donuts.  Your donut class looks like...
-
+```cpp
 <<donut.h>>
 
 #include <string>
@@ -29,43 +29,43 @@ class Donut {
          string description;
 
 };
-
+```
 (Don't forget that last semicolon!) And the eatDonut function, in
 donut.cpp, looks like
-
+```cpp
 void Donut::eatDonut(Person *p) {
      p->metabolize(calories);
      cout << "mmm...  donut" << endl;
 }
-
+```
 Now, since you have to implement all donuts,  maybe you want to support
 those hot glazed donuts they give you for free,  and you want to change
 the eatDonut message printed.  So you'll want to create a subclass of
 Donut to leverage its functionality, and you'll write a class like
-
+```cpp
 class HotGlazedDonut: public Donut {
      public:
          HotGlazedDonut();
          ~HotGlazedDonut();
          void eatDonut(Person *p);
 };
-
+```
 And you'll implement it as:
-
+```cpp
 void HotGlazedDonut::eatDonut(Person *p) {
      p->metabolize(calories);
      cout << "hot gooey donuts are the best" << endl;
 }
-
+```
 So here comes the interesting part.  Suppose you have the following code
 somewhere else in your program:
-
+```cpp
 Donut *donuts[50];
 Person *p = new Person();
 
 readDonutsFromFile(donuts);
 for (i = 0; i < 50; i++) donuts[i]->eatDonut(p);
-
+```
 The trick is that some of the donuts are just regular Donuts, and some
 are HotGlazedDonuts.  If you're a java baby, you'll expect that either
 way, the right thing happens -- if it's a Donut, it prints "mmm..
