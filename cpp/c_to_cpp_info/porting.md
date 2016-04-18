@@ -22,16 +22,16 @@ include directory menu.
 
 The include files all needed to be hacked.  Most had a
 section near the top that looked like:
-
+```cpp
 #ifdef __cplusplus
 #pragma "whine about being compiled in C++ mode"
 #endif
-
+```
 This should be #ifdefed out or removed.
 
 All the prototypes in the header need to be surrounded with
 an 'extern "C"' block.  The following is what I did:
-
+```cpp
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -41,7 +41,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
+```
 extern "C" tells the compiler not to "mangle" the names of
 the library functions.  Name mangling makes sense for C++
 files, but confuses the linker when compiled C files (such
@@ -74,7 +74,7 @@ above all of the 106 library includes.  Then, "using namespace std;"
 (no quotes) needs to be placed after the string include, and before
 the 106 library includes.  So, the #include structure looked something
 like this:
-
+```cpp
 #include <cstdio>
 #include <iostream>
 #include <string>
@@ -83,7 +83,7 @@ using namespace std;
 
 #include "genlib.h"
 . . .
-
+```
 This is because C++ software can be divided up into separate namespaces.
 The C++ string library lives in namespace std, but your program lives
 in some other namespace.  The "using" statement allows the std namespace
@@ -102,7 +102,7 @@ One way to cause the function to modify the original string instead
 of a copy is to pass the string as a C++ reference.  This is unique
 to C++, and is different than C "pass by reference."  Here is an
 example:
-
+```cpp
 // string str is copied; the original is not modified.
 void MungeArray(string str)
 {
@@ -114,7 +114,7 @@ void MungeArray(string &str)
 {
     str[0] = "M";
 }
-
+```
 Note that using C++ references may not be the recommended thing
 to do in in our dialect of C++.  Instead, we may be better off
 restructuring the code so that functions are not expected to
