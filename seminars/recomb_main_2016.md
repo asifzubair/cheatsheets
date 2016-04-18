@@ -16,4 +16,10 @@
 - use multitask learning
 - multicompletion problem for ppi
     - make some biological assumptions
-- 
+        - shared and specific components
+- non-convex problem, but can use __alternating minimizaton__ procedure
+- [software](http://www.cs.cmu.edu/~mkshirsa/bsl_mtl)
+
+## Enabling Privacy-Preserving GWAS in Heterogenous Human Populations ##
+### Sean Simmons ###
+
