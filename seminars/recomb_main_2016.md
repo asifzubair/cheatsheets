@@ -27,8 +27,12 @@
 - jhonson and shmatikov
 - [software](https://github.com/seanken/PrivSTRAT)
 
-## 
-###
+## Efficient Privacy-Preserving Read Mapping Using Locality Sensitive Hashing and Secure Kmer Voting ##
+### Victoria Popic and Serafim Batzoglou ###
 
 - seed-and-extend on hybrid clouds (chen et al. 2012)
-- 
+- tool: Balaur
+
+## Entropy-Scaling Search of Massive Biological Data ##
+### Noah Daniels, Bonnie Berger ###
+
