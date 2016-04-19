@@ -23,3 +23,12 @@
 ## Enabling Privacy-Preserving GWAS in Heterogenous Human Populations ##
 ### Sean Simmons ###
 
+- eigenstrat
+- jhonson and shmatikov
+- [software](https://github.com/seanken/PrivSTRAT)
+
+## 
+###
+
+- seed-and-extend on hybrid clouds (chen et al. 2012)
+- 
