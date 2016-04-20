@@ -33,6 +33,9 @@
 - seed-and-extend on hybrid clouds (chen et al. 2012)
 - tool: Balaur
 
-## Entropy-Scaling Search of Massive Biological Data ##
-### Noah Daniels, Bonnie Berger ###
+## Synthetic long-read sequencing reveals intraspecies diversity in the human microbiome ##
+### Volodymyr Kuleshov, Serafim Batzoglou ###
 
+- synthetic long reads
+- nanoscope
+- 
