@@ -53,3 +53,4 @@
     - Forward-backward Gibbs sampling
 - Compressed Forward-Backward Sampling
 - this approach uses Harr-Wavelet compression technique
+- [preprint](http://biorxiv.org/content/early/2016/04/13/023705)
