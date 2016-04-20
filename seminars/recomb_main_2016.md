@@ -38,4 +38,18 @@
 
 - synthetic long reads
 - nanoscope
-- 
+
+## Fast Bayesian Inference of Copy Number Variants using Hidden Markov Models with Wavelet Compression ##
+### John Wiedenhoeft ###
+
+- CNV detection problem
+- HMM approach
+    - latent CNV state varaible
+- frequentist approach
+    - MLE of parameters using Baum-Welch
+    - likelihood is not convex
+- Bayesian inference of state sequence
+    - no feasible closed form of the integral
+    - Forward-backward Gibbs sampling
+- Compressed Forward-Backward Sampling
+- this approach uses Harr-Wavelet compression technique
