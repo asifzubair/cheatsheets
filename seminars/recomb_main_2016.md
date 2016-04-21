@@ -62,4 +62,3 @@
 - [the error myth]()
 - [HGAP2](https://github.com/PacificBiosciences/Bioinformatics-Training/wiki/HGAP-2.0)
 - for third-generation-sequencing, large kmers may become error prone
-- 
