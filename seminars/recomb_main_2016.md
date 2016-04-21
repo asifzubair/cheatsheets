@@ -54,3 +54,12 @@
 - Compressed Forward-Backward Sampling
 - this approach uses Harr-Wavelet compression technique
 - [preprint](http://biorxiv.org/content/early/2016/04/13/023705)
+
+##  Assembly of Long Error-Prone Reads Using de Bruijn Graphs ##
+###  Jeffrey Yuan, Pavel Pevzner ###
+
+- [preprint](http://biorxiv.org/content/biorxiv/early/2016/04/13/048413.full.pdf)
+- [the error myth]()
+- [HGAP2](https://github.com/PacificBiosciences/Bioinformatics-Training/wiki/HGAP-2.0)
+- for third-generation-sequencing, large kmers may become error prone
+- 
