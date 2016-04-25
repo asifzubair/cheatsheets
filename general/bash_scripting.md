@@ -188,6 +188,8 @@ DoneWithTheUpdate
 
 **interacting with the user**
 
+[handy tutorial](http://wiki.bash-hackers.org/howto/getopts_tutorial)
+
 > working with arguments
 
 arguments are assigned the way they are passed - `$1`, `$2`, etc.  
