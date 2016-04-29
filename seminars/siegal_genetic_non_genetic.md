@@ -7,3 +7,4 @@
     - macroenvironmental variation / stress
     - mutations
 - hsp90, chaperone, increases microenvironmental robustness
+    - impairement reveals cryptic genetic variation
