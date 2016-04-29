@@ -2,4 +2,8 @@
 ### Mark Siegal ###
 
 - exeriments in canalizing selection, waddington ch
-- 
+- potentially disturbing effects
+    - microenvironmental / stochastic variation
+    - macroenvironmental variation / stress
+    - mutations
+- hsp90, chaperone, increases microenvironmental robustness
