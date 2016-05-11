@@ -1,2 +1,0 @@
-
-SIR model
