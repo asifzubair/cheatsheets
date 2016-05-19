@@ -43,13 +43,13 @@ Simple Template Function:
 C++ templates allow a body of code to be defined without specifying type
 information until the template is instantiated.  Here is an example of a
 simple template function:
-
+```cpp
 template <class Type>
 Type Multiply (Type op1, Type op2)
 {
     return op1 * op2;
 }
-
+```
 The keywords "template" and "class" are required, as are the angle brackets.
 The template parameter "Type" is a made up name, just like the name of any
 parameter.
@@ -74,7 +74,7 @@ Simple Template Function Code Example:
 
 Here is a C++ program that uses the template Multiply function.  First, it
 instantiates Multiply with integer parameters, and then with doubles.
-
+```cpp
 //
 // File:  temp-ex1.cpp
 //
@@ -99,14 +99,14 @@ int main ()
 
     return(0);
 }
-
+```cpp
 Compiling and linking:
-
+```shell
 g++ -g   -Wall -c -o temp-ex1.o temp-ex1.cpp
 g++ -g -Wall temp-ex1.o -o temp-ex1
+```
 
-
-Let's jump into gdb and see what really happens.
+Let's jump into `gdb` and see what really happens.
 
 The first time we step into Multiply, we see "Multiply<int>" called with
 integer parameters.  The second time, we see "Multiply<double>" with double
@@ -125,7 +125,7 @@ surrounding the current line to be executed.  "c" continues execution from the
 current line.  While single stepping,  a numbered line prints on the screen
 after each step; this indicates the line which will be executed next.
 
-
+```shell
 elaine22:~/cpp_info/test> gdb temp-ex1
 GNU gdb 5.0 ...
 (gdb) break main
@@ -163,7 +163,7 @@ ival1 = 15, dval1 = 16.275
 
 Program exited normally.
 (gdb) 
-
+```
 
 So, you may ask yourself, "Can I instantiate Multiply with a parameter more
 complicated than an int or a double?"  The answer is yes; we will revisit this
@@ -183,7 +183,7 @@ when the template is instantiated.
 Here is a trivial template function, which can contain four values of type
 Object.  As with Type in the Multiply example, Object is a made up name for
 the template type parameter.
-
+```cpp
 //
 // File:  FourArr.h
 //
@@ -209,7 +209,7 @@ class FourArr {
              << arr[2] << ", " << arr[3] << endl;
     }
 };
-
+```
 
 Note that the methods are in the .h file, along with the rest of the template
 definition.  Since the methods are not compiled until after the template class
@@ -225,9 +225,9 @@ This example instantiates the FourArr class several times with different types.
 The scariest part of this example may be the declarations that instantiate the
 FourArr class.  First, we'll look at the declaration of arr0, which isn't too
 bad:
-
+```cpp
     FourArr<float> arr0(1.25, 2.35, 3.45, 4.55);
-
+```
 arr0 is the name of the object; its type is FourArr<float>, which means its
 an instantiation of class FourArr with type float.  The numbers in parentheses
 are the initialization values required by the FourArr constructor.  (Note that 
@@ -235,9 +235,9 @@ object arr0 will exist on the stack; we will not be instantiating objects on
 the stack in CS106.)
 
 Second, let's look at the declaration of arr1:
-
+```cpp
     FourArr<float> *arr1 = new (FourArr<float>)(5.2, 6.3, 7.4, 8.5);
-
+```
 arr1 is a pointer to an object of type FourArr<float>.  It will be instantiated
 on the heap by the keyword "new" (this is the way we will teach students to
 instantiate objects in CS106).  "(FourArr<float>)" is a cast necessitated by
@@ -248,7 +248,7 @@ hat, but the declaration for arr3 is a bit different.  We are instantiating
 class FourArr with a type of string, another class.  The output shows that
 this works just as we might expect.
 
-
+```cpp
 //
 // File:  temp-ex2.cpp
 //
@@ -286,14 +286,14 @@ Values = 1.25, 2.35, 3.45, 4.55
 Values = 5.2, 6.3, 7.4, 8.5
 Values = 99, 55, 33, 42
 Values = CS106, in, C++, Rocks!
-
+```
 
 Second Template Class Code Example:
 -----------------------------------
 
 Why don't we push the envelope a bit and combine the template FourArr class
 with the template Multiply function?  Geek fun at its finest!
-
+```cpp
 //
 // File:  temp-ex3.cpp
 //
@@ -321,9 +321,9 @@ int main ()
 
     return(0);
 }
-
+```
 Oh no, when we try to compile temp-ex3.cpp, we get this horrible error message:
-
+```shell
 g++ -g   -Wall -c -o temp-ex3.o temp-ex3.cpp
 temp-ex3.cpp: In function `class FourArr<float> Multiply<FourArr<float>
     >(FourArr<float>, FourArr<float>)':
@@ -332,7 +332,7 @@ temp-ex3.cpp:11: no match for `FourArr<float> & * FourArr<float> &'
 temp-ex3.cpp:11: warning: control reaches end of non-void function
     `Multiply<FourArr<float> >(FourArr<float>, FourArr<float>)'
 make: *** [temp-ex3.o] Error 1
-
+```
 What does it mean?  The first line 11 error message is trying to tell us that
 the multiply operator (*) is not defined for class FourArr.  Uh oh, there's
 a digression coming on...
@@ -350,13 +350,13 @@ way to know unless we tell it.
 We can decide that the result of multiplying two FourArr objects together
 should be to multiply the first elements, the second elements, ...  Adding the
 following method to FourArr.h will do just that:
-
+```cpp
     FourArr operator* (const FourArr& rightMult) const
     {
         return(FourArr(arr[0] * rightMult.arr[0], arr[1] * rightMult.arr[1],
                        arr[2] * rightMult.arr[2], arr[3] * rightMult.arr[3]));
     }
-
+```
 So what's with the syntax of the first line?  The short answer is that a
 reference book says that operator syntax must look like this, and we can
 just copy the book.
@@ -373,7 +373,7 @@ are being returned in another FourArr object.
 
 Corrected Template Class Code Example:
 --------------------------------------
-
+```cpp
 //
 // File:  FourArr.h
 //
@@ -435,15 +435,15 @@ int main ()
 
     return(0);
 }
-
+```
 Program output:
-
+```shell
 Values = 2.2, 3.3, 4.4, 5.5
 Values = 2.2, 3.3, 4.4, 5.5
 Values = 6.4, 7.5, 8.6, 9.7
 Values = 14.08, 24.75, 37.84, 53.35
 Values = 14.08, 24.75, 37.84, 53.35
-
+```
 
 From a template point of view, the important thing is that our Multiply
 template function can be happily instantiated with class FourArr, as
@@ -468,9 +468,9 @@ the template class is instantiated, putting methods in a .cpp file in the
 normal way doesn't work.
 
 One common workaround is to place the methods into a .cpp file, and then
-#include the .cpp into the header file.
+`#include` the `.cpp` into the header file.
 
-Another strategy is to use the extern "extern" keyword, which is not presently
+Another strategy is to use the `extern` "extern" keyword, which is not presently
 supported by all compilers.  gcc 2.95.3 does not support extern.
 
 
@@ -483,9 +483,9 @@ is instantiated with a new type, growth in object size can be an issue.
 Template classes and functions can be instantiated with an explicit type, if
 needed.  This may be necessary if the compiler cannot determine if you wish
 to use int or short variants, for instance.  The following:
-
+```cpp
     dval1 = Multiply<int>(3.1, 5.25);
-
+```
 forces integer object code to be used, so the answer produced is 15.
 
 
