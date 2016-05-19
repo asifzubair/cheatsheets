@@ -222,7 +222,7 @@ instead of macros.
 Note that #define works in C++ in exactly the same way as in C.  We may
 well decide to use #defines in our 106 C++ dialect.
 
-#defines are preprocessor directives, which instruct the preprocessor
+`#defines` are preprocessor directives, which instruct the preprocessor
 to perform pattern substitution before compilation.  C++ Const variables
 follow the same scoping rules as other variables.
 
