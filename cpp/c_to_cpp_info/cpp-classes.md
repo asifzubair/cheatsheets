@@ -16,21 +16,21 @@ Simple Classes:
 
 In their simplest form, C++ classes are essentially the same as structures.
 For example,
-```
+```cpp
 class NumPair {
     int num1;
     int num2;
 };
 ```
 is almost the same as:
-```
+```c
 struct NumPair {
     int num1;
     int num2;
 };
 ```
 So, it seems like the following small C++ program should work, right?
-```
+```cpp
 class Square {
     int num;
     int squareOfNum;
@@ -48,7 +48,7 @@ Well, almost.  The compiler generates an error, complaining that
 `Square::num` is inaccessible.  Why?  It turns out that C++ classes have the
 notion of access controls, or private and public regions, and the data is
 in a private region by default.  If the definition of the class is changed to:
-```
+```cpp
 class Square {
   public:
     int num;
@@ -57,7 +57,7 @@ class Square {
 ```
 Then the program compiles and works as expected.  By default, all class data
 is private, so the original class definition is equivalent to:
-```
+```cpp
 class Square {
   private:
     int num;
@@ -66,7 +66,7 @@ class Square {
 ```
 Now, using the definition of class Square with public data, we can store a
 number and its square in an instance of the class:
-```
+```cpp
 class Square {
   public:
     int num;
@@ -128,9 +128,9 @@ will always be set in a consistent manner.
 Note that the syntax for invoking member functions involves a ".", very much
 like accessing an element of a structure declared on the stack.  In main(),
 the statement:
-
+```cpp
     sq.enterNumAndSquare(2);
-
+```
 makes it clear that enterNumAndSquare() is a member of Square, the class that
 sq instantiates.  And, it should be clear that enterNumAndSquare() is being
 invoked on this particuar instance of Square only.
@@ -181,7 +181,7 @@ int main ()
 }
 ```
 When run, the program generates the following output:
-```
+```shell
 Square:  num = 4, squareOfNum = -4261764
 main:  num = 5, squareOfNum = 25
 Square:  num = 5, squareOfNum = 25
@@ -267,7 +267,7 @@ test code to main():
     square->printValues();
 ```
 We will get the following output:
-```
+```shell
 Square:  Constructor called
 Square:  num = 0, squareOfNum = 0
 main:  num = 5, squareOfNum = 25
@@ -302,12 +302,12 @@ A destructor always has the same name as the class of which it is a member,
 prepended by a ~ (tilde).  For instance, if we add the following function
 to the public section of the Square class, it will replace the default
 destructor:
-
+```cpp
     ~Square ()
     {
         printf("Square:  Destructor called\n");
     }
-
+```
 This destructor does nothing useful; we have no dynamic memory to deallocate,
 so there's really nothing that needs to be done.
 
@@ -319,7 +319,7 @@ object to cause the destructor to be called.
 
 Updated Square Example:
 -----------------------
-
+```cpp
 #include <cstdio>
 
 class Square {
@@ -384,9 +384,9 @@ int main ()
 
     return(0);
 }
-
+```
 Running this program generates the following output:
-
+```shell
 Square:  Constructor called
 Square:  num = 0, squareOfNum = 0
 main:  num = 5, squareOfNum = 25
@@ -395,7 +395,7 @@ Square:  Second constructor called
 Square:  num = 3, squareOfNum = 9
 Square:  Destructor called:  num = 3, square = 9
 Square:  Destructor called:  num = 5, square = 25
-
+```
 The destructor is never called on square unless we force it to be called
 with the delete operator.  delete invokes the destructor (which in this
 case is instructive, but pointless) and then frees the dynamic memory
@@ -413,25 +413,25 @@ function is called.
 
 For example, consider the prototype for the following function, which has two
 default arguments:
-
+```cpp
     int foo(int x, int y = 4, int z = 10);
-
+```
 Default arguments are specified by following a variable name with "= <value>"
 in the function or member function prototype.  The value represented by
 "<value>" is assigned to the parameter if an argument is not provided in some
 call to that function.
 
 Any of the following calls are permissible:
-
+```cpp
     baz = foo(3, 14, 15);
     baz = foo(3, 11);      // Same as foo(3, 11, 10);
     baz = foo(2);          // Same as foo(2, 4, 10);
-
+```
 These calls are not permissible:
-
+```cpp
     baz = foo(6, , 42);    // Illegal, can only omit rightmost argument(s)
     baz = foo();           // Illegal, first parameter has no default
-
+```
 
 Yet Another Square Example:
 ---------------------------
@@ -451,7 +451,7 @@ default constructors.
 For the sake of variety, num is initialized to -1 by the constructor by
 default.  Note that passing an explicit value (such as 3) to the constructor
 when square is created overrides the default.
-
+```cpp
 #include <cstdio>
 
 class Square {
@@ -510,9 +510,9 @@ int main ()
 
     return(0);
 }
-
+```
 The following output is generated when this program runs:
-
+```shell
 Square:  Second constructor called
 Square:  num = -1, squareOfNum = 1
 main:  num = 5, squareOfNum = 25
@@ -521,7 +521,7 @@ Square:  Second constructor called
 Square:  num = 3, squareOfNum = 9
 Square:  Destructor called:  num = 3, square = 9
 Square:  Destructor called:  num = 5, square = 25
-
+```
 
 Separating Class Declaration From Class Definitions:
 ----------------------------------------------------
@@ -557,7 +557,7 @@ the class will result in an error such as:
 The Power class computes a range of powers of a base value, starting with
 the 0th power.  As the number of powers to compute is not known until the
 constructor is called, a dynamic array is allocated to hold the powers.
-
+```cpp
 //
 // File:  Power.h
 //
@@ -670,9 +670,9 @@ int main ()
 
     return(0);
 }
-
+```
 The following output is generated when the program is run:
-
+```shell
 Power:  Constructor called:  baseNum = 2, numPowers = 10
 Power:  baseNum = 2, numPowers = 10
     powers:  1  2  4  8  16  32  64  128  256  512
@@ -683,7 +683,7 @@ Power:  baseNum = 3, numPowers = 12
 main:  base = 3, num powers = 12; 3 ^ 6 = 729
 Power:  Destructor called:  baseNum = 3, numPowers = 12
 Power:  Destructor called:  baseNum = 2, numPowers = 10
-
+```
 
 (Maybe you thought with a name like Power(), that this class would help end
 the California energy crisis or something; perhaps by using some miraculous
@@ -697,7 +697,7 @@ Building and Testing Programs:
 
 These programs were compiled and tested on the Leland systems, using the g++
 compiler.  Here is output from the hacked makefile:
-
+```shell
 make cl-ex4
 g++ -Wall cl-ex4.cc   -o cl-ex4
 
@@ -705,7 +705,7 @@ make Power
 g++ -g   -Wall -c -o Power_test.o Power_test.cc
 g++ -g   -Wall -c -o Power.o Power.cc
 g++ -o Power Power_test.o Power.o
-
+```
 The first example is typical of all of the smaller test programs.  The
 multi-file Power example is shown after.
 
