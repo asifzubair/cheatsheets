@@ -99,7 +99,7 @@ int main ()
 
     return(0);
 }
-```cpp
+```
 Compiling and linking:
 ```shell
 g++ -g   -Wall -c -o temp-ex1.o temp-ex1.cpp
