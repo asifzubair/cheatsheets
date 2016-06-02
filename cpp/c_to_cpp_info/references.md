@@ -46,11 +46,11 @@ the actual variable.  This will be referred to as "C style pass-by-reference."
 Examples of pass-by-reference in other languages include subroutine dummy
 arguments in Fortran and any Pascal formal parameter prepended with "var".
 
-The following program demonstrates pass-by-value (function ValTest()), C style
-pass-by-reference (function PtrTest()) and C++ style pass-by-reference
-(function RefTest()).
+The following program demonstrates pass-by-value (`function ValTest()`), C style
+pass-by-reference (`function PtrTest()`) and C++ style pass-by-reference
+(`function RefTest()`).
 
-
+```cpp
 //
 // File:  ref-ex1.cpp
 //
@@ -93,37 +93,38 @@ int main ()
 
     return(0);
 }
-
+```
+```shell
 Program Output:
 
 val1 = 0, val2 = 0
 val3 = 55, val4 = 66
 val5 = 77, val6 = 88
-
+```
 
 All experienced C programmers know that when arguments are passed by value,
-they are copied when the function is called.  function ValTest() modifies the
+they are copied when the function is called.  function `ValTest()` modifies the
 copies of its arguments, but not the originals.  Likewise, they know that when
 a pointer to a variable is passed as an argument, the called function can
 modify the variable by dereferencing that pointer.  This is illustrated by
-function PtrTest().
+function `PtrTest()`.
 
 C++ style pass-by-reference involves syntax not seen in the C language.  The
-use of the ampersand (&) for declaring a C++ reference is unfortunate, as &
+use of the ampersand (`&`) for declaring a C++ reference is unfortunate, as &
 has other meanings already known to C programmers.  The definition of function
-RefTest() is an example of C++ pass-by-reference syntax.
+`RefTest()` is an example of C++ pass-by-reference syntax.
 
-The only syntactic difference between ValTest() and RefTest() is the inclusion
-of & before the parameters.  There is no difference in the syntax of the
+The only syntactic difference between `ValTest()` and `RefTest()` is the inclusion
+of `&` before the parameters.  There is no difference in the syntax of the
 calling program.  In some ways this is good, since new students of programming
-need not place * in front of every use of a parameter within a function.  Also,
-struct member access does not need to change from "." to "->".  Unfortunately,
+need not place `*` in front of every use of a parameter within a function.  Also,
+struct member access does not need to change from `.` to `->`.  Unfortunately,
 references adds additional syntax, which may take some getting used to.
 
 Experienced C programmers may miss the "tells" of C style pass-by-reference.
 In C, you knew when a non-pointer variable was passed as an argument, if it
-was not prefaced by "&", it would not be modified.  Likewise, a variable
-prefaced by "*" was clearly being dereferenced.
+was not prefaced by `&`, it would not be modified.  Likewise, a variable
+prefaced by `*` was clearly being dereferenced.
 
 Teaching both C and C++ styles of pass-by-reference is likely to confuse
 students more than necessary.  Since the syntax of C++ style pass-by-reference
@@ -138,7 +139,7 @@ Method reference parameters behave exactly the same as function reference
 parameters.  In addition, passing complex data types such as structs works
 the same for methods and functions.
 
-
+```cpp
 //
 // File:  ref-ex2.cpp
 //
@@ -196,18 +197,19 @@ int main ()
     delete test;
     return(0);
 }
-
+```
+```shell
 Program Output:
 
 num = 0, pair = 0, 0
 num = 244, pair = 255, 266
 num = 377, pair = 388, 399
-
+```
 
 As before, arguments passed by value are not modified by the called method.
 C style pass-by-reference arguments are modified, as are C++ style
 pass-by-reference arguments.  Note that the C++ style syntax is more regular;
-the student no longer has to switch between "." and "->" notation for the value
+the student no longer has to switch between `.` and `->` notation for the value
 and reference passing cases.
 
 For large structures or objects passed into a function or method, a reference
@@ -227,7 +229,7 @@ pointer to a pointer, which gets pretty messy.
 As you might expect, an object argument can be modified under the same
 circumstances as a struct argument.
 
-
+```cpp
 //
 // File:  ref-ex3.cpp
 //
@@ -298,7 +300,9 @@ int main ()
     delete first;
     return(0);
 }
+```
 
+```shell
 Program Output:
 
 *iptr = 222
@@ -309,27 +313,27 @@ private1 = 0, private2 = 0
 private1 = 3456, private2 = 4567
 *iptr = 444
 private1 = 5678, private2 = 6789
+```
 
-
-Method ValMod() passes iptr by value.  Even though iptr is a pointer, the
+Method `ValMod()` passes `iptr` by value.  Even though iptr is a pointer, the
 contents of iptr (which happens to be an address) is copied to parameter
-ptr in the stack frame for ValMod().  So, ValMod() increments a copy of iptr,
+`ptr` in the stack frame for `ValMod()`.  So, `ValMod()` increments a copy of `iptr`,
 and does not modify the original.
 
-PtrMod() uses C style pass-by-reference to pass the address of iptr.  Since
-PtrMod() has the address of iptr, it can modify iptr by dereferencing ptr in
-the usual way.  The output shows that iptr, pointed to by ptr, is indeed
+`PtrMod()` uses C style pass-by-reference to pass the address of `iptr`.  Since
+`PtrMod()` has the address of `iptr`, it can modify iptr by dereferencing `ptr` in
+the usual way.  The output shows that `iptr`, pointed to by `ptr`, is indeed
 incremented.
 
-RefMod() employs C++ style pass-by-reference to pass a reference to a pointer.
-The syntax of the first parameter of RefMod() is a bit mind-bending, but all
-it means is that a reference to an integer pointer is to be passed.  RefMod()
-uses the reference to increment iptr, as seen in the output.
+`RefMod()` employs C++ style pass-by-reference to pass a reference to a pointer.
+The syntax of the first parameter of `RefMod()` is a bit mind-bending, but all
+it means is that a reference to an integer pointer is to be passed.  `RefMod()`
+uses the reference to increment `iptr`, as seen in the output.
 
-Passing objects follows the pattern for passing structs.  ValMod() calls
-SetPrivate() on a copy of object second, so the original is never modified.
+Passing objects follows the pattern for passing structs.  `ValMod()` calls
+`SetPrivate()` on a copy of object second, so the original is never modified.
 C and C++ style pass-by-reference are used to successfully modify object
-second in PtrMod() and RefMod().
+second in `PtrMod()` and `RefMod()`.
 
 
 C++ References as Return Values:
@@ -337,10 +341,10 @@ C++ References as Return Values:
 
 This is beyond the scope of material to be taught in CS106, but still worth
 knowing.  Students with C++ experience may return references from functions
-or methods, and might not do so correctly.  Function getClass1(), below contains
+or methods, and might not do so correctly.  Function `getClass1()`, below contains
 an egregious error.
 
-
+```cpp
 //
 // File:  ref-ex4.cpp
 //
@@ -385,7 +389,9 @@ int main ()
     delete &sc2;
     return(0);
 }
+```
 
+```shell
 Warning Generated During Compile:
 
 ref-ex4.cpp: In function `class SomeClass & getClass1()':
@@ -396,26 +402,26 @@ Program Output:
 private1 = 0, private2 = 0
 private1 = 0, private2 = 253608
 private1 = 0, private2 = 0
+```
 
-
-getClass1() returns a reference to an object declared on the stack; the object
-is a local variable of that function.  When getClass1() returns, the local
+`getClass1()` returns a reference to an object declared on the stack; the object
+is a local variable of that function.  When `getClass1()` returns, the local
 variables are invalidated and the stack space they occupied is reclaimed.  This
 error is analogous to returning a pointer to a function's local variable.
 
-Note that sc1 attribute private2 is corrupt after the call to getClass2().
-Since sc1 is a dangling reference, this is not surprising.  In addition to
+Note that sc1 attribute private2 is corrupt after the call to `getClass2()`.
+Since `sc1` is a dangling reference, this is not surprising.  In addition to
 data corruption, use of a dangling reference may cause program or system
 crashes.
 
 Because of the risk of misuse, some experts recommend never returning a
 reference from a function or method.
 
-Function getClass2 correctly returns a reference to a dynamic object, allocated
+Function `getClass2` correctly returns a reference to a dynamic object, allocated
 on the heap by new.  The function has to return a reference to what second 
 points to, an odd bit of syntax.  The programmer has to remember to free the
 returned object with delete when done with it.  Also, delete requires the
-address of sc2, more unusual syntax.
+address of `sc2`, more unusual syntax.
 
 
 Obscure Uses For C++ References:
@@ -426,10 +432,11 @@ additional properties of C++ references.  In practice, references are seldom
 used for anything but pass-by-reference function and method parameters.
 
 Declaring a reference establishes a new name as an alias for an existing
-variable.  In the example below, ref1 is declared to be a reference to foo,
+variable.  In the example below, `ref1` is declared to be a reference to foo,
 then ref2 is declared to be a reference to ref1.  This means that the three
-names, foo, ref1 and ref2 all refer to the same variable.
+names, `foo`, `ref1` and `ref2` all refer to the same variable.
 
+```cpp
 //
 // File:  ref-ex6.cpp
 //
@@ -463,7 +470,9 @@ int main ()
     cout << "&foo = " << &foo << ", &ref1 = " << &ref1
          << ", &ref2 = " << &ref2 << ", &val2 = " << &val2 << endl;
 }
+```
 
+```shell
 Program Output:
 
 foo = 999, ref1 = 999
@@ -472,20 +481,22 @@ foo = 1001, ref1 = 1001, ref2 = 1001
 &foo = 0xffbef9e8, &ref1 = 0xffbef9e8, &ref2 = 0xffbef9e8, &val2 = 0xffbef9ec
 foo = 1, ref1 = 1, ref2 = 1, val2 = 0
 &foo = 0xffbef9e8, &ref1 = 0xffbef9e8, &ref2 = 0xffbef9e8, &val2 = 0xffbef9ec
+```
 
+The following statement might seem to be redirecting `ref1` to be an alias for
+`val2`.  The code compiles and runs; so what is happening?
 
-The following statement might seem to be redirecting ref1 to be an alias for
-val2.  The code compiles and runs; so what is happening?
-
+```cpp
     ref1 = val2;
+```
 
-The program output shows that foo, ref1 and ref2 still refer to the same
-address, a different address than val2.  
+The program output shows that `foo`, `ref1` and `ref2` still refer to the same
+address, a different address than `val2`.  
 
-The statement actually causes the variable referred to by ref1 to be assigned
-the value contained in val2.  The output shows that none of the addresses have
-changed, and that the variable aliased by foo, ref1 and ref2 now contains
-(the contents of val2) + 1.
+The statement actually causes the variable referred to by `ref1` to be assigned
+the value contained in `val2`.  The output shows that none of the addresses have
+changed, and that the variable aliased by `foo`, `ref1` and `ref2` now contains
+`(the contents of val2) + 1`.
 
 So, an assignment through a reference can be made as many times as necessary,
 but a reference relationship can only be established once while the relevant
@@ -499,7 +510,7 @@ This material is way beyond the scope of CS106, but contains stuff you might
 see in a student's code some day.  Pay particular attention if you plan on
 entering the obfuscated C++ code competition.
 
-
+```cpp
 //
 // File:  ref-ex5.cpp
 //
@@ -549,41 +560,43 @@ int main ()
 
     return(0);
 }
+```
 
+```shell
 val5 = 3636, val6 = 1818
 val7 = 2718, val8 = 3141
 val7 = 2718, val8 = 3141
 val1 = 44, val2 = 0
 val1 = 44, val2 = 33
+```
 
-
-Function Swap() simply exchanges the contents of two integer variables.  So,
-
+Function `Swap()` simply exchanges the contents of two integer variables.  So,
+```cpp
     Swap(val5, val6);
-
+```
 works exactly as you would expect.  But what is the problem with the following?
-
+```cpp
     Swap(val7, val8);
-
-In order to pass short integers val7 and val8, the compiler would need to copy
+```
+In order to pass short integers `val7` and `val8`, the compiler would need to copy
 the arguments to anonymous integer variables and pass those by reference.  The
 copies would be swapped, but not the originals.  What happens if we decide we
 are smarter than the compiler?
-
+```cpp
     Swap((int)val7, (int)val8);
-
+```
 Exactly what was described above; copies are made and exchanged, but not the
 originals.  The C++ compiler is delighted to allow the programmer to shoot
 himself in the foot; what caliber would you like, sir?
 
-Function Reftest1() just copies the value of the parameter to the return value.
+Function `Reftest1()` just copies the value of the parameter to the return value.
 Why is this legal syntax?
-
+```cpp
     Reftest1(val2) = val3;
-
-Note that the function returns a reference to the argument, in this case val2.
+```
+Note that the function returns a reference to the argument, in this case `val2`.
 Since a reference is a legal lvalue, assignment to it is permitted.  So, the
-effect of this statement is to assign the value of val3 to val2.
+effect of this statement is to assign the value of `val3` to `val2`.
 
 
 Reference Documents:
