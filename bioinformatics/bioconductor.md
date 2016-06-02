@@ -13,7 +13,10 @@ GRanges
 
 ```r
 for (i in 1:ncol(int)) 
-	if (i == 1) plot(density(log2(int[,i])), col = (i == 4) + 1) else lines(density(log2(int[,i])), col = (i == 4) + 1) 
+	if (i == 1) 
+		plot(density(log2(int[,i])), col = (i == 4) + 1) 
+	else 
+		lines(density(log2(int[,i])), col = (i == 4) + 1) 
 ```
 
 * correlation plots, MA plots 
@@ -38,7 +41,7 @@ Source: M. Love's [repo](https://github.com/mikelove/bioc-refcard)
 
 ## Install
 
-```
+```r
 source("http://bioconductor.org/biocLite.R")
 biocLite()
 biocLite(c("package1","package2"))
@@ -55,7 +58,7 @@ more information at http://www.bioconductor.org/install/
 
 ## help within R
 
-```
+```r
 ?functionName
 ?"eSet-class" # classes need the '-class' on the end
 help(package="foo",help_type="html") # launch web browser help
@@ -78,13 +81,13 @@ Bioconductor support website: https://support.bioconductor.org
 
 If you use RStudio, then you already get nicely rendered documentation using `?` or `help`. If you are a command line person, then you can use this alias to pop up a help page in your web browser with `rhelp functionName packageName`.
 
-```
+```r
 alias rhelp="Rscript -e 'args <- commandArgs(TRUE); help(args[2], package=args[3], help_type=\"html\"); Sys.sleep(5)' --args"
 ```
 
 ## debugging R
 
-```
+```r
 traceback() # what steps lead to an error
 # debug a function
 debug(myFunction) # step line-by-line through the code in a function
@@ -99,7 +102,7 @@ trace(estimateSizeFactors, browser, exit=browser, signature="DESeqDataSet")
 
 [AnnotationDbi](http://www.bioconductor.org/packages/release/bioc/html/AnnotationDbi.html)
 
-```
+```r
 # using one of the annotation packges
 library(AnnotationDbi)
 library(org.Hs.eg.db) # or, e.g. Homo.sapiens
@@ -119,7 +122,7 @@ res[idx,]
 
 [biomaRt](http://www.bioconductor.org/packages/release/bioc/html/biomaRt.html)
 
-```
+```r
 # map from one annotation to another using biomart
 library(biomaRt)
 m <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
@@ -134,7 +137,7 @@ map <- getBM(mart = m,
 
 [GenomicRanges](http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
 
-```
+```r
 library(GenomicRanges)
 z <- GRanges("chr1",IRanges(1000001,1001000),strand="+")
 start(z)
@@ -193,7 +196,7 @@ A Hits object can be accessed with `queryHits`, `subjectHits` and `mcols` if a d
 
 If `y` is a GRangesList, then use `punion`, etc. All functions have default `ignore.strand=FALSE`, so are strand specific.
 
-```
+```r
 union(x,y) 
 intersect(x,y)
 setdiff(x,y)
@@ -201,7 +204,7 @@ setdiff(x,y)
 
 ### Overlaps
 
-```
+```r
 x %over% y  # logical vector of which x overlaps any in y
 fo <- findOverlaps(x,y) # returns a Hits object
 queryHits(fo)   # which in x
@@ -213,7 +216,7 @@ subjectHits(fo) # which in y
 [GenomicRanges](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) and [GenomeInfoDb](http://www.bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html)
 
 
-```
+```r
 gr.sub <- gr[seqlevels(gr) == "chr1"]
 seqlevelsStyle(x) <- "UCSC" # convert to 'chr1' style from "NCBI" style '1'
 ```
@@ -226,13 +229,13 @@ see the [Biostrings Quick Overview PDF](http://www.bioconductor.org/packages/rel
 
 For naming, see [cheat sheet for annotation](http://genomicsclass.github.io/book/pages/annoCheat.html)
 
-```
+```r
 library(BSgenome.Hsapiens.UCSC.hg19)
 dnastringset <- getSeq(Hsapiens, granges) # returns a DNAStringSet
 # also Views() for Bioconductor >= 3.1
 ```
 
-```
+```r
 substr(dnastringset, 1, 10) # to character string
 subseq(dnastringset, 1, 10) # returns DNAStringSet
 Views(dnastringset, 1, 10) # lightweight views into object
@@ -251,7 +254,7 @@ alphabetFrequency(dnastringset, as.prob=TRUE)
 
 [Rsamtools](http://www.bioconductor.org/packages/release/bioc/html/Rsamtools.html) `scanBam` returns lists of raw values from BAM files
 
-```
+```r
 library(Rsamtools)
 which <- GRanges("chr1",IRanges(1000001,1001000))
 what <- c("rname","strand","pos","qwidth","seq")
@@ -274,7 +277,7 @@ dnastringset <- scanFa(fastaFile, param=granges)
 
 [GenomicAlignments](http://www.bioconductor.org/packages/release/bioc/html/GenomicAlignments.html) returns Bioconductor objects (GRanges-based)
 
-```
+```r
 library(GenomicAlignments)
 ga <- readGAlignments(bamfile) # single-end
 ga <- readGAlignmentPairs(bamfile) # paired-end
@@ -284,7 +287,7 @@ ga <- readGAlignmentPairs(bamfile) # paired-end
 
 [GenomicFeatures](http://www.bioconductor.org/packages/release/bioc/html/GenomicFeatures.html)
 
-```
+```r
 # get a transcript database, which stores exon, trancript, and gene information
 library(GenomicFeatures)
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
@@ -314,7 +317,7 @@ exonsByTx <- exonsBy(txdb, by="tx") # similar but by transcript
 
 The SummarizedExperiment is a storage class for high-dimensional information tied to the same GRanges or GRangesList across experiments (e.g., read counts in exons for each gene).
 
-```
+```r
 library(GenomicAlignments)
 fls <- list.files(pattern="*.bam$")
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
@@ -336,7 +339,7 @@ rowRanges(se)
 
 Another fast Bioconductor read counting method is featureCounts in [Rsubread](http://www.bioconductor.org/packages/release/bioc/html/Rsubread.html)
 
-```
+```r
 library(Rsubread)
 res <- featureCounts(files, annot.ext="annotation.gtf",
   isGTFAnnotationFile=TRUE,
@@ -349,7 +352,7 @@ res$counts
 
 [DESeq2](http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html)
 
-```
+```r
 library(DESeq2)
 # from SummarizedExperiment
 dds <- DESeqDataSet(se, ~ group)
@@ -361,7 +364,7 @@ res <- results(dds)
 
 [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html)
 
-```
+```r
 # this chunk from the Quick start in the edgeR User Guide
 library(edgeR) 
 y <- DGEList(counts=counts,group=group)
@@ -383,7 +386,7 @@ topTags(lrt)
 
 [limma/voom](http://www.bioconductor.org/packages/release/bioc/html/limma.html)
 
-```
+```r
 library(limma)
 design <- model.matrix(~ group)
 dgel <- DGEList(counts)
@@ -398,7 +401,7 @@ topTable(fit,coef=2)
 
 ## Expression set
 
-```
+```r
 library(Biobase)
 data(sample.ExpressionSet)
 e <- sample.ExpressionSet
@@ -409,14 +412,14 @@ fData(e)
 
 ## Get GEO dataset
 
-```
+```r
 library(GEOquery)
 e <- getGEO("GSE9514")
 ```
 
 ## Microarray analysis
 
-```
+```r
 library(affy)
 library(limma)
 phenoData <- read.AnnotatedDataFrame("sample-description.csv")
