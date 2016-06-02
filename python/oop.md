@@ -1,7 +1,7 @@
 [How to declare default values for instance variables in Python?](http://stackoverflow.com/questions/2681243/how-should-i-declare-default-values-for-instance-variables-in-python)
 
 First, this is okay:  
-```
+```python
 >>> class TestB(): 
 ...   def __init__(self, attr=1): 
 ...     self.attr = attr 
@@ -15,7 +15,7 @@ First, this is okay:
 1
 ```  
 However, this only works for **immutable** types. If the default value was **mutable**, this would happen instead:  
-```
+```python
 >>> class Test(): 
 ...   def __init__(self, attr=[]): 
 ...     self.attr = attr 
