@@ -323,7 +323,7 @@ echo "Selected year: $a"
 
 **redirecting output**
 
-```
+```shell
 $ cp -v * ../otherFolder 1> ../success.txt 2> ../error.txt 
 1> stdout ; 2> stderr 
 
