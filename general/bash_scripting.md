@@ -79,7 +79,7 @@ echo -e $flashred"ERROR: "$none$red"Something went wrong."$none
 `[[ $a -lt $b]]` - used for integers !!  other comparison will be lexically. 
 
 String is null or not.  
-```
+```shell
 [[ -z $a && -n $b ]] # a is null and b is not null 
 echo $? # returns result of the last comparison. 0 - success, 1 - failure.
 ```
@@ -295,7 +295,7 @@ else
 fi
 ```
 
-```
+```shell
 read -p "Favourite animal? " a
 while [[ -z "$a" ]]; do
     read -p "I need an answer! " a
@@ -365,21 +365,21 @@ ENV. Variables : `$MACHTYPE`, `$HOSTNAME`, `$BASH_VERSION`, `$SECONDS`
 `echo $SECONDS` - time script has been running.  
 `echo $0` - script name. 
 
-```
+```shell
 a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)
 echo "The ping was $a"
 ```
 
 `echo -e '\033[34;42mColorTest\033[0m'` - try it.  
 
-```
+```shell
 date +"%d-%m-%Y"
 date +"%H:%M:%S"
 ```
 
 `printf "Name:\t%s\nID:\t%04d\n" "asif" "7"`
 
-```
+```shell
 today=$(date +"%d-%m-%Y")
 time=$(date +"%H:%M:%S")
 printf -v d "Current User:\t%s\nDate:\t\t%s @ %s\n" $USER $today $time
@@ -387,7 +387,7 @@ echo $d
 ```
 
 One would write the below text in a file:
-```
+```shell
 open mirrors.xmission.com
 user anonymous nothinghere
 ascii
