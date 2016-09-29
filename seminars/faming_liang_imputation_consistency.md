@@ -15,3 +15,6 @@
 
 - Imputation Consistency (IC) Algorithm
     - I-step, C-step
+
+- Shi-learning algorithm
+    - IC algorithm for gaussian graphical models
