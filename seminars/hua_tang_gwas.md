@@ -58,3 +58,4 @@
         - _strong loci_ selected from meta-analysis in europeans
         - allelic effects estimated using african american individuals
         
+- [Comp. Precision Health](http://dahshu.org/events/cph2017)
