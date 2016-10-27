@@ -32,7 +32,7 @@
     - how to do in principled way 
         - use GWAS data to assess similarity between the two cohorts (wrt specific trait)
 - model in one population
-    - S_m - chi-squared statistic
+    - Sm - chi-squared statistic
     - test statistics from reference population as a mixture
     - locfdr: posterior
 - borrowing information across ethnicity
@@ -57,3 +57,4 @@
         - classify strong and weak loci
         - _strong loci_ selected from meta-analysis in europeans
         - allelic effects estimated using african american individuals
+        
