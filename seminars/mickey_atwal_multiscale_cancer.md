@@ -39,4 +39,3 @@
 - statistical model: probabilistic model of copy number variation
   - high temperature => low N
   - [ginkgo](http://qb.cshl.edu/ginkgo)
-
