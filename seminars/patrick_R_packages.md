@@ -17,4 +17,12 @@
   - Rcpp let's you deal with CPP
   - RcppArmadillo calls LAPACK etc packages, it is header only
   - Rcpp lets you ahve access to the random number generator and math libraries that come with R
-  - 
+  
+- file RPackageTemplate.R
+  - package documentation
+  - go into namespace
+  
+- roxygen
+  - documentation along with code  
+
+- may have to run valgrind before submitting to cran
