@@ -44,3 +44,9 @@ else
 ## Tips/Tricks ##
 
 - [1L vs. 1](http://stackoverflow.com/questions/7014387/whats-the-difference-between-1l-and-1)
+
+- colour pallette
+tol21rainbow= c("#771155", "#AA4488", "#CC99BB", "#114477", "#4477AA", "#77AADD", 
+                "#117777", "#44AAAA", "#77CCCC", "#117744", "#44AA77", "#88CCAA", 
+                "#777711", "#AAAA44", "#DDDD77", "#774411", "#AA7744", "#DDAA77", 
+                "#771122", "#AA4455", "#DD7788")
