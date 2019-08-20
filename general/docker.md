@@ -103,8 +103,11 @@ Once the docker image has been modified and then the container state been commit
 * If using the `boot2docker` VM on OS X, Windows or Linux, you’ll need to get the IP of the virtual host instead of using localhost. You can do this by running the following outside of the `boot2docker` shell --> `$ boot2docker ip` 
  
 ## Links ##
- 
-Digital ocean's summaries: 
+
+- [Linux install](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [post-install steps](https://docs.docker.com/install/linux/linux-postinstall/)
+- [CCDL Mac instructions for docker](https://github.com/AlexsLemonade/training-modules/blob/master/docker-install/README.md)
+
+- Digital ocean's summaries: 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started 
 https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images 
 https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-an-overview-of-containerization 
