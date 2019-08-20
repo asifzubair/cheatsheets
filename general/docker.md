@@ -108,9 +108,9 @@ Once the docker image has been modified and then the container state been commit
 - [CCDL Mac instructions for docker](https://github.com/AlexsLemonade/training-modules/blob/master/docker-install/README.md)
 
 - Digital ocean's summaries: 
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started 
-https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images 
-https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-an-overview-of-containerization 
+ - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started 
+ - https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images 
+ - https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-an-overview-of-containerization 
  
 http://crosbymichael.com/dockerfile-deep-dive.html  
 http://crosbymichael.com/dockerfile-best-practices.html 
