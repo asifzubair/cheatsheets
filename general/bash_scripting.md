@@ -354,6 +354,25 @@ echo ${fruit/#apple/durian} # replace only if instance occurs at very beginning 
 echo $fruit/%cherry/durian} # replace only if instance occurs at end of string
 ```
 
+**running scripts smoothly**
+
+```
+set -euo pipefail
+
+-e: Exit immediately if any command exits with a non-zero status (i.e. an error). 
+  This ensures that errors are caught early and the script does not continue 
+  to run in an unexpected state.
+-u: Treat unset variables as errors and exit immediately. This helps catch errors 
+  where a variable is not defined or set correctly.
+-o pipefail: Causes a pipeline to fail if any of the commands in the pipeline fail, 
+  rather than just the last command. This ensures that errors in any command in a 
+  pipeline are caught and the script does not continue to run in an unexpected state.
+
+Taken together, these options help to ensure that your Bash script runs more safely
+and predictably, catching errors and unexpected behavior early and exiting the script 
+immediately to prevent further issues.
+```
+
 ## Up and Running Notes ##
 
 `bash` major differences: http://tiswww.case.edu/php/chet/bash/bashref.html#SEC138
